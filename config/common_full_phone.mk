@@ -8,6 +8,9 @@ PRODUCT_PACKAGES += \
 # Include Candy LatinIME dictionaries
 PRODUCT_PACKAGE_OVERLAYS += vendor/candy/overlay/dictionaries
 
+#  Include Candy audio files
+include vendor/candy/config/candy_audio.mk
+
 # Default notification/alarm sounds
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.notification_sound=Argon.ogg \

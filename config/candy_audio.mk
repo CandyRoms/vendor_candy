@@ -10,7 +10,8 @@ UI_PATH := vendor/candy/prebuilt/common/media/audio/ui
 # Alarms
 PRODUCT_COPY_FILES += \
     $(ALARM_PATH)/CyanAlarm.ogg:system/media/audio/alarms/CyanAlarm.ogg \
-    $(ALARM_PATH)/NuclearLaunch.ogg:system/media/audio/alarms/NuclearLaunch.ogg
+    $(ALARM_PATH)/NuclearLaunch.ogg:system/media/audio/alarms/NuclearLaunch.ogg \
+    $(ALARM_PATH)/Creek.mp3:system/media/audio/alarms/Creek.mp3
 
 # Notifications
 PRODUCT_COPY_FILES += \
@@ -21,7 +22,8 @@ PRODUCT_COPY_FILES += \
     $(NOTIFICATION_PATH)/Naughty.ogg:system/media/audio/notifications/Naughty.ogg \
     $(NOTIFICATION_PATH)/Pong.ogg:system/media/audio/notifications/Pong.ogg \
     $(NOTIFICATION_PATH)/Rang.ogg:system/media/audio/notifications/Rang.ogg \
-    $(NOTIFICATION_PATH)/Stone.ogg:system/media/audio/notifications/Stone.ogg
+    $(NOTIFICATION_PATH)/Stone.ogg:system/media/audio/notifications/Stone.ogg \
+    $(NOTIFICATION_PATH)/iPhone_Tritone.m4a:system/media/audio/notifications/iPhone_Tritone.m4a
 
 # Ringtones
 ifeq ($(TARGET_NEEDS_BOOSTED_SOUNDS),true)
