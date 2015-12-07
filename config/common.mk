@@ -33,13 +33,8 @@ PRODUCT_BOOTANIMATION := vendor/candy/prebuilt/common/bootanimation/$(TARGET_BOO
 endif
 endif
 
-ifdef CANDY_NIGHTLY
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.rommanager.developerid=candynightly
-else
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.rommanager.developerid=candy
-endif
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
