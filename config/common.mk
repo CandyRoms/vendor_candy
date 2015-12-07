@@ -100,6 +100,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/lib/content-types.properties:system/lib/content-types.properties
 
+# superSU
+PRODUCT_COPY_FILES += \
+    vendor/candy/prebuilt/common/etc/SuperSU.zip:system/addon.d/SuperSU.zip \
+    vendor/candy/prebuilt/common/etc/init.d/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon
+
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
