@@ -1,5 +1,4 @@
 edgegestureservice                        u:object_r:edge_gesture_service:s0
-themes                                    u:object_r:themes_service:s0
 torch                                     u:object_r:torch_service:s0
 killswitch                                u:object_r:kill_switch_service:s0
 cmstatusbar                               u:object_r:cm_status_bar_service:s0

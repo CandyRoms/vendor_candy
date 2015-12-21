@@ -112,9 +112,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/candy/config/permissions/com.cyanogenmod.android.xml:system/etc/permissions/com.cyanogenmod.android.xml
 
-# Theme engine
-include vendor/candy/config/themes_common.mk
-
 # Required Candy packages
 PRODUCT_PACKAGES += \
     Development \
