@@ -138,6 +138,14 @@ PRODUCT_PACKAGES += \
     AudioFX \
     LockClock
 
+# BitSyko Layers
+PRODUCT_COPY_FILES += \
+    vendor/candy/prebuilt/common/app/LayersManager/LayersManager.apk:system/app/LayersManager/LayersManager.apk
+
+# Hide BitSyko Layers Manager app icon from launcher
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.layers.noIcon=noIcon
+
 # CM Platform Library
 #PRODUCT_PACKAGES += \
 #    org.cyanogenmod.platform-res \
