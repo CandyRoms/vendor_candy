@@ -92,7 +92,14 @@ PRODUCT_PACKAGES += \
     LatinIME \
     BluetoothExt
 
-# Extra tools
+# BitSyko Layers
+PRODUCT_COPY_FILES += \
+    vendor/candy/prebuilt/common/app/LayersManager/LayersManager.apk:system/app/LayersManager/LayersManager.apk
+
+# Hide BitSyko Layers Manager app icon from launcher
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.layers.noIcon=noIcon
+
 PRODUCT_PACKAGES += \
     openvpn \
     e2fsck \
