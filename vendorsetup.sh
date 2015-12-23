@@ -32,6 +32,7 @@ add_lunch_combo candy_lt01wifi-userdebug
 add_lunch_combo candy_lt03wifi-userdebug
 add_lunch_combo candy_mt2-userdebug
 add_lunch_combo candy_m7-userdebug
+add_lunch_combo candy_m7spr-userdebug
 add_lunch_combo candy_m7vzw-userdebug
 add_lunch_combo candy_m8-userdebug
 add_lunch_combo candy_mako-userdebug
@@ -42,6 +43,9 @@ add_lunch_combo candy_quincytmo-userdebug
 add_lunch_combo candy_shamu-userdebug
 add_lunch_combo candy_skyrocket-userdebug
 add_lunch_combo candy_t0lte-userdebug
+add_lunch_combo candy_t6-userdebug
+add_lunch_combo candy_t6spr-userdebug
+add_lunch_combo candy_t6vzw-userdebug
 add_lunch_combo candy_t769-userdebug
 add_lunch_combo candy_tomato-userdebug
 add_lunch_combo candy_toro-userdebug
