@@ -153,9 +153,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 #    org.cyanogenmod.platform.xml
 
 # Candy Hardware Abstraction Framework
-PRODUCT_PACKAGES += \
-    org.cyanogenmod.hardware \
-    org.cyanogenmod.hardware.xml
+#PRODUCT_PACKAGES += \
+#    org.cyanogenmod.hardware \
+#    org.cyanogenmod.hardware.xml
 
 # Extra tools in Candy
 PRODUCT_PACKAGES += \
