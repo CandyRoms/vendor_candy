@@ -128,6 +128,10 @@ PRODUCT_PACKAGES += \
     libemoji \
     Terminal
 
+# Busybox
+PRODUCT_PACKAGES += \
+    Busybox
+
 # Include librsjni explicitly to workaround GMS issue
 PRODUCT_PACKAGES += \
     librsjni
