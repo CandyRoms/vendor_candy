@@ -62,6 +62,7 @@ PRODUCT_COPY_FILES += \
 
 # Required packages
 PRODUCT_PACKAGES += \
+    Launcher3 \
     CellBroadcastReceiver \
     Development \
     SpareParts \
