@@ -26,6 +26,7 @@ add_lunch_combo candy_hercules-userdebug
 add_lunch_combo candy_i605-userdebug
 add_lunch_combo candy_klte-userdebug
 add_lunch_combo candy_l900-userdebug
+add_lunch_combo candy_lettuce-userdebug
 add_lunch_combo candy_ls990-userdebug
 add_lunch_combo candy_lt033g-userdebug
 add_lunch_combo candy_lt01wifi-userdebug
