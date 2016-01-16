@@ -100,6 +100,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     KernelAdiutor
 
+#OmniSwitch
+PRODUCT_PACKAGES += \
+    OmniSwitch
+
 # BitSyko Layers
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/app/LayersManager/LayersManager.apk:system/app/LayersManager/LayersManager.apk
