@@ -96,6 +96,10 @@ PRODUCT_PACKAGES += \
     LatinIME \
     BluetoothExt
 
+# Custom Candy packages
+PRODUCT_PACKAGES += \
+    KernelAdiutor
+
 # BitSyko Layers
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/app/LayersManager/LayersManager.apk:system/app/LayersManager/LayersManager.apk
