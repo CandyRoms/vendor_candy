@@ -4,5 +4,5 @@
 #
 
 BOARD_SEPOLICY_DIRS += \
-    vendor/aospb/sepolicy
+    vendor/candy/sepolicy
 

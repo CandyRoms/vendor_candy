@@ -1,3 +1,3 @@
-. "$(gettop)/vendor/aospb/build/envsetup.sh"
+. "$(gettop)/vendor/candy/build/envsetup.sh"
 
-aospb_device_combos
+candy_device_combos

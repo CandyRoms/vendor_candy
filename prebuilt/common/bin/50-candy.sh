@@ -1,6 +1,6 @@
 #!/sbin/sh
 # 
-# /system/addon.d/50-aospb.sh
+# /system/addon.d/50-candy.sh
 # During a Slim upgrade, this script backs up /system/etc/hosts,
 # /system is formatted and reinstalled, then the file is restored.
 #
