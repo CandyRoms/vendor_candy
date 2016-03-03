@@ -30,6 +30,10 @@ PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
     vendor/candy/prebuilt/common/bin/50-candy.sh:system/addon.d/50-candy.sh
 
+# Candy backuptool
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.candybackuptool.version=c6
+
 # Signature compatibility validation
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/bin/otasigcheck.sh:install/bin/otasigcheck.sh
