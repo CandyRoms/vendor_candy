@@ -25,10 +25,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.debug.alloc=0
 
 # Backup Tool
+ifneq ($(WITH_GMS),true)
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
     vendor/candy/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/candy/prebuilt/common/bin/50-candy.sh:system/addon.d/50-candy.sh
+    vendor/candy/prebuilt/common/bin/50-candy.sh:system/addon.d/50-candy.sh \
+    vendor/candy/prebuilt/common/bin/blacklist:system/addon.d/blacklist
+endif
 
 # Candy backuptool
 PRODUCT_PROPERTY_OVERRIDES += \
