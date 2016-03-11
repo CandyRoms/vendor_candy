@@ -80,6 +80,13 @@ PRODUCT_PACKAGES += \
     SpareParts \
     su
 
+# Custom Candy packages
+PRODUCT_PACKAGES += \
+    AudioFX \
+    LockClock \
+    Email \
+    Exchange2
+
 # Optional packages
 PRODUCT_PACKAGES += \
     Basic \

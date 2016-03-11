@@ -21,6 +21,12 @@
 
     <!-- Class name for default keyguard appwidget [DO NOT TRANSLATE] -->
     <string name="widget_default_class_name">com.google.android.apps.dashclock.WidgetProvider</string>
+    
+    <!-- Package name for default keyguard appwidget [DO NOT TRANSLATE] -->
+    <string name="widget_default_package_name">com.cyanogenmod.lockclock</string>
+
+    <!-- Class name for default keyguard appwidget [DO NOT TRANSLATE] -->
+    <string name="widget_default_class_name">com.cyanogenmod.lockclock.ClockWidgetProvider</string>
 
 </resources>
 
