@@ -6,6 +6,7 @@
 export C=/tmp/backupdir
 export S=/system
 export V=c6
+export LCDDENSITY="ro.sf.lcd_density"
 
 # Scripts in /system/addon.d expect to find backuptool.functions in /tmp
 cp -f /tmp/install/bin/backuptool.functions /tmp
@@ -80,6 +81,7 @@ fi
 
 case "$1" in
   backup)
+    grep $LCDDENSITY /system/build.prop > /tmp/candy_dpi
     mkdir -p $C
     if check_prereq; then
         if check_whitelist system; then
@@ -99,6 +101,14 @@ case "$1" in
         fi
     fi
     check_blacklist tmp
+    CANDYDPI=`cat /tmp/candy_dpi`
+    if [ "${CANDYDPI/$LCDDENSITY}" != "$CANDYDPI" ]
+    then
+        mv /system/build.prop /system/build.prop.new
+        sed "s/ro\.sf\.lcd_density=.*/$CANDYDPI/g" /system/build.prop.new > /system/build.prop
+        chmod 644 /system/build.prop
+        rm -f /system/build.prop.new
+    fi
     run_stage pre-restore
     run_stage restore
     run_stage post-restore
