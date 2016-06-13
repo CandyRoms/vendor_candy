@@ -137,6 +137,9 @@ PRODUCT_PACKAGES += \
     ntfsfix \
     ntfs-3g
 
+# Slim Framework
+include frameworks/opt/slim/slim_framework.mk
+
 # Stagefright FFMPEG plugin
 PRODUCT_PACKAGES += \
     libffmpeg_extractor \
