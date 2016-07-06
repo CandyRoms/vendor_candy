@@ -54,6 +54,10 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
     dalvik.vm.debug.alloc=0
 
+# Backup Services whitelist
+PRODUCT_COPY_FILES += \
+    vendor/candy/config/permissions/backup.xml:system/etc/sysconfig/backup.xml
+
 # Backup tool
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
