@@ -110,6 +110,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     KernelAdiutor
 
+# Masquerade
+PRODUCT_PACKAGES += \
+    masquerade
+
 #OmniSwitch
 PRODUCT_PACKAGES += \
     OmniSwitch
