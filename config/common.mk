@@ -110,9 +110,8 @@ PRODUCT_PACKAGES += \
     LatinIME \
     BluetoothExt
 
-# Custom Candy packages
-PRODUCT_PACKAGES += \
-    KernelAdiutor
+# Kernel Adiutor
+    vendor/candy/prebuilt/common/app/KernelAdiutor/KernelAdiutor.apk:system/app/KernelAdiutor/KernelAdiutor.apk
 
 # Masquerade
 PRODUCT_PACKAGES += \
