@@ -186,3 +186,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.candy.buildtype=$(CANDY_BUILD_TYPE)
 
 EXTENDED_POST_PROCESS_PROPS := vendor/candy/tools/candy_process_props.py
+
+# Squisher Location
+SQUISHER_SCRIPT := vendor/candy/tools/squisher
