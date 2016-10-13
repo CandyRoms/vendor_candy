@@ -144,6 +144,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PACKAGE_OVERLAYS += vendor/candy/overlay/common
 
+# Telephony
+PRODUCT_PACKAGES += \
+    telephony-ext
+
+PRODUCT_BOOT_JARS += \
+    telephony-ext
+
 # Versioning System
 # Candy first version.
 PRODUCT_VERSION_MAJOR = 7.1.1
