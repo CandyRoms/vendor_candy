@@ -138,10 +138,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     media.sf.omx-plugin=libffmpeg_omx.so \
     media.sf.extractor-plugin=libffmpeg_extractor.so
 
-# easy way to extend to add more packages
--include vendor/extra/product.mk
-
 PRODUCT_PACKAGE_OVERLAYS += vendor/candy/overlay/common
+
+# Storage manager
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.storage_manager.enabled=true
 
 # Telephony
 PRODUCT_PACKAGES += \
