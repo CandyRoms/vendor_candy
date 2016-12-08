@@ -180,7 +180,7 @@ endif
 
 # Versioning System
 # Tesla first version.
-PRODUCT_VERSION_MAJOR = 7.1
+PRODUCT_VERSION_MAJOR = 7.1.1
 PRODUCT_VERSION_MINOR = Beta
 PRODUCT_VERSION_MAINTENANCE = v3.3
 TESLA_POSTFIX := -$(shell date +"%Y%m%d-%H%M")
