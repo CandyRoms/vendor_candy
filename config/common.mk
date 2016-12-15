@@ -91,7 +91,8 @@ PRODUCT_PACKAGES += \
     SlimOTA \
     masquerade \
     KernelAdiutor \
-    Eleven
+    Eleven \
+    OmniSwitch   
     
 # Extra tools
 PRODUCT_PACKAGES += \
