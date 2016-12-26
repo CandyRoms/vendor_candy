@@ -92,7 +92,8 @@ PRODUCT_PACKAGES += \
     masquerade \
     KernelAdiutor \
     Eleven \
-    OmniSwitch   
+    OmniSwitch \
+    Calculator  
     
 # Extra tools
 PRODUCT_PACKAGES += \
