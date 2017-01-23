@@ -1,7 +1,7 @@
 # Inherit common stuff
-$(call inherit-product, vendor/tesla/config/common.mk)
+$(call inherit-product, vendor/candy/config/common.mk)
 
-PRODUCT_PACKAGE_OVERLAYS += vendor/tesla/overlay/tablet
+PRODUCT_PACKAGE_OVERLAYS += vendor/candy/overlay/tablet
 
 # BT config
 PRODUCT_COPY_FILES += \

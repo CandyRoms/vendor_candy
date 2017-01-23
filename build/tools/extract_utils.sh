@@ -26,7 +26,7 @@ COMMON=-1
 #
 # $1: device name
 # $2: vendor name
-# $3: Tesla root directory
+# $3: candy root directory
 # $4: is common device - optional, default to false
 # $5: cleanup - optional, default to true
 #
@@ -46,20 +46,20 @@ function setup_vendor() {
         exit 1
     fi
 
-    export TESLA_ROOT="$3"
-    if [ ! -d "$TESLA_ROOT" ]; then
-        echo "\$TESLA_ROOT must be set and valid before including this script!"
+    export CANDY_ROOT="$3"
+    if [ ! -d "$CANDY_ROOT" ]; then
+        echo "\$CANDY_ROOT must be set and valid before including this script!"
         exit 1
     fi
 
     export OUTDIR=vendor/"$VENDOR"/"$DEVICE"
-    if [ ! -d "$TESLA_ROOT/$OUTDIR" ]; then
-        mkdir -p "$TESLA_ROOT/$OUTDIR"
+    if [ ! -d "$CANDY_ROOT/$OUTDIR" ]; then
+        mkdir -p "$CANDY_ROOT/$OUTDIR"
     fi
 
-    export PRODUCTMK="$TESLA_ROOT"/"$OUTDIR"/"$DEVICE"-vendor.mk
-    export ANDROIDMK="$TESLA_ROOT"/"$OUTDIR"/Android.mk
-    export BOARDMK="$TESLA_ROOT"/"$OUTDIR"/BoardConfigVendor.mk
+    export PRODUCTMK="$CANDY_ROOT"/"$OUTDIR"/"$DEVICE"-vendor.mk
+    export ANDROIDMK="$CANDY_ROOT"/"$OUTDIR"/Android.mk
+    export BOARDMK="$CANDY_ROOT"/"$OUTDIR"/BoardConfigVendor.mk
 
     if [ "$4" == "true" ] || [ "$4" == "1" ]; then
         COMMON=1
@@ -586,7 +586,7 @@ function extract() {
     local FILELIST=( ${PRODUCT_COPY_FILES_LIST[@]} ${PRODUCT_PACKAGES_LIST[@]} )
     local COUNT=${#FILELIST[@]}
     local SRC="$2"
-    local OUTPUT_ROOT="$TESLA_ROOT"/"$OUTDIR"/proprietary
+    local OUTPUT_ROOT="$CANDY_ROOT"/"$OUTDIR"/proprietary
     if [ "$SRC" = "adb" ]; then
         init_adb_connection
     fi

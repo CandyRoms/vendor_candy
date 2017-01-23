@@ -1,3 +1,3 @@
 # Inherit common stuff
-$(call inherit-product, vendor/tesla/config/common.mk)
-$(call inherit-product, vendor/tesla/config/common_apn.mk)
+$(call inherit-product, vendor/candy/config/common.mk)
+$(call inherit-product, vendor/candy/config/common_apn.mk)
