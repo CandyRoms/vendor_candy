@@ -70,8 +70,7 @@ PRODUCT_PACKAGES += \
     Development \
     SpareParts \
     TeslaCoil \
-    LockClock \
-    su
+    LockClock
 
 # Optional packages
 PRODUCT_PACKAGES += \
@@ -151,6 +150,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     telephony-ext
 
+# These packages are excluded from user builds
+ifneq ($(TARGET_BUILD_VARIANT),user)
+PRODUCT_PACKAGES += \
+    procmem \
+    procrank \
+    su
+endif
+
 # Versioning System
 # Candy first version.
 PRODUCT_VERSION_MAJOR = 7.1.1
@@ -176,5 +183,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.modversion=$(CANDY_MOD_VERSION) \
     ro.candy.buildtype=$(CANDY_BUILD_TYPE)
 
-EXTENDED_POST_PROCESS_PROPS := vendor/candy/tools/candy_process_props.py
+-include vendor/candy/config/candy_extra.mk
 
+EXTENDED_POST_PROCESS_PROPS := vendor/candy/tools/candy_process_props.py
