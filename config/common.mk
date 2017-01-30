@@ -69,8 +69,9 @@ PRODUCT_PACKAGES += \
     CellBroadcastReceiver \
     Development \
     SpareParts \
-    TeslaCoil \
-    LockClock
+    CandyCane \
+    LockClock \
+    su
 
 # Optional packages
 PRODUCT_PACKAGES += \
@@ -88,7 +89,7 @@ PRODUCT_PACKAGES += \
     LatinIME \
     BluetoothExt \
     CandyBootAnimation \
-    SlimOTA \
+    CandyOTA \
     masquerade \
     KernelAdiutor \
     Eleven \
