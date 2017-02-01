@@ -95,8 +95,8 @@ PRODUCT_PACKAGES += \
     masquerade \
     Eleven \
     OmniSwitch \
-    Calculator  
-    
+    Calculator
+
 # Extra tools
 PRODUCT_PACKAGES += \
     openvpn \
@@ -116,6 +116,13 @@ PRODUCT_BOOT_JARS += \
 # DU Utils Library
 PRODUCT_PACKAGES += \
     org.dirtyunicorns.utils
+
+ifneq ($(DEFAULT_ROOT_METHOD),Magisk)
+PRODUCT_PACKAGES += \
+    MagiskManager
+PRODUCT_COPY_FILES += \
+    vendor/candy/prebuilt/zip/magisk.zip:system/addon.d/magisk.zip
+endif
 
 # Stagefright FFMPEG plugin
 PRODUCT_PACKAGES += \
@@ -140,12 +147,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     telephony-ext
 
-# SU and root apps
-ifneq ($(WITH_SU),false)
+# These packages are excluded from user builds
+ifneq ($(TARGET_BUILD_VARIANT),user)
 PRODUCT_PACKAGES += \
     procmem \
-    procrank \
-    su
+    procrank
 endif
 
 # Versioning System
