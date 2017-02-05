@@ -91,7 +91,6 @@ PRODUCT_PACKAGES += \
     CandyBootAnimation \
     CandyOTA \
     masquerade \
-    KernelAdiutor \
     Eleven \
     OmniSwitch \
     Calculator  
