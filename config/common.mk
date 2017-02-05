@@ -70,8 +70,7 @@ PRODUCT_PACKAGES += \
     Development \
     SpareParts \
     CandyCane \
-    LockClock \
-    su
+    LockClock
 
 # Optional packages
 PRODUCT_PACKAGES += \
@@ -119,10 +118,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
 vendor/candy/prebuilt/common/app/Nova.apk:system/app/Nova.apk
 
-# Adaway
-PRODUCT_COPY_FILES += \
-vendor/candy/prebuilt/common/app/adaway.apk:system/app/adaway.apk
-
 # Stagefright FFMPEG plugin
 PRODUCT_PACKAGES += \
     libffmpeg_extractor \
@@ -146,12 +141,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     telephony-ext
 
-# These packages are excluded from user builds
-ifneq ($(TARGET_BUILD_VARIANT),user)
+# SU and root apps
+ifneq ($(WITH_SU),false)
 PRODUCT_PACKAGES += \
     procmem \
     procrank \
     su
+PRODUCT_COPY_FILES += \
+vendor/candy/prebuilt/common/app/AdAway.apk:system/app/AdAway.apk
 endif
 
 # Versioning System
