@@ -176,6 +176,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.modversion=$(CANDY_MOD_VERSION) \
     ro.candy.buildtype=$(CANDY_BUILD_TYPE)
 
--include vendor/candy/config/candy_extra.mk
-
 EXTENDED_POST_PROCESS_PROPS := vendor/candy/tools/candy_process_props.py
