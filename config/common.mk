@@ -71,7 +71,8 @@ PRODUCT_PACKAGES += \
     Development \
     SpareParts \
     CandyCane \
-    LockClock
+    LockClock \
+    Launcher3
 
 # Optional packages
 PRODUCT_PACKAGES += \
