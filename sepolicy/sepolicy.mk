@@ -4,5 +4,4 @@
 #
 
 BOARD_SEPOLICY_DIRS += \
-    vendor/candy/sepolicy
-
+    vendor/cm/sepolicy
