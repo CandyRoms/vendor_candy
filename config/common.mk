@@ -116,10 +116,6 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_PACKAGES += \
     org.dirtyunicorns.utils
 
-# NovaLauncher
-PRODUCT_COPY_FILES += \
-vendor/candy/prebuilt/common/app/Nova.apk:system/app/Nova.apk
-
 # Stagefright FFMPEG plugin
 PRODUCT_PACKAGES += \
     libffmpeg_extractor \
@@ -149,8 +145,6 @@ PRODUCT_PACKAGES += \
     procmem \
     procrank \
     su
-PRODUCT_COPY_FILES += \
-vendor/candy/prebuilt/common/app/AdAway.apk:system/app/AdAway.apk
 endif
 
 # Versioning System
