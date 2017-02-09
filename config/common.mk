@@ -78,7 +78,8 @@ PRODUCT_PACKAGES += \
     Basic \
     LiveWallpapersPicker \
     PhaseBeam \
-    Chromium
+    Chromium \
+    Snap
 
 # AudioFX
 PRODUCT_PACKAGES += \
