@@ -39,7 +39,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/bin/otasigcheck.sh:install/bin/otasigcheck.sh
 
-# candy-specific init file
+# Candy-specific init file
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/etc/init.local.rc:root/init.candy.rc
 
@@ -67,7 +67,6 @@ PRODUCT_COPY_FILES += \
 
 # Required packages
 PRODUCT_PACKAGES += \
-    CellBroadcastReceiver \
     Development \
     SpareParts \
     CandyCane \
@@ -79,6 +78,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Basic \
     LiveWallpapersPicker \
+    PhotoTable \
     PhaseBeam \
     Chromium
 
