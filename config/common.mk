@@ -92,7 +92,7 @@ PRODUCT_PACKAGES += \
     BluetoothExt \
     CandyBootAnimation \
     CandyOTA \
-    masquerade \
+    ThemeInterfacer \
     Eleven \
     OmniSwitch \
     Calculator
