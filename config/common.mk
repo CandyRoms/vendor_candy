@@ -74,6 +74,11 @@ PRODUCT_PACKAGES += \
     LockClock \
     Launcher3
 
+# OMS
+PRODUCT_PACKAGES += \
+    ThemeInterfacer \
+    substratum
+
 # Optional packages
 PRODUCT_PACKAGES += \
     Basic \
@@ -92,7 +97,6 @@ PRODUCT_PACKAGES += \
     BluetoothExt \
     CandyBootAnimation \
     CandyOTA \
-    ThemeInterfacer \
     Eleven \
     OmniSwitch \
     Calculator
