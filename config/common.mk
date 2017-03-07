@@ -121,7 +121,7 @@ ifneq ($(DEFAULT_ROOT_METHOD),Magisk)
 PRODUCT_PACKAGES += \
     MagiskManager
 PRODUCT_COPY_FILES += \
-    vendor/candy/prebuilt/zip/magisk.zip:system/addon.d/magisk.zip
+    vendor/candy/prebuilt/common/magisk.zip:system/addon.d/magisk.zip
 endif
 
 # Stagefright FFMPEG plugin
