@@ -72,6 +72,7 @@ PRODUCT_PACKAGES += \
     SpareParts \
     CandyCane \
     LockClock \
+    OmniJaws \
     SlimLauncher
 
 # Optional packages
