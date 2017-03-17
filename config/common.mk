@@ -141,6 +141,12 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/candy/overlay/common
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.storage_manager.enabled=true
 
+# Default sounds
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.alarm_alert=Helium.ogg \
+    ro.config.notification_sound=Argon.ogg \
+    ro.config.ringtone=Orion.ogg
+
 # Telephony
 PRODUCT_PACKAGES += \
     telephony-ext
