@@ -82,10 +82,6 @@ PRODUCT_PACKAGES += \
     PhaseBeam \
     Chromium
 
-# AudioFX
-PRODUCT_PACKAGES += \
-    AudioFX
-
 # Extra Optional packages
 PRODUCT_PACKAGES += \
     LatinIME \
