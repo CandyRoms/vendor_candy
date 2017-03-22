@@ -80,7 +80,7 @@ PRODUCT_PACKAGES += \
     Basic \
     LiveWallpapersPicker \
     PhaseBeam \
-    Chromium
+    TugaBrowser
 
 # AudioFX
 PRODUCT_PACKAGES += \
