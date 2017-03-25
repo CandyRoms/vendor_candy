@@ -95,7 +95,8 @@ PRODUCT_PACKAGES += \
     ThemeInterfacer \
     Eleven \
     OmniSwitch \
-    Calculator
+    Calculator \
+    Email
 
 # Extra tools
 PRODUCT_PACKAGES += \
