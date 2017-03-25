@@ -74,6 +74,11 @@ PRODUCT_PACKAGES += \
     OmniJaws \
     SlimLauncher
 
+# OMS
+PRODUCT_PACKAGES += \
+    ThemeInterfacer \
+    substratum
+
 # Optional packages
 PRODUCT_PACKAGES += \
     Basic \
@@ -88,7 +93,6 @@ PRODUCT_PACKAGES += \
     BluetoothExt \
     CandyBootAnimation \
     CandyOTA \
-    ThemeInterfacer \
     Eleven \
     OmniSwitch \
     Calculator \
