@@ -82,10 +82,6 @@ PRODUCT_PACKAGES += \
     PhaseBeam \
     TugaBrowser
 
-# AudioFX
-PRODUCT_PACKAGES += \
-    AudioFX
-
 # Extra Optional packages
 PRODUCT_PACKAGES += \
     LatinIME \
