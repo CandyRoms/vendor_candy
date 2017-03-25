@@ -93,7 +93,8 @@ PRODUCT_PACKAGES += \
     BluetoothExt \
     CandyBootAnimation \
     CandyOTA \
-    Eleven \
+    SnapdragonGallery \
+    SnapdragonMusic \
     OmniSwitch \
     Calculator \
     Email
