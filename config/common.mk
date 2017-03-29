@@ -97,7 +97,7 @@ PRODUCT_PACKAGES += \
     SnapdragonMusic \
     OmniSwitch \
     Calculator \
-    Email
+    K9-Mail
 
 # Extra tools
 PRODUCT_PACKAGES += \
