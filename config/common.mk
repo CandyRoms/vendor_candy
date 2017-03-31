@@ -119,7 +119,7 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_PACKAGES += \
     org.dirtyunicorns.utils
 
-ifneq ($(DEFAULT_ROOT_METHOD),Magisk)
+ifneq ($(WITH_ROOT),false)
 PRODUCT_PACKAGES += \
     MagiskManager
 PRODUCT_COPY_FILES += \
