@@ -65,59 +65,38 @@ PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit \
     vendor/candy/prebuilt/common/bin/sysinit:system/bin/sysinit
 
-# Required packages
+# Basic packages
 PRODUCT_PACKAGES += \
-    Development \
-    SpareParts \
+    Basic \
+    BluetoothExt \
+    Calculator \
+    CandyBootAnimation \
     CandyCane \
+    CandyOTA \
+    Development \
+    K9-Mail \
+    LatinIME \
+    LiveWallpapersPicker \
     LockClock \
     OmniJaws \
-    SlimLauncher
+    OmniSwitch \
+    org.dirtyunicorns.utils \
+    PhaseBeam \
+    PhotoTable \
+    SlimLauncher \
+    SnapdragonGallery \
+    SnapdragonMusic \
+    SpareParts \
+    TugaBrowser
+
+# DU Utils library
+PRODUCT_BOOT_JARS += \
+    org.dirtyunicorns.utils
 
 # OMS
 PRODUCT_PACKAGES += \
     ThemeInterfacer \
     substratum
-
-# Optional packages
-PRODUCT_PACKAGES += \
-    Basic \
-    LiveWallpapersPicker \
-    PhotoTable \
-    PhaseBeam \
-    TugaBrowser
-
-# Extra Optional packages
-PRODUCT_PACKAGES += \
-    LatinIME \
-    BluetoothExt \
-    CandyBootAnimation \
-    CandyOTA \
-    SnapdragonGallery \
-    SnapdragonMusic \
-    OmniSwitch \
-    Calculator \
-    K9-Mail
-
-# Extra tools
-PRODUCT_PACKAGES += \
-    openvpn \
-    e2fsck \
-    mke2fs \
-    tune2fs \
-    mount.exfat \
-    fsck.exfat \
-    mkfs.exfat \
-    ntfsfix \
-    ntfs-3g
-
-# DU Utils Library
-PRODUCT_BOOT_JARS += \
-    org.dirtyunicorns.utils
-
-# DU Utils Library
-PRODUCT_PACKAGES += \
-    org.dirtyunicorns.utils
 
 ifneq ($(WITH_ROOT),false)
 PRODUCT_PACKAGES += \
@@ -125,6 +104,18 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/magisk.zip:system/addon.d/magisk.zip
 endif
+
+# Tools
+PRODUCT_PACKAGES += \
+    e2fsck \
+    fsck.exfat \
+    mke2fs \
+    mkfs.exfat \
+    mount.exfat \
+    ntfs-3g \
+    ntfsfix \
+    openvpn \
+    tune2fs
 
 # Stagefright FFMPEG plugin
 PRODUCT_PACKAGES += \
@@ -162,8 +153,8 @@ PRODUCT_PACKAGES += \
     procrank
 endif
 
-# Versioning System
-# Candy first version.
+# Versioning system
+# Candy first version
 PRODUCT_VERSION_MAJOR = 7.1.1
 PRODUCT_VERSION_MINOR = Beta
 PRODUCT_VERSION_MAINTENANCE = v3.2
