@@ -87,7 +87,8 @@ PRODUCT_PACKAGES += \
     SnapdragonGallery \
     SnapdragonMusic \
     SpareParts \
-    TugaBrowser
+    TugaBrowser \
+    Turbo
 
 # DU Utils library
 PRODUCT_BOOT_JARS += \
