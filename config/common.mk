@@ -74,7 +74,6 @@ PRODUCT_PACKAGES += \
     CandyCane \
     CandyOTA \
     Development \
-    K9-Mail \
     LatinIME \
     LiveWallpapersPicker \
     LockClock \
@@ -85,9 +84,7 @@ PRODUCT_PACKAGES += \
     PhotoTable \
     SlimLauncher \
     SnapdragonGallery \
-    SnapdragonMusic \
     SpareParts \
-    TugaBrowser \
     Turbo
 
 # DU Utils library
@@ -98,6 +95,13 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_PACKAGES += \
     ThemeInterfacer \
     substratum
+
+ifneq ($(WITH_OPT_APPS),false)
+PRODUCT_PACKAGES += \
+    K9-Mail \
+    SnapdragonMusic \
+    TugaBrowser
+endif
 
 ifneq ($(WITH_ROOT),false)
 PRODUCT_PACKAGES += \
