@@ -187,3 +187,7 @@ EXTENDED_POST_PROCESS_PROPS := vendor/candy/tools/candy_process_props.py
 
 # Squisher Location
 SQUISHER_SCRIPT := vendor/candy/tools/squisher
+
+# Add in some extra optional packages.  In the ROM, this typically will go in
+# vendor/extra.
+$(call prepend-product-if-exists, vendor/extra/product.mk)
