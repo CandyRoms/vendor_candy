@@ -65,6 +65,11 @@ PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit \
     vendor/candy/prebuilt/common/bin/sysinit:system/bin/sysinit
 
+# Include explicitly to work around GMS issues
+PRODUCT_PACKAGES += \
+    libprotobuf-cpp-full \
+    librsjni
+
 # Basic packages
 PRODUCT_PACKAGES += \
     Basic \
@@ -86,6 +91,15 @@ PRODUCT_PACKAGES += \
     SnapdragonGallery \
     SpareParts \
     Turbo
+
+# Custom off-mode charger
+ifneq ($(WITH_CM_CHARGER),false)
+PRODUCT_PACKAGES += \
+    charger_res_images \
+    cm_charger_res_images \
+    font_log.png \
+    libhealthd.cm
+endif
 
 # DU Utils library
 PRODUCT_BOOT_JARS += \
