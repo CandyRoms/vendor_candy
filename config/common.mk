@@ -81,7 +81,6 @@ PRODUCT_PACKAGES += \
     Development \
     LatinIME \
     LiveWallpapersPicker \
-    LockClock \
     OmniJaws \
     OmniSwitch \
     org.dirtyunicorns.utils \
