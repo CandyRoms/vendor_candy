@@ -1,3 +1,5 @@
+# Candy Extras
+
 on early-init
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
@@ -5,6 +7,11 @@ on early-init
 on init
     export TERMINFO /system/etc/terminfo
     export TERM linux
+
+on post-fs-data
+    # Create an additional OTA package directory that unlike /data/ota_package
+    # will not be touched by GmsCore.
+    mkdir /data/candy_updates 0770 system cache
 
 on boot
     # I/O scheduler

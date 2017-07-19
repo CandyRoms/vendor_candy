@@ -81,7 +81,8 @@ PRODUCT_COPY_FILES += \
 
 # Candy-specific init file
 PRODUCT_COPY_FILES += \
-    vendor/candy/prebuilt/common/etc/init.local.rc:root/init.candy.rc
+    vendor/candy/prebuilt/common/etc/init.local.rc:root/init.local.rc \
+    vendor/candy/prebuilt/common/etc/init.candy.rc:root/init.candy.rc
 
 # SELinux filesystem labels
 PRODUCT_COPY_FILES += \
