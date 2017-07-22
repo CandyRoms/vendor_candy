@@ -87,6 +87,7 @@ PRODUCT_PACKAGES += \
     PhaseBeam \
     PhotoTable \
     SlimLauncher \
+    SlimRecents \
     SnapdragonGallery \
     SpareParts \
     Turbo
