@@ -118,6 +118,8 @@ PRODUCT_COPY_FILES += \
 
 # Recommend using the non debug dexpreopter
 USE_DEX2OAT_DEBUG := false
+# Disable vendor restrictions
+PRODUCT_RESTRICT_VENDOR_FILES := false
 
 ## Don't compile SystemUITests
 EXCLUDE_SYSTEMUI_TESTS := true
