@@ -167,3 +167,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 include vendor/candy/google/GoogleAudio.mk
 
 EXTENDED_POST_PROCESS_PROPS := vendor/candy/tools/candy_process_props.py
+
+# Themes
+PRODUCT_PACKAGES += \
+    PixelTheme \
+    Stock
+
