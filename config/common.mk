@@ -105,7 +105,6 @@ PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
 PRODUCT_COPY_FILES += \
     vendor/candy/config/permissions/candy-power-whitelist.xml:system/etc/sysconfig/candy-power-whitelist.xml
 
-
 # Weather client
 #PRODUCT_COPY_FILES += \
 #    vendor/candy/prebuilt/common/etc/permissions/com.android.providers.weather.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/com.android.providers.weather.xml \
