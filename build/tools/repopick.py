@@ -386,7 +386,6 @@ if __name__ == '__main__':
         else:
             method = 'ssh'
 
-        # Try fetching from gerrit
         if args.verbose:
             print('Fetching from {0}'.format(args.gerrit))
 
@@ -396,8 +395,22 @@ if __name__ == '__main__':
             cmd = ['git fetch', item['fetch'][method]['url'], item['fetch'][method]['ref']]
         if args.quiet:
             cmd.append('--quiet')
+        else:
+            print(cmd)
         result = subprocess.call([' '.join(cmd)], cwd=project_path, shell=True)
         if result != 0:
+            print('ERROR: git command failed')
+            sys.exit(result)
+
+        # Perform the cherry-pick
+        if not args.pull:
+            cmd = ['git cherry-pick FETCH_HEAD']
+            if args.quiet:
+                cmd_out = open(os.devnull, 'wb')
+            else:
+                cmd_out = None
+            result = subprocess.call(cmd, cwd=project_path, shell=True, stdout=cmd_out, stderr=cmd_out)
+            if result != 0:
                 if args.reset:
                     print('ERROR: git command failed, aborting cherry-pick')
                     cmd = ['git cherry-pick --abort']
