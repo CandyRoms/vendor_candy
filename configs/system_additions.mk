@@ -16,4 +16,8 @@
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.disable_rescue=true
 
+# Set custom volume steps
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.media_vol_steps=30
+
 $(call inherit-product-if-exists, vendor/nexus/prebuilt/prebuilt.mk)
