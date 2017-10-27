@@ -64,6 +64,10 @@ PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit \
     vendor/candy/prebuilt/common/bin/sysinit:system/bin/sysinit
 
+# Unlimited Google Photos HQ upload
+PRODUCT_COPY_FILES += \
+   vendor/candy/prebuilt/common/etc/sysconfig/nexus.xml:system/etc/sysconfig/nexus.xml
+
 # Required packages
 PRODUCT_PACKAGES += \
     CellBroadcastReceiver \
