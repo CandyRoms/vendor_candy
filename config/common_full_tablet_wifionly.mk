@@ -1,2 +1,2 @@
 # Inherit common stuff
-$(call inherit-product, vendor/gzosp/config/common.mk)
+$(call inherit-product, vendor/candy/config/common.mk)
