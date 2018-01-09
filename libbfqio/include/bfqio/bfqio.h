@@ -20,7 +20,7 @@
 extern "C" {
 #endif
 
-extern int android_set_rt_ioprio(int pid, int rt);
+int android_set_rt_ioprio(int pid, int rt);
 
 #ifdef __cplusplus
 }
