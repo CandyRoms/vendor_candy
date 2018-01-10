@@ -41,12 +41,12 @@ except ImportError:
     urllib.request = urllib2
 
 DEBUG = False
-default_manifest = ".repo/manifests/candy_default.xml"
+default_manifest = ".repo/manifests/candy.xml"
 custom_local_manifest = ".repo/local_manifests/candy_manifest.xml"
-custom_default_revision = "8.0"
+custom_default_revision = "c8.1"
 custom_dependencies = "candy.dependencies"
-org_manifest = "CANDY-Devices"  # leave empty if org is provided in manifest
-org_display = "CANDY-Devices"  # needed for displaying
+org_manifest = "CandyDevices"  # leave empty if org is provided in manifest
+org_display = "CandyDevices"  # needed for displaying
 
 github_auth = None
 
