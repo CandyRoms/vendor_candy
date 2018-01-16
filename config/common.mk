@@ -91,6 +91,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Calculator \
     CandyBootAnimation \
+    CandyWrappers \
     LatinIME \
     BluetoothExt
 
