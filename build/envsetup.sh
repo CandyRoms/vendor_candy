@@ -88,6 +88,27 @@ function candyremote()
     echo "Remote 'candy' created"
 }
 
+function anyremote()
+{
+# usage: anyremote gzosp
+    local proj pfx project
+
+    if ! git rev-parse &> /dev/null
+    then
+        echo "Not in a git directory. Please run this from an Android repository you wish to set up."
+        return
+    fi
+    git remote rm $1 2> /dev/null
+
+    proj="$(pwd -P | sed "s#$ANDROID_BUILD_TOP/##g")"
+    pfx="android_"
+    project="${proj//\//_}"
+    git remote add $1 "https://github.com/$1/$pfx$project"
+    echo "Remote '$1' created, now fetching..."
+    git fetch $1
+
+}
+
 function cmremote()
 {
     local proj pfx project
@@ -186,5 +207,6 @@ function hmm() #hidden
 }
 
 candy_append_hmm "candyremote" "Add a git remote for matching CandyRoms repository"
+candy_append_hmm "anyremote" "Add a git remote for ANY github repository"
 candy_append_hmm "aospremote" "Add git remote for matching AOSP repository"
 candy_append_hmm "cafremote" "Add git remote for matching CodeAurora repository."
