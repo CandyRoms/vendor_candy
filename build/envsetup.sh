@@ -109,24 +109,6 @@ function anyremote()
 
 }
 
-function cmremote()
-{
-    local proj pfx project
-
-    if ! git rev-parse &> /dev/null
-    then
-        echo "Not in a git directory. Please run this from an Android repository you wish to set up."
-        return
-    fi
-    git remote rm cm 2> /dev/null
-
-    proj="$(pwd -P | sed "s#$ANDROID_BUILD_TOP/##g")"
-    pfx="android_"
-    project="${proj//\//_}"
-    git remote add cm "git@github.com:CyanogenMod/$pfx$project"
-    echo "Remote 'cm' created"
-}
-
 function aospremote()
 {
     local pfx project
