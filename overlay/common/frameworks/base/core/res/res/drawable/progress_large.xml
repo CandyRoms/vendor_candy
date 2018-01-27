@@ -2,7 +2,7 @@
 <!--
 /*
 **
-** Copyright 2007 The Android Open Source Project
+** Copyright 2009, The Android Open Source Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -17,16 +17,9 @@
 ** limitations under the License.
 */
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-
-    <!-- Battery saver mode: allowable trigger threshold levels. -->
-    <integer-array name="battery_saver_trigger_values" translatable="false" >
-        <item>0</item>
-        <item>5</item>
-        <item>10</item>
-        <item>15</item>
-        <item>20</item>
-        <item>25</item>
-    </integer-array>
-
-</resources>
+<animated-rotate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/spinner_black_76"
+    android:pivotX="50%"
+    android:pivotY="50%"
+    android:framesCount="48"
+    android:frameDuration="25" />
