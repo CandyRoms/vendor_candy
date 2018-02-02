@@ -182,7 +182,7 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/candy/overlay/common
 # Versioning System
 # candy first version.
 PRODUCT_VERSION_MAJOR = 8.1
-PRODUCT_VERSION_MINOR = Alpha
+PRODUCT_VERSION_MINOR = Beta
 PRODUCT_VERSION_MAINTENANCE = 1.0
 CANDY_POSTFIX := -$(shell date +"%Y%m%d-%H%M")
 ifdef CANDY_BUILD_EXTRA
