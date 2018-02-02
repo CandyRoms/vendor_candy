@@ -93,6 +93,10 @@ $(foreach f,$(wildcard vendor/candy/prebuilt/common/etc/init/*.rc),\
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.software.sip.voip.xml
 
+# Dex preopt
+PRODUCT_DEXPREOPT_SPEED_APPS += \
+    SystemUI
+
 # Common prebuilt permissions
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/etc/sysctl.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/sysctl.conf \
