@@ -51,16 +51,12 @@ PRODUCT_COPY_FILES += \
 
 # Fix Google dialer
 PRODUCT_COPY_FILES += \
-    vendor/candy/prebuilt/common/etc/dialer_experience.xml:system/etc/sysconfig/dialer_experience.xml
+    vendor/candy/prebuilt/common/etc/sysconfig/dialer_experience.xml:system/etc/sysconfig/dialer_experience.xml
 
 # Don't export PS1 in /system/etc/mkshrc.
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/etc/mkshrc:system/etc/mkshrc \
     vendor/candy/prebuilt/common/etc/sysctl.conf:system/etc/sysctl.conf
-
-# Fix Dialer
-PRODUCT_COPY_FILES +=  \
-    vendor/candy/prebuilt/common/sysconfig/dialer_experience.xml:system/etc/sysconfig/dialer_experience.xml
 
 # Candy-specific startup services
 PRODUCT_COPY_FILES += \
