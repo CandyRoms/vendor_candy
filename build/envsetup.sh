@@ -90,7 +90,8 @@ function candyremote()
 
 function anyremote()
 {
-# usage: anyremote gzosp
+# usage: anyremote <github org> <alias>
+# example: anyremote candyroms candy
     local proj pfx project
 
     if ! git rev-parse &> /dev/null
@@ -98,14 +99,14 @@ function anyremote()
         echo "Not in a git directory. Please run this from an Android repository you wish to set up."
         return
     fi
-    git remote rm $1 2> /dev/null
+    git remote rm $2 2> /dev/null
 
     proj="$(pwd -P | sed "s#$ANDROID_BUILD_TOP/##g")"
     pfx="android_"
     project="${proj//\//_}"
-    git remote add $1 "https://github.com/$1/$pfx$project"
-    echo "Remote '$1' created, now fetching..."
-    git fetch $1
+    git remote add $2 "https://github.com/$1/$project"
+    echo "Remote '$2' for '$1/$project' created, now fetching..."
+    git fetch $2
 
 }
 
