@@ -1,4 +1,42 @@
+# Copyright (C) 2018 CandyRoms
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
+
+# Google property overides
+PRODUCT_PROPERTY_OVERRIDES += \
+    keyguard.no_require_sim=true \
+    ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
+    ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html \
+    ro.com.google.clientidbase=android-google \
+    ro.com.android.wifi-watchlist=GoogleGuest \
+    ro.error.receiver.system.apps=com.google.android.gms \
+    ro.setupwizard.enterprise_mode=1 \
+    ro.com.android.dataroaming=false
+
+# Proprietary latinime libs needed for Keyboard swyping
+PRODUCT_COPY_FILES += \
+    vendor/candy/prebuilt/lib64/libjni_latinime.so:system/lib64/libjni_latinime.so
+
+# Disable Rescue Party
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.disable_rescue=true
+
+# Set custom volume steps
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.media_vol_steps=30 \
+    ro.config.bt_sco_vol_steps=30
 
 ifeq ($(PRODUCT_GMS_CLIENTID_BASE),)
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -71,10 +109,7 @@ PRODUCT_COPY_FILES += \
 # Required packages
 PRODUCT_PACKAGES += \
     CellBroadcastReceiver \
-    Development \
-    SpareParts \
-    LockClock \
-    su
+    LockClock
 
 # Optional packages
 PRODUCT_PACKAGES += \
@@ -114,14 +149,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     charger_res_images
 
-# MusicFX advanced effects
-#ifneq ($(TARGET_NO_DSPMANAGER), true)
-#PRODUCT_PACKAGES += \
-#    libcyanogen-dsp \
-#    audio_effects.conf
-#endif
-
-
 # DU Utils library
 PRODUCT_BOOT_JARS += \
     org.dirtyunicorns.utils
@@ -129,38 +156,6 @@ PRODUCT_BOOT_JARS += \
 # DU Utils library
 PRODUCT_PACKAGES += \
     org.dirtyunicorns.utils
-
-#ifeq ($(DEFAULT_ROOT_METHOD),magisk)
-# Magisk Manager
-#PRODUCT_PACKAGES += \
-#    MagiskManager
-
-# Magisk
-#PRODUCT_COPY_FILES += \
-#   vendor/candy/prebuilt/common/addon.d/magisk.zip:system/addon.d/magisk.zip
-#endif
-
-#ifeq ($(DEFAULT_ROOT_METHOD),supersu)
-# SuperSU
-#PRODUCT_COPY_FILES += \
-#   vendor/candy/prebuilt/common/etc/UPDATE-SuperSU.zip:system/addon.d/UPDATE-SuperSU.zip \
-#   vendor/candy/prebuilt/common/etc/init.d/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon
-#endif
-
-# Explict rootless defined, or none of the root methods defined,
-# default rootless : nothing todo
-#ifeq ($(DEFAULT_ROOT_METHOD),rootless)
-#endif
-
-# Stagefright FFMPEG plugin
-PRODUCT_PACKAGES += \
-    libffmpeg_extractor \
-    libffmpeg_omx \
-    media_codecs_ffmpeg.xml
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    media.sf.omx-plugin=libffmpeg_omx.so \
-    media.sf.extractor-plugin=libffmpeg_extractor.so
 
 # Storage manager
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -171,7 +166,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PACKAGES += \
     AndroidDarkThemeOverlay \
-    SettingsDarkThemeOverlay
+    SettingsDarkThemeOverlay \
+    PixelTheme \
+    Stock
 
 PRODUCT_PACKAGE_OVERLAYS += vendor/candy/overlay/common
 
@@ -179,33 +176,25 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/candy/overlay/common
 # candy first version.
 PRODUCT_VERSION = 8.1b
 CANDY_POSTFIX := -$(shell date +"%Y%m%d-%H%M")
+
 ifdef CANDY_BUILD_EXTRA
     CANDY_POSTFIX += -$(CANDY_BUILD_EXTRA)
 endif
 
-# Don't mark official builds
+# Set the default version to unofficial
 ifndef CANDY_BUILD_TYPE
-    CANDY_BUILD_TYPE := -UNOFFICIAL
+    CANDY_BUILD_TYPE := UNOFFICIAL
 endif
 
-# Set all versions
-CANDY_VERSION := candy-$(CANDY_BUILD)-$(PRODUCT_VERSION)$(CANDY_BUILD_TYPE)$(CANDY_POSTFIX)
-CANDY_MOD_VERSION := candy-$(CANDY_BUILD)-$(PRODUCT_VERSION)$(CANDY_BUILD_TYPE)$(CANDY_POSTFIX)
+# Set candy version
+CANDY_VERSION := candy-$(CANDY_BUILD)-$(PRODUCT_VERSION)-$(CANDY_BUILD_TYPE)$(CANDY_POSTFIX)
 
 PRODUCT_PROPERTY_OVERRIDES += \
     BUILD_DISPLAY_ID=$(BUILD_ID) \
-    candy.ota.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE) \
+    candy.ota.version=$(PRODUCT_VERSION).$(CANDY_POSTFIX) \
     ro.candy.version=$(CANDY_VERSION) \
-    ro.modversion=$(CANDY_MOD_VERSION) \
+    ro.modversion=$(CANDY_VERSION) \
     ro.candy.buildtype=$(CANDY_BUILD_TYPE)
 
 # Google sounds
 include vendor/candy/google/GoogleAudio.mk
-
-EXTENDED_POST_PROCESS_PROPS := vendor/candy/tools/candy_process_props.py
-
-# Themes
-PRODUCT_PACKAGES += \
-    PixelTheme \
-    Stock
-
