@@ -132,9 +132,14 @@ PRODUCT_PACKAGES += \
     Calculator \
     CandyBootAnimation \
     CandyWrappers \
+    bootanimation.zip \
     LatinIME \
-    BluetoothExt
+    BluetoothExt \
+    WallpaperPicker
 
+
+## Don't compile SystemUITests
+EXCLUDE_SYSTEMUI_TESTS := true
 
 # Extra tools
 PRODUCT_PACKAGES += \
