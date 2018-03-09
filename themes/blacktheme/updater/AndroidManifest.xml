@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.android.updater.theme.dark"
+    package="com.android.updater.theme.black"
     android:versionCode="1"
     android:versionName="1.0">
     <overlay android:targetPackage="org.candy.updater" android:priority="1"/>
 
-    <application android:label="UpdaterDark" android:hasCode="false"/>
+    <application android:label="UpdaterBlack" android:hasCode="false"/>
 </manifest>

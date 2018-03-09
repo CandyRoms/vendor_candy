@@ -18,7 +18,8 @@ PRODUCT_PACKAGES += \
     SettingsIntelligenceDark \
     SystemDark \
     SystemUiDark \
-    WellbeingDark
+    WellbeingDark \
+    UpdaterDark
 
 # Black Theme
 PRODUCT_PACKAGES += \
@@ -28,7 +29,8 @@ PRODUCT_PACKAGES += \
     SettingsIntelligenceBlack \
     SystemBlack \
     SystemUiBlack \
-    WellbeingBlack
+    WellbeingBlack \
+    UpdaterBlack
 
 # Light Theme
 PRODUCT_PACKAGES += \

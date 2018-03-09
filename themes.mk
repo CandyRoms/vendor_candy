@@ -15,7 +15,8 @@ PRODUCT_PACKAGES += \
     SysuiQsDarkTheme \
     GBoardDarkTheme \
     WellbeingDarkTheme \
-    GoogleIntelligenceSenseDarkTheme
+    GoogleIntelligenceSenseDarkTheme \
+    UpdaterDarkTheme
 
 # Black themes
 PRODUCT_PACKAGES += \
@@ -24,7 +25,8 @@ PRODUCT_PACKAGES += \
     SysuiQsBlackTheme \
     GBoardBlackTheme \
     WellbeingBlackTheme \
-    GoogleIntelligenceSenseBlackTheme
+    GoogleIntelligenceSenseBlackTheme \
+    UpdaterBlackTheme
 
 # Light themes
 PRODUCT_PACKAGES += \
