@@ -47,10 +47,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    keyguard.no_require_sim=true
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.selinux=1
+    keyguard.no_require_sim=true \
+    persist.debug.wfd.enable=1 \
+    persist.sys.wfd.virtual=0 
 
 # Disable excessive dalvik debug messages
 PRODUCT_PROPERTY_OVERRIDES += \
