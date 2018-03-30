@@ -10,3 +10,11 @@ PRODUCT_PACKAGES += \
     UserFive \
     UserSix \
     UserSeven
+
+# BlackAF Theme
+PRODUCT_PACKAGES += \
+    GBoardBlackAF \
+    SettingsBlackAF \
+    SystemBlackAF \
+    SettingsIntelligenceBlackAF
+
