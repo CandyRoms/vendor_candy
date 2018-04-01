@@ -240,4 +240,8 @@ PRODUCT_PACKAGES += \
     HideCutout \
     StatusBarStock
 
+# Fonts packages
+PRODUCT_PACKAGES += \
+    candy-fonts
+
 $(call inherit-product-if-exists, vendor/extra/product.mk)
