@@ -100,11 +100,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
     vendor/candy/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit \
-    vendor/candy/prebuilt/common/bin/sysinit:system/bin/sysinit
-
-# Unlimited Google Photos HQ upload
-PRODUCT_COPY_FILES += \
-   vendor/candy/prebuilt/common/etc/sysconfig/nexus.xml:system/etc/sysconfig/nexus.xml
+    vendor/candy/prebuilt/common/bin/sysinit:system/bin/sysinit \
+    vendor/candy/prebuilt/bin/clean_cache.sh:system/bin/clean_cache.sh
 
 # Required packages
 PRODUCT_PACKAGES += \
