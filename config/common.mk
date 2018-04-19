@@ -15,7 +15,7 @@
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 # Google property overides
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_GENERIC_PROPERTIES += \
     keyguard.no_require_sim=true \
     ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
     ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html \
@@ -158,6 +158,10 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_PACKAGES += \
     org.dirtyunicorns.utils
 
+#Media
+PRODUCT_GENERIC_PROPERTIES += \
+    media.recorder.show_manufacturer_and_model=true
+
 # Storage manager
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.storage_manager.enabled=true
@@ -190,7 +194,7 @@ endif
 # Set candy version
 CANDY_VERSION := Candy-$(CANDY_BUILD)-$(PRODUCT_VERSION)-$(CANDY_BUILD_TYPE)$(CANDY_POSTFIX)
 
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_GENERIC_PROPERTIES += \
     BUILD_DISPLAY_ID=$(BUILD_ID) \
     candy.ota.version=$(PRODUCT_VERSION).$(CANDY_POSTFIX) \
     ro.candy.version=$(CANDY_VERSION) \
