@@ -23,3 +23,25 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-full \
     librsjni
+
+    AmberTheme \
+    BlueTheme \
+    CyanTheme \
+    DeepOrangeTheme \
+    DeepPurpleTheme \
+    GreenTheme \
+    IndigoTheme \
+    LightBlueTheme \
+    LightGreenTheme \
+    LimeTheme \
+    OrangeTheme \
+    PinkTheme \
+    PixelBaseTheme \
+    PixelTheme \
+    PurpleTheme \
+    RedTheme \
+    StockBaseTheme \
+    StockFixedBaseTheme \
+    StockTheme \
+    YellowTheme
+
