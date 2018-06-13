@@ -1,3 +1,3 @@
-# This device supports CM enhanced NFC
+# This device supports CandyRoms fancy-pants enhanced NFC
 PRODUCT_COPY_FILES += \
-    vendor/candy/config/permissions/com.cyanogenmod.nfc.enhanced.xml:system/etc/permissions/com.cyanogenmod.nfc.enhanced.xml
+    vendor/candy/config/permissions/com.candyroms.nfc.enhanced.xml:system/etc/permissions/com.candyroms.nfc.enhanced.xml
