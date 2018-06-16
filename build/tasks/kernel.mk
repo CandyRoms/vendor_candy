@@ -192,6 +192,25 @@ endif
 
 KERNEL_ADDITIONAL_CONFIG_OUT := $(KERNEL_OUT)/.additional_config
 
+# Internal implementation of make-kernel-target
+# $(1): output path (The value passed to O=)
+# $(2): target to build (eg. defconfig, modules, dtbo.img)
+define internal-make-kernel-target
+$(PATH_OVERRIDE) $(MAKE) $(KERNEL_MAKE_FLAGS) -C $(KERNEL_SRC) O=$(1) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) $(2)
+endef
+
+# Make a kernel target
+# $(1): The kernel target to build (eg. defconfig, modules, modules_install)
+define make-kernel-target
+$(call internal-make-kernel-target,$(KERNEL_OUT),$(1))
+endef
+
+# Make a DTBO target
+# $(1): The DTBO target to build (eg. dtbo.img, defconfig)
+define make-dtbo-target
+$(call internal-make-kernel-target,$(PRODUCT_OUT)/dtbo,$(1))
+endef
+
 .PHONY: force_additional_config
 $(KERNEL_ADDITIONAL_CONFIG_OUT): force_additional_config
 	$(hide) cmp -s $(KERNEL_ADDITIONAL_CONFIG_SRC) $@ || cp $(KERNEL_ADDITIONAL_CONFIG_SRC) $@;
