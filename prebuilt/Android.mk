@@ -33,7 +33,7 @@ endif
 # Ruthless Pixel Launcher
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := PixelLauncher
+LOCAL_MODULE := nexuslauncher
 LOCAL_SRC_FILES := $(LOCAL_MODULE)/$(LOCAL_MODULE).apk
 LOCAL_MODULE_CLASS := APPS
 LOCAL_MODULE_TAGS := optional
