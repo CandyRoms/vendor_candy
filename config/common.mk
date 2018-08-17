@@ -184,7 +184,7 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/candy/overlay/common
 
 # Versioning System
 # candy first version.
-PRODUCT_VERSION = 8.1b
+PRODUCT_VERSION = 9.0
 CANDY_POSTFIX := -$(shell date +"%Y%m%d-%H%M")
 
 ifdef CANDY_BUILD_EXTRA
