@@ -22,7 +22,7 @@ ifeq ($(TARGET_SCREEN_WIDTH),)
 endif
 
 define build-bootanimation
-    sh vendor/slim/bootanimation/generate-bootanimation.sh \
+    sh vendor/candy/bootanimation/generate-bootanimation.sh \
     $(TARGET_SCREEN_WIDTH) \
     $(TARGET_BOOTANIMATION_HALF_RES)
 endef
