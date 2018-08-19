@@ -35,4 +35,7 @@ type ProductVariables struct {
 	Uses_qcom_bsp_legacy  *bool `json:",omitempty"`
 	Target_shim_libs  *string `json:",omitempty"`
 	Uses_qti_camera_device  *bool `json:",omitempty"`
+	QTIAudioPath            *string `json:",omitempty"`
+	QTIDisplayPath          *string `json:",omitempty"`
+	QTIMediaPath            *string `json:",omitempty"`
 }
