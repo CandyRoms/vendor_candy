@@ -219,3 +219,5 @@ EXTENDED_POST_PROCESS_PROPS := vendor/candy/tools/candy_process_props.py
 # Unlimited photo storage in Google Photos
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/etc/sysconfig/pixel_2017_exclusive.xml:system/etc/sysconfig/pixel_2017_exclusive.xml
+
+$(call inherit-product-if-exists, vendor/extra/product.mk)
