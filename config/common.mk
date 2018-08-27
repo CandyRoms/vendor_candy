@@ -25,10 +25,6 @@ PRODUCT_GENERIC_PROPERTIES += \
     ro.setupwizard.enterprise_mode=1 \
     ro.com.android.dataroaming=false
 
-# Proprietary latinime libs needed for Keyboard swyping
-PRODUCT_COPY_FILES += \
-    vendor/candy/prebuilt/lib64/libjni_latinime.so:system/lib64/libjni_latinime.so
-
 # Disable Rescue Party
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.disable_rescue=true
@@ -47,9 +43,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    keyguard.no_require_sim=true \
-    persist.debug.wfd.enable=1 \
-    persist.sys.wfd.virtual=0 \
+    keyguard.no_require_sim=true
+
+PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=1
 
 # Disable excessive dalvik debug messages
@@ -106,7 +102,10 @@ PRODUCT_COPY_FILES += \
 # Required packages
 PRODUCT_PACKAGES += \
     CellBroadcastReceiver \
-    LockClock
+    Development \
+    SpareParts \
+    LockClock \
+    su
 
 # Optional packages
 PRODUCT_PACKAGES += \
@@ -130,8 +129,8 @@ PRODUCT_PACKAGES += \
 # Extra Optional packages
 PRODUCT_PACKAGES += \
     Calculator \
-    CandyBootAnimation \
-    CandyWrappers \
+    #CandyBootAnimation \
+    #CandyWrappers \
     bootanimation.zip \
     LatinIME \
     BluetoothExt \
@@ -163,9 +162,16 @@ PRODUCT_PACKAGES += \
 #PRODUCT_PACKAGES += \
 #    org.dirtyunicorns.utils
 
-#Media
-PRODUCT_GENERIC_PROPERTIES += \
-    media.recorder.show_manufacturer_and_model=true
+
+# Stagefright FFMPEG plugin
+PRODUCT_PACKAGES += \
+    libffmpeg_extractor \
+    libffmpeg_omx \
+    media_codecs_ffmpeg.xml
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.sf.omx-plugin=libffmpeg_omx.so \
+    media.sf.extractor-plugin=libffmpeg_extractor.so
 
 # Storage manager
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -176,10 +182,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PACKAGES += \
     AndroidDarkThemeOverlay \
-    SettingsDarkThemeOverlay \
-    PixelTheme \
-    Stock
-
+    SettingsDarkThemeOverlay
 PRODUCT_PACKAGE_OVERLAYS += vendor/candy/overlay/common
 
 # Versioning System
@@ -208,6 +211,8 @@ PRODUCT_GENERIC_PROPERTIES += \
 
 # Google sounds
 include vendor/candy/google/GoogleAudio.mk
+
+EXTENDED_POST_PROCESS_PROPS := vendor/candy/tools/candy_process_props.py
 
 # Unlimited photo storage in Google Photos
 PRODUCT_COPY_FILES += \
