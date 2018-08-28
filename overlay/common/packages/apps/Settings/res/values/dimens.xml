@@ -17,4 +17,10 @@
 <resources>
     <dimen name="search_bar_corner_radius">24.0dip</dimen>
     <dimen name="suggestion_card_corner_radius">8.0dip</dimen>
+
+    <!-- Whether to show a preference item for mobile plan -->
+    <bool name="config_show_mobile_plan">false</bool>
+
+    <!-- Whether wallpaper attribution should be shown or not. -->
+    <bool name="config_show_wallpaper_attribution">false</bool>
 </resources>
