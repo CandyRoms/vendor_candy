@@ -129,9 +129,9 @@ PRODUCT_PACKAGES += \
 # Extra Optional packages
 PRODUCT_PACKAGES += \
     Calculator \
-    #CandyBootAnimation \
+    CandyBootAnimation \
     #CandyWrappers \
-    bootanimation.zip \
+    #bootanimation.zip \
     LatinIME \
     BluetoothExt \
     WallpaperPicker
