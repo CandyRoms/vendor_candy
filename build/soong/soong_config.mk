@@ -1,3 +1,5 @@
+add_json_str_omitempty = $(if $(strip $(2)),$(call add_json_str, $(1), $(2)))
+
 _contents := $(_contents)    "Candy":{$(newline)
 
 # see build/core/soong_config.mk for the add_json_* functions you can use here
@@ -9,7 +11,7 @@ $(call add_json_bool, Uses_media_extensions,                $(TARGET_USES_MEDIA_
 $(call add_json_str_omitempty, Target_specific_headers_include_dir, $(TARGET_SPECIFIC_HEADER_PATH))
 $(call add_json_str_omitempty, Target_process_sdk_version_override, $(TARGET_PROCESS_SDK_VERSION_OVERRIDE))
 $(call add_json_str,  Target_shim_libs,                     $(TARGET_LD_SHIM_LIBS))
-$(call add_json_bool, Uses_generic_camera_parameter_library,$(if $(TARGET_CAMERA_PARAMETER_LIBRARY),,true))
+$(call add_json_bool, Uses_generic_camera_parameter_library, $(if $(TARGET_SPECIFIC_CAMERA_PARAMETER_LIBRARY),,true))
 $(call add_json_bool, Uses_nvidia_enhancements,             $(filter TRUE,$(NV_ANDROID_FRAMEWORK_ENHANCEMENTS)))
 $(call add_json_bool, Uses_qcom_bsp_legacy,                 $(filter true,$(TARGET_USES_QCOM_BSP_LEGACY)))
 $(call add_json_bool, Uses_qti_camera_device,               $(filter true,$(TARGET_USES_QTI_CAMERA_DEVICE)))
