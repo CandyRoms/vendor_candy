@@ -131,7 +131,6 @@ PRODUCT_PACKAGES += \
     Calculator \
     CandyBootAnimation \
     #CandyWrappers \
-    #bootanimation.zip \
     LatinIME \
     BluetoothExt \
     WallpaperPicker
@@ -187,7 +186,9 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/candy/overlay/common
 
 # Versioning System
 # candy first version.
-PRODUCT_VERSION = 9.0
+PRODUCT_VERSION_MAJOR = 9.0
+PRODUCT_VERSION_MINOR = Alpha
+PRODUCT_VERSION_MAINTENANCE = 1.0
 CANDY_POSTFIX := -$(shell date +"%Y%m%d-%H%M")
 
 ifdef CANDY_BUILD_EXTRA
@@ -199,12 +200,13 @@ ifndef CANDY_BUILD_TYPE
     CANDY_BUILD_TYPE := UNOFFICIAL
 endif
 
-# Set candy version
-CANDY_VERSION := Candy-$(CANDY_BUILD)-$(PRODUCT_VERSION)-$(CANDY_BUILD_TYPE)$(CANDY_POSTFIX)
+# Set all versions
+CANDY_VERSION := Candy-$(CANDY_BUILD)-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-$(CANDY_BUILD_TYPE)$(CANDY_POSTFIX)
+CANDY_MOD_VERSION := Candy-$(CANDY_BUILD)-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-$(CANDY_BUILD_TYPE)$(CANDY_POSTFIX)
 
-PRODUCT_GENERIC_PROPERTIES += \
+PRODUCT_PROPERTY_OVERRIDES += \
     BUILD_DISPLAY_ID=$(BUILD_ID) \
-    candy.ota.version=$(PRODUCT_VERSION).$(CANDY_POSTFIX) \
+    candy.ota.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE) \
     ro.candy.version=$(CANDY_VERSION) \
     ro.modversion=$(CANDY_VERSION) \
     ro.candy.buildtype=$(CANDY_BUILD_TYPE)
