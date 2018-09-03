@@ -36,6 +36,7 @@ type ProductVariables struct {
 	Has_legacy_camera_hal1  *bool `json:",omitempty"`
 	Uses_media_extensions   *bool `json:",omitempty"`
 	Needs_text_relocations  *bool `json:",omitempty"`
+	Target_specific_headers_include_dir  *string `json:",omitempty"`
 	Uses_qcom_bsp_legacy  *bool `json:",omitempty"`
 	Target_shim_libs  *string `json:",omitempty"`
 	Uses_qti_camera_device  *bool `json:",omitempty"`

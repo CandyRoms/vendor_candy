@@ -6,6 +6,7 @@ $(call add_json_bool, Has_legacy_camera_hal1,               $(filter true,$(TARG
 $(call add_json_bool, Needs_text_relocations,               $(filter true,$(TARGET_NEEDS_PLATFORM_TEXT_RELOCTIONS)))
 $(call add_json_str,  Specific_camera_parameter_library,    $(TARGET_SPECIFIC_CAMERA_PARAMETER_LIBRARY))
 $(call add_json_bool, Uses_media_extensions,                $(TARGET_USES_MEDIA_EXTENSIONS))
+$(call add_json_str_omitempty, Target_specific_headers_include_dir, $(TARGET_SPECIFIC_HEADER_PATH))
 $(call add_json_str,  Target_shim_libs,                     $(TARGET_LD_SHIM_LIBS))
 $(call add_json_bool, Uses_generic_camera_parameter_library,$(if $(TARGET_CAMERA_PARAMETER_LIBRARY),,true))
 $(call add_json_bool, Uses_nvidia_enhancements,             $(filter TRUE,$(NV_ANDROID_FRAMEWORK_ENHANCEMENTS)))
