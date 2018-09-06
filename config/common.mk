@@ -130,7 +130,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Calculator \
     CandyBootAnimation \
-    #CandyWrappers \
+    CandyWrappers \
     LatinIME \
     BluetoothExt \
     WallpaperPicker
