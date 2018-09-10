@@ -20,7 +20,7 @@ if [ -f "$ANDROID_PRODUCT_OUT/system/media/bootanimation.zip" ]; then
 else
 RESOLUTION=""$WIDTH"x"$HEIGHT""
 
-mkdir -p $ANDROID_PRODUCT_OUT/obj/BOOTANIMATION/bootanimation/part{0..3}
+mkdir -p $ANDROID_PRODUCT_OUT/obj/BOOTANIMATION/bootanimation/part{0..1}
 tar xvfp "$PWD/vendor/candy/bootanimation/bootanimation.tar" --to-command="convert - -resize '$RESOLUTION' \"png8:$ANDROID_PRODUCT_OUT/obj/BOOTANIMATION/bootanimation/\$TAR_FILENAME\""
 # create desc.txt
 echo "$RWIDTH" "$RHEIGHT" 30 > "$ANDROID_PRODUCT_OUT/obj/BOOTANIMATION/bootanimation/desc.txt"
