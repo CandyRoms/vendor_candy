@@ -132,8 +132,7 @@ PRODUCT_PACKAGES += \
     CandyBootAnimation \
     CandyWrappers \
     LatinIME \
-    BluetoothExt \
-    WallpaperPicker
+    BluetoothExt
 
 
 ## Don't compile SystemUITests
