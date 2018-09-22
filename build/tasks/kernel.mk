@@ -274,7 +274,7 @@ endif
 
 # IDK why new kernels want this...
 ifeq ($(KERNEL_ARCH),arm64)
-   KERNEL_CROSS_COMPILE += CROSS_COMPILE_ARM32="$(ccache) $(BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-"
+   KERNEL_CROSS_COMPILE += CROSS_COMPILE_ARM32="arm-linux-androideabi-"
 endif
 
 ccache =
