@@ -124,6 +124,16 @@ PRODUCT_PACKAGES += \
     libprotobuf-cpp-full \
     librsjni
 
+# Latin IME lib
+ifeq ($(TARGET_ARCH),arm64)
+PRODUCT_COPY_FILES += \
+    vendor/candy/prebuilt/common/lib/libjni_latinimegoogle.so:system/lib/libjni_latinimegoogle.so \
+    vendor/candy/prebuilt/common/lib64/libjni_latinimegoogle.so:system/lib64/libjni_latinimegoogle.so
+else
+PRODUCT_COPY_FILES += \
+    vendor/candy/prebuilt/common/lib/libjni_latinimegoogle.so:system/lib/libjni_latinimegoogle.so
+endif
+
 # AudioFX
 PRODUCT_PACKAGES += \
     AudioFX
