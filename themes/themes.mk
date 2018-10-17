@@ -1,10 +1,14 @@
 # QS tile styles
 PRODUCT_PACKAGES += \
+    QStilesDefault \
     QStilesSquare \
-    QStilesRoundedSquare \
     QStilesSquircle \
+    QStilesSquircleTrim \
     QStilesTearDrop \
-    QStilesHexagon
+    QStilesHexagon \
+    QStilesHexicon \
+    QStilesCircleTrim \
+    QStilesDualToneCircle 
 
 # Themes
 PRODUCT_PACKAGES += \
