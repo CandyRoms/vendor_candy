@@ -1,3 +1,11 @@
+# QS tile styles
+PRODUCT_PACKAGES += \
+    QStilesSquare \
+    QStilesRoundedSquare \
+    QStilesSquircle \
+    QStilesTearDrop \
+    QStilesHexagon
+
 # Themes
 PRODUCT_PACKAGES += \
     SettingsDark \
