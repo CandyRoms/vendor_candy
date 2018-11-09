@@ -23,7 +23,8 @@ PRODUCT_GENERIC_PROPERTIES += \
     ro.com.android.wifi-watchlist=GoogleGuest \
     ro.error.receiver.system.apps=com.google.android.gms \
     ro.setupwizard.enterprise_mode=1 \
-    ro.com.android.dataroaming=false
+    ro.com.android.dataroaming=false \
+    ro.atrace.core.services=com.google.android.gms,com.google.android.gms.ui,com.google.android.gms.persistent
 
 # Disable Rescue Party
 PRODUCT_PROPERTY_OVERRIDES += \
