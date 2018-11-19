@@ -116,7 +116,8 @@ PRODUCT_PACKAGES += \
 
 # Prebuilt packages
 PRODUCT_PACKAGES += \
-    nexuslauncher
+    nexuslauncher \
+    pixelbridge
 
 # Include explicitly to work around GMS issues
 PRODUCT_PACKAGES += \
