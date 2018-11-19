@@ -2,10 +2,10 @@
 
 CWD=`pwd`
 WIDTH=$1
-HEIGHT=$2
+HEIGHT=$(echo "$WIDTH/1.5" | bc)
 RWIDTH=$WIDTH
 RHEIGHT=$HEIGHT
-HALF_RES=$3
+HALF_RES=$2
 OUT="$ANDROID_PRODUCT_OUT/obj/BOOTANIMATION"
 
 if [ "$HALF_RES" = "true" ]; then
@@ -14,27 +14,15 @@ if [ "$HALF_RES" = "true" ]; then
 fi
 RESOLUTION=""$WIDTH"x"$HEIGHT""
 
-if [ -f "/usr/bin/convert" ]; then
-if [ -f "$ANDROID_PRODUCT_OUT/system/media/bootanimation.zip" ]; then
-    echo "Found $ANDROID_PRODUCT_OUT/system/media/bootanimation.zip"
-else
-RESOLUTION=""$WIDTH"x"$HEIGHT""
+mkdir -p $ANDROID_PRODUCT_OUT/obj/BOOTANIMATION/bootanimation/part0
 
-mkdir -p $ANDROID_PRODUCT_OUT/obj/BOOTANIMATION/bootanimation/part{0..1}
-tar xvfp "$PWD/vendor/candy/bootanimation/bootanimation.tar" --to-command="convert - -resize '$RESOLUTION' \"png8:$ANDROID_PRODUCT_OUT/obj/BOOTANIMATION/bootanimation/\$TAR_FILENAME\""
+tar xvfp "$PWD/vendor/candy/bootanimation/bootanimation.tar" -C "$OUT/bootanimation/"
+mogrify -resize $RESOLUTION -colors 250 "$OUT/bootanimation/"*"/"*".png"
+
 # create desc.txt
-echo "$RWIDTH" "$RHEIGHT" 30 > "$ANDROID_PRODUCT_OUT/obj/BOOTANIMATION/bootanimation/desc.txt"
+echo "$RWIDTH" "$RHEIGHT" 25 > "$ANDROID_PRODUCT_OUT/obj/BOOTANIMATION/bootanimation/desc.txt"
 cat "$PWD/vendor/candy/bootanimation/desc.txt" >> "$ANDROID_PRODUCT_OUT/obj/BOOTANIMATION/bootanimation/desc.txt"
 
-# create bootanimation.zip
 cd "$ANDROID_PRODUCT_OUT/obj/BOOTANIMATION/bootanimation"
 
-if [ ! -d "$ANDROID_PRODUCT_OUT/system/media" ]; then
-mkdir -p "$ANDROID_PRODUCT_OUT/system/media"
-fi
-
-zip -r0 "$ANDROID_PRODUCT_OUT/system/media/bootanimation.zip" .
-echo "$ANDROID_PRODUCT_OUT/system/media/bootanimation.zip"
-
-fi
-fi
+zip -r0 "$ANDROID_PRODUCT_OUT/obj/BOOTANIMATION/bootanimation.zip" .

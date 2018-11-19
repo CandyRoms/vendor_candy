@@ -131,7 +131,7 @@ PRODUCT_PACKAGES += \
 # Extra Optional packages
 PRODUCT_PACKAGES += \
     Calculator \
-    CandyBootAnimation \
+    bootanimation.zip \
     CandyWrappers \
     LatinIME \
     BluetoothExt
