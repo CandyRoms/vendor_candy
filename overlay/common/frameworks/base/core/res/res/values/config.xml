@@ -24,6 +24,8 @@
     <string name="config_defaultDndAccessPackages">com.google.android.GoogleCamera</string>
 
     <string-array name="config_locationProviderPackageNames" translatable="false">
+        <!-- qcom provider -->
+        <item>com.qualcomm.location</item>
         <!-- The standard AOSP fused location provider -->
         <item>com.android.location.fused</item>
         <!-- The Google provider -->
