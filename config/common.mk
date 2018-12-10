@@ -233,11 +233,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/etc/sysconfig/pixel_2017_exclusive.xml:system/etc/sysconfig/pixel_2017_exclusive.xml
 
-
-$(call inherit-product-if-exists, vendor/extra/product.mk)
-
 # Accents
 include vendor/candy/config/accents.mk
 
 # Themes
 include vendor/candy/config/themes.mk
+
+$(call inherit-product-if-exists, vendor/extra/product.mk)
