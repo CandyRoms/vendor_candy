@@ -21,3 +21,11 @@ TARGET_FORCE_OTA_PACKAGE := true
 TARGET_USES_64_BIT_BINDER := true
 
 PRODUCT_NAME := candy_arm
+
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    dalvik.vm.heapstartsize=16m \
+    dalvik.vm.heapgrowthlimit=256m \
+    dalvik.vm.heapsize=512m \
+    dalvik.vm.heaptargetutilization=0.75 \
+    dalvik.vm.heapminfree=4m \
+    dalvik.vm.heapmaxfree=8m

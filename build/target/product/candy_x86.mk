@@ -21,3 +21,11 @@ TARGET_FORCE_OTA_PACKAGE := true
 TARGET_USES_64_BIT_BINDER := true
 
 PRODUCT_NAME := candy_x86
+
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    dalvik.vm.heapstartsize=8m \
+    dalvik.vm.heapgrowthlimit=384m \
+    dalvik.vm.heapsize=1024m \
+    dalvik.vm.heaptargetutilization=0.75 \
+    dalvik.vm.heapminfree=4m \
+    dalvik.vm.heapmaxfree=16m

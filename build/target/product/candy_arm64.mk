@@ -19,3 +19,11 @@ $(call inherit-product, vendor/candy/config/common.mk)
 TARGET_FORCE_OTA_PACKAGE := true
 
 PRODUCT_NAME := candy_arm64
+
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    dalvik.vm.heapstartsize=8m \
+    dalvik.vm.heapgrowthlimit=256m \
+    dalvik.vm.heapsize=512m \
+    dalvik.vm.heaptargetutilization=0.75 \
+    dalvik.vm.heapminfree=2m \
+    dalvik.vm.heapmaxfree=8m

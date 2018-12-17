@@ -15,7 +15,7 @@
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 # Google property overides
-PRODUCT_GENERIC_PROPERTIES += \
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
     keyguard.no_require_sim=true \
     ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
     ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html \
@@ -27,30 +27,30 @@ PRODUCT_GENERIC_PROPERTIES += \
     ro.atrace.core.services=com.google.android.gms,com.google.android.gms.ui,com.google.android.gms.persistent
 
 # Disable Rescue Party
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
     persist.sys.disable_rescue=true
 
 # Set custom volume steps
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
     ro.config.media_vol_steps=30 \
     ro.config.bt_sco_vol_steps=30
 
 ifeq ($(PRODUCT_GMS_CLIENTID_BASE),)
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
     ro.com.google.clientidbase=android-google
 else
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
     ro.com.google.clientidbase=$(PRODUCT_GMS_CLIENTID_BASE)
 endif
 
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
     keyguard.no_require_sim=true
 
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
     ro.build.selinux=1
 
 # Disable excessive dalvik debug messages
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
     dalvik.vm.debug.alloc=0
 
 # LatinIME gesture typing
@@ -174,16 +174,16 @@ PRODUCT_PACKAGES += \
     libffmpeg_omx \
     media_codecs_ffmpeg.xml
 
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
     media.sf.omx-plugin=libffmpeg_omx.so \
     media.sf.extractor-plugin=libffmpeg_extractor.so
 
 # whitelist packages for location providers not in system
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
     ro.services.whitelist.packagelist=com.google.android.gms
 
 # Storage manager
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
     ro.storage_manager.enabled=true
 
 # easy way to extend to add more packages
@@ -197,6 +197,7 @@ PRODUCT_VERSION_MAJOR = 9
 PRODUCT_VERSION_MINOR = 0
 PRODUCT_VERSION_MAINTENANCE = 0
 CANDY_POSTFIX := -$(shell date +"%Y%m%d-%H%M")
+DATE := $(shell date +%Y%m%d)
 
 ifdef CANDY_BUILD_EXTRA
     CANDY_POSTFIX += -$(CANDY_BUILD_EXTRA)
@@ -210,27 +211,28 @@ endif
 # Set all versions
 CANDY_VERSION := Candy-$(CANDY_BUILD)-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-$(CANDY_BUILD_TYPE)$(CANDY_POSTFIX)
 CANDY_MOD_VERSION := Candy-$(CANDY_BUILD)-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-$(CANDY_BUILD_TYPE)$(CANDY_POSTFIX)
+CANDY_BUILD_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)
 
 PRODUCT_VERSION:= $(TARGET_PRODUCT)
 PRODUCT_VERSION := $(subst candy_,,$(PRODUCT_VERSION))
 
-ROM_FINGERPRINT := Candy/$(PLATFORM_VERSION)/$(PRODUCT_VERSION)/$(shell date +%Y%m%d.%H:%M)
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    BUILD_DISPLAY_ID=$(BUILD_ID) \
-    candy.ota.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE) \
-    ro.candy.version=$(CANDY_VERSION) \
-    ro.candy.build.date=$(DATE) \
-    ro.modversion=$(CANDY_VERSION) \
-    ro.candy.buildtype=$(CANDY_BUILD_TYPE)
+ROM_FINGERPRINT := Candy/$(PLATFORM_VERSION)/$(PRODUCT_VERSION)/$(CANDY_POSTFIX)
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.candy.fingerprint=$(ROM_FINGERPRINT)
+    ro.candy.build.version=$(CANDY_BUILD_VERSION) \
+    ro.candy.build.date=$(DATE) \
+    ro.candy.buildtype=$(CANDY_BUILDTYPE) \
+    ro.candy.fingerprint=$(ROM_FINGERPRINT) \
+    ro.candy.ota.version=$(CANDY_OTA_VERSION) \
+    ro.candy.version=$(CANDY_VERSION) \
+    ro.candy.device=$(CANDY_BUILD) \
+    ro.modversion=$(CANDY_VERSION)
+
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES   += \
+    BUILD_DISPLAY_ID=$(BUILD_ID)
 
 # Google sounds
 include vendor/candy/google/GoogleAudio.mk
-
-EXTENDED_POST_PROCESS_PROPS := vendor/candy/tools/candy_process_props.py
 
 # Unlimited photo storage in Google Photos
 PRODUCT_COPY_FILES += \
