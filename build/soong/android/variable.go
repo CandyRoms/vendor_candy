@@ -34,6 +34,9 @@ type Product_variables struct {
 	Should_wait_for_qsee struct {
 		Cflags []string
 	}
+	Apply_msm8974_1440p_egl_workaround struct {
+		Cflags []string
+	}
     Target_process_sdk_version_override struct {
         Cppflags []string
     }
@@ -90,6 +93,7 @@ type Product_variables struct {
 
 type ProductVariables struct {
     Additional_gralloc_10_usage_bits  *string `json:",omitempty"`
+	Apply_msm8974_1440p_egl_workaround  *bool `json:",omitempty"`
     Bootloader_message_offset  *int `json:",omitempty"`
     Device_support_wait_for_qsee  *bool `json:",omitempty"`
     Has_legacy_camera_hal1  *bool `json:",omitempty"`
