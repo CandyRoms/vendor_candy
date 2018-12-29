@@ -48,3 +48,9 @@ PRODUCT_PACKAGES += \
     UserFive \
     UserSix \
     UserSeven
+
+# Switch styler
+PRODUCT_PACKAGES += \
+    MD2Switch \
+    OnePlusSwitch \
+    StockSwitch
