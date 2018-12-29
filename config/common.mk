@@ -106,7 +106,8 @@ PRODUCT_PACKAGES += \
     Development \
     SpareParts \
     LockClock \
-    su
+    su \
+    WeatherClient 
 
 # Optional packages
 PRODUCT_PACKAGES += \
