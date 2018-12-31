@@ -239,4 +239,9 @@ include vendor/candy/themes/themes.mk
 PRODUCT_PACKAGES += \
     CustomDoze
 
+# Cutout control overlays
+PRODUCT_PACKAGES += \
+    HideCutout \
+    StatusBarStock
+
 $(call inherit-product-if-exists, vendor/extra/product.mk)
