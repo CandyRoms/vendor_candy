@@ -112,6 +112,10 @@ PRODUCT_COPY_FILES += \
 # Do not include art debug targets
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
 
+# Power whitelist
+PRODUCT_COPY_FILES += \
+    vendor/candy/config/permissions/candy-power-whitelist.xml:system/etc/sysconfig/candy-power-whitelist.xml
+
 # LatinIME gesture typing
 ifeq ($(TARGET_ARCH),arm64)
 PRODUCT_COPY_FILES += \
