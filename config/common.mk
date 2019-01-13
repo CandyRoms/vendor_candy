@@ -106,13 +106,19 @@ PRODUCT_PACKAGES += \
     Development \
     SpareParts \
     LockClock \
-    su
+    su \
+    WeatherClient 
 
 # Optional packages
 PRODUCT_PACKAGES += \
     Basic \
     LiveWallpapersPicker \
     PhaseBeam
+
+# Weather client
+PRODUCT_COPY_FILES += \
+    vendor/candy/prebuilt/common/etc/permissions/org.pixelexperience.weather.client.xml:system/etc/permissions/org.pixelexperience.weather.client.xml \
+    vendor/candy/prebuilt/common/etc/default-permissions/org.pixelexperience.weather.client.xml:system/etc/default-permissions/org.pixelexperience.weather.client.xml
 
 # Prebuilt packages
 PRODUCT_PACKAGES += \
