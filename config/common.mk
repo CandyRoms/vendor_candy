@@ -170,15 +170,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     charger_res_images
 
-# DU Utils library
-#PRODUCT_BOOT_JARS += \
-#    org.dirtyunicorns.utils
-#
-# DU Utils library
-#PRODUCT_PACKAGES += \
-#    org.dirtyunicorns.utils
-
-
 # Stagefright FFMPEG plugin
 PRODUCT_PACKAGES += \
     libffmpeg_extractor \
@@ -249,10 +240,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/etc/sysconfig/pixel_2017_exclusive.xml:system/etc/sysconfig/pixel_2017_exclusive.xml
 
-# Accents
-include vendor/candy/config/accents.mk
-
-# Themes
-include vendor/candy/config/themes.mk
+# Accents and themes
+include vendor/candy/themes/accents.mk
+include vendor/candy/themes/themes.mk
 
 $(call inherit-product-if-exists, vendor/extra/product.mk)
