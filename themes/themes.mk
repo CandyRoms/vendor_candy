@@ -12,7 +12,6 @@ PRODUCT_PACKAGES += \
     SettingsDark \
     SettingsIntelligenceDark \
     SystemDark \
-    SystemUiDark \
     UserOne \
     UserTwo \
     UserThree \
@@ -21,11 +20,10 @@ PRODUCT_PACKAGES += \
     UserSix \
     UserSeven
 
-# BlackAF Theme
+# Black Theme
 PRODUCT_PACKAGES += \
     GBoardBlack \
     SettingsBlack \
     SettingsIntelligenceBlack \
-    SystemBlack \
-    SystemUiBlack
+    SystemBlack
 
