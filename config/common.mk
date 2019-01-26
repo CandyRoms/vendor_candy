@@ -241,4 +241,8 @@ PRODUCT_COPY_FILES += \
 include vendor/candy/themes/accents.mk
 include vendor/candy/themes/themes.mk
 
+# CustomDoze for all devices
+PRODUCT_PACKAGES += \
+    CustomDoze
+
 $(call inherit-product-if-exists, vendor/extra/product.mk)
