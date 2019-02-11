@@ -78,9 +78,9 @@ function candyremote()
 
     proj="$(pwd -P | sed "s#$ANDROID_BUILD_TOP/##g")"
 
-    if (echo "$proj" | egrep -q 'external|system|build|bionic|art|libcore|prebuilt|dalvik') ; then
-        pfx="android_"
-    fi
+#    if (echo "$proj" | egrep -q 'external|system|build|bionic|art|libcore|prebuilt|dalvik') ; then
+#        pfx="android_"
+#    fi
 
     project="${proj//\//_}"
 
@@ -102,7 +102,7 @@ function anyremote()
     git remote rm $2 2> /dev/null
 
     proj="$(pwd -P | sed "s#$ANDROID_BUILD_TOP/##g")"
-    pfx="android_"
+    pfx=""
     project="${proj//\//_}"
     git remote add $2 "https://github.com/$1/$project"
     echo "Remote '$2' for '$1/$project' created, now fetching..."
@@ -149,10 +149,59 @@ function cafremote()
     echo "Remote 'caf' created"
 }
 
+function losremote()
+{
+    git remote rm los 2> /dev/null
+    if [ ! -d .git ]
+    then
+        echo .git directory not found. Please run this from the root directory of the Android repository you wish to set up.
+    fi
+    PROJECT=`pwd -P | sed s#$ANDROID_BUILD_TOP/##g`
+    PFX="android_$(echo $PROJECT | sed 's/\//_/g')"
+    git remote add los git@github.com:LineageOS/$PFX
+    echo "Remote 'los' created"
+}
+
+function candygerrit()
+{
+    git remote rm candygerrit 2> /dev/null
+    if [ ! -d .git ]
+    then
+        echo .git directory not found. Please run this from the root directory of the Android repository you wish to set up.
+    fi
+    GERRIT_REMOTE=$(cat .git/config  | grep git://github.com | awk '{ print $NF }' | sed s#git://github.com/##g)
+    if [ -z "$GERRIT_REMOTE" ]
+    then
+        echo Unable to set up the git remote, are you in the root of the repo?
+        return 0
+    fi
+    CRUSER=`git config --get gerrit.bbqdroid.org.username`
+    if [ -z "$CRUSER" ]
+    then
+        git remote add candygerrit ssh://gerrit.bbqdroid.org:29418/$GERRIT_REMOTE
+    else
+        git remote add candygerrit ssh://$CRUSER@gerrit.bbqdroid.org:29418/$GERRIT_REMOTE
+    fi
+    echo You can now push to "candygerrit".
+ }
+
+function candygit()
+{
+    git remote rm candy 2> /dev/null
+    if [ ! -d .git ]
+    then
+        echo .git directory not found. Please run this from the root directory of the Android repository you wish to set up.
+    fi
+    PROJECT=`pwd -P | sed s#$ANDROID_BUILD_TOP/##g`
+    PFX="$(echo $PROJECT | sed 's/\//_/g')"
+    git remote add candy git@github.com:CandyRoms/$PFX
+    echo "Remote 'candy' created"
+}
+
 function candy_push()
 {
     local branch ssh_name path_opt proj
-    branch="c8.1"
+    branch="c9.0"
     ssh_name="candy_review"
     path_opt=
 
@@ -167,9 +216,9 @@ function candy_push()
     proj="$(echo "$proj" | sed 's#/$##')"
     proj="${proj//\//_}"
 
-    if (echo "$proj" | egrep -q 'external|system|build|bionic|art|libcore|prebuilt|dalvik') ; then
-        proj="android_$proj"
-    fi
+#    if (echo "$proj" | egrep -q 'external|system|build|bionic|art|libcore|prebuilt|dalvik') ; then
+#        proj="android_$proj"
+#    fi
 
     git $path_opt push "ssh://${ssh_name}/CandyRoms/$proj" "HEAD:refs/for/$branch"
 }
