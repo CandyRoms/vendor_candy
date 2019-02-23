@@ -139,7 +139,8 @@ PRODUCT_PACKAGES += \
     Calculator \
     bootanimation.zip \
     LatinIME \
-    BluetoothExt
+    BluetoothExt\
+    OmniStyle
 
 ## Don't compile SystemUITests
 EXCLUDE_SYSTEMUI_TESTS := true
