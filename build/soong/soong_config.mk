@@ -1,7 +1,4 @@
-add_json_str_omitempty = $(if $(strip $(2)),$(call add_json_str, $(1), $(2)))
-add_json_val_default = $(call add_json_val, $(1), $(if $(strip $(2)), $(2), $(3)))
-
-_json_contents := $(_json_contents)    "Candy":{$(newline)
+$(call add_json_map, Candy)
 
 # see build/core/soong_config.mk for the add_json_* functions you can use here
 $(call add_json_str_omitempty, Additional_gralloc_10_usage_bits, $(TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS))
@@ -23,7 +20,4 @@ $(call add_json_bool, Uses_nvidia_enhancements,             $(filter TRUE,$(NV_A
 $(call add_json_bool, Uses_qcom_bsp_legacy,                 $(filter true,$(TARGET_USES_QCOM_BSP_LEGACY)))
 $(call add_json_bool, Uses_qti_camera_device,               $(filter true,$(TARGET_USES_QTI_CAMERA_DEVICE)))
 
-# This causes the build system to strip out the last comma in our nested struct, to keep the JSON valid.
-_json_contents := $(_json_contents)__SV_END
-
-_json_contents := $(_json_contents)    },$(newline)
+$(call end_json_map)
