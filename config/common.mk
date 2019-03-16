@@ -106,8 +106,7 @@ PRODUCT_PACKAGES += \
     Development \
     SpareParts \
     LockClock \
-    su \
-    WeatherClient 
+    WeatherClient
 
 # Optional packages
 PRODUCT_PACKAGES += \
@@ -130,6 +129,9 @@ PRODUCT_PACKAGES += \
     libprotobuf-cpp-full \
     librsjni
 
+# Recommend using the non debug dexpreopter
+USE_DEX2OAT_DEBUG := false
+
 # Latin IME lib
 ifeq ($(TARGET_ARCH),arm64)
 PRODUCT_COPY_FILES += \
@@ -151,7 +153,6 @@ PRODUCT_PACKAGES += \
     CandyWrappers \
     LatinIME \
     BluetoothExt
-
 
 ## Don't compile SystemUITests
 EXCLUDE_SYSTEMUI_TESTS := true
