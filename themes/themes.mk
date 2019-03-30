@@ -9,9 +9,14 @@ PRODUCT_PACKAGES += \
 # Themes
 PRODUCT_PACKAGES += \
     GBoardDark \
+    GBoardLight \
+    GoogleIntelligenceSenseDark \
+    GoogleIntelligenceSenseLight \
     SettingsDark \
     SettingsIntelligenceDark \
     SystemDark \
+    SystemUiDark \
+    WellbeingDark \
     UserOne \
     UserTwo \
     UserThree \
@@ -25,5 +30,7 @@ PRODUCT_PACKAGES += \
     GBoardBlack \
     SettingsBlack \
     SettingsIntelligenceBlack \
-    SystemBlack
+    SystemBlack \
+    SystemUiBlack \
+    WellbeingBlack
 
