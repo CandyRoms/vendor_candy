@@ -19,3 +19,4 @@ SELINUX_IGNORE_NEVERALLOWS := true
 endif
 
 BUILD_RRO_SYSTEM_PACKAGE := $(TOP)/vendor/candy/build/core/system_rro.mk
+
