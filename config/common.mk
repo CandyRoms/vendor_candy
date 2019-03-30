@@ -53,6 +53,17 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.debug.alloc=0
 
+# LatinIME gesture typing
+ifeq ($(TARGET_ARCH),arm64)
+PRODUCT_COPY_FILES += \
+    vendor/candy/prebuilt/common/lib64/libjni_latinime.so:system/lib64/libjni_latinime.so \
+    vendor/candy/prebuilt/common/lib64/libjni_latinimegoogle.so:system/lib64/libjni_latinimegoogle.so
+else
+PRODUCT_COPY_FILES += \
+    vendor/candy/prebuilt/common/lib/libjni_latinime.so:system/lib/libjni_latinime.so \
+    vendor/candy/prebuilt/common/lib/libjni_latinimegoogle.so:system/lib/libjni_latinimegoogle.so
+endif
+
 # Backup tool
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
