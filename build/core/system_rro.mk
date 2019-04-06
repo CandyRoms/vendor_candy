@@ -1,5 +1,4 @@
-
-# Copyright (C) 2019 CandyRoms
+# Copyright (C) 2018 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,9 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# We modify several neverallows, so let the build proceed
-ifneq ($(TARGET_BUILD_VARIANT),user)
-SELINUX_IGNORE_NEVERALLOWS := true
+LOCAL_IS_RUNTIME_RESOURCE_OVERLAY := true
+
+ifneq ($(LOCAL_SRC_FILES),)
+  $(error runtime resource overlay package should not contain sources)
 endif
 
-BUILD_RRO_SYSTEM_PACKAGE := $(TOP)/vendor/candy/build/core/system_rro.mk
+ifeq ($(LOCAL_RRO_THEME),)
+  $(error runtime resource overlay package must define \'LOCAL_RRO_THEME\')
+else
+  LOCAL_MODULE_PATH := $(TARGET_OUT)/app/$(LOCAL_RRO_THEME)
+endif
+
+include $(BUILD_SYSTEM)/package.mk
+
