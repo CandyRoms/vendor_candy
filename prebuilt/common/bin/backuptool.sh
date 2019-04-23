@@ -1,69 +1,45 @@
 #!/sbin/sh
 #
-# Backup and restore addon /system files
+# Backup and restore addon $S files
 #
 
 export C=/tmp/backupdir
-export S=/system
+export S=$2
 export V=10
 
 export ADDOND_VERSION=1
 
-# Scripts in /system/addon.d expect to find backuptool.functions in /tmp
+# Scripts in $S/addon.d expect to find backuptool.functions in /tmp
 cp -f /tmp/install/bin/backuptool.functions /tmp
 
-# Preserve /system/addon.d in /tmp/addon.d
+# Preserve $S/addon.d in /tmp/addon.d
 preserve_addon_d() {
-  mkdir -p /tmp/addon.d/
-  cp -a /system/addon.d/* /tmp/addon.d/
-  chmod 755 /tmp/addon.d/*.sh
+  if [ -d $S/addon.d/ ]; then
+    mkdir -p /tmp/addon.d/
+    cp -a $S/addon.d/* /tmp/addon.d/
+
+    # Discard any scripts that aren't at least our version level
+    for f in /postinstall/tmp/addon.d/*sh; do
+      SCRIPT_VERSION=$(grep "^# ADDOND_VERSION=" $f | cut -d= -f2)
+      if [ -z "$SCRIPT_VERSION" ]; then
+        SCRIPT_VERSION=1
+      fi
+      if [ $SCRIPT_VERSION -lt $ADDOND_VERSION ]; then
+        rm $f
+      fi
+    done
+
+    chmod 755 /tmp/addon.d/*.sh
+  fi
 }
 
-# Restore /system/addon.d in /tmp/addon.d
+# Restore $S/addon.d in /tmp/addon.d
 restore_addon_d() {
-  cp -a /tmp/addon.d/* /system/addon.d/
+  cp -a /tmp/addon.d/* $S/addon.d/
   rm -rf /tmp/addon.d/
 }
 
-# Proceed only if /system is the expected major and minor version
-check_prereq() {
-if ( ! grep -q "^ro.build.version.release=$V.*" /system/build.prop ); then
-  echo "Not backing up files from incompatible version: $V"
-  return 0
-fi
-return 1
-}
-
-check_blacklist() {
-  if [ -f /system/addon.d/blacklist ];then
-      ## Discard any known bad backup scripts
-      cd /$1/addon.d/
-      for f in *sh; do
-          s=$(md5sum $f | awk {'print $1'})
-          grep -q $s /system/addon.d/blacklist && rm -f $f
-      done
-  fi
-}
-
-check_whitelist() {
-  found=0
-  if [ -f /system/addon.d/whitelist ];then
-      ## forcefully keep any version-independent stuff
-      cd /$1/addon.d/
-      for f in *sh; do
-          s=$(md5sum $f | awk {'print $1'})
-          grep -q $s /system/addon.d/whitelist
-          if [ $? -eq 0 ]; then
-              found=1
-          else
-              rm -f $f
-          fi
-      done
-  fi
-  return $found
-}
-
-# Execute /system/addon.d/*.sh scripts with $1 parameter
+# Execute $S/addon.d/*.sh scripts with $1 parameter
 run_stage() {
 for script in $(find /tmp/addon.d/ -name '*.sh' |sort -n); do
   $script $1
