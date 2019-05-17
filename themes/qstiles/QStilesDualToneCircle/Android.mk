@@ -1,6 +1,5 @@
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
-CAL_MODULE_TAGS := optional
 
 LOCAL_PACKAGE_NAME := QStilesDualToneCircle
 LOCAL_SDK_VERSION := current
