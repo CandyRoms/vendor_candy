@@ -10,24 +10,15 @@ PRODUCT_PACKAGES += \
     QStilesCircleTrim \
     QStilesDualToneCircle 
 
-# Themes
+# Dark Theme
 PRODUCT_PACKAGES += \
     GBoardDark \
-    GBoardLight \
     GoogleIntelligenceSenseDark \
-    GoogleIntelligenceSenseLight \
     SettingsDark \
     SettingsIntelligenceDark \
     SystemDark \
     SystemUiDark \
-    WellbeingDark \
-    UserOne \
-    UserTwo \
-    UserThree \
-    UserFour \
-    UserFive \
-    UserSix \
-    UserSeven
+    WellbeingDark
 
 # Black Theme
 PRODUCT_PACKAGES += \
@@ -38,3 +29,17 @@ PRODUCT_PACKAGES += \
     SystemUiBlack \
     WellbeingBlack
 
+# Light Theme
+PRODUCT_PACKAGES += \
+    GBoardLight \
+    GoogleIntelligenceSenseLight
+
+# User Themes
+PRODUCT_PACKAGES += \
+    UserOne \
+    UserTwo \
+    UserThree \
+    UserFour \
+    UserFive \
+    UserSix \
+    UserSeven
