@@ -227,7 +227,6 @@ PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/etc/sysconfig/pixel_2017_exclusive.xml:system/etc/sysconfig/pixel_2017_exclusive.xml
 
 # Accents and themes
-include vendor/candy/themes/accents.mk
 include vendor/candy/themes/themes.mk
 
 # CustomDoze for all devices
