@@ -26,5 +26,7 @@ PRODUCT_PACKAGES += \
     UserFive \
     UserSix \
     UserSeven \
+    UserEight \
+    UserNine \
     Yellow \
     White
