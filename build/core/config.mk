@@ -1,4 +1,3 @@
-
 # Copyright (C) 2019 CandyRoms
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,3 +28,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/etc/permissions/privapp-permissions-lawnchair.xml:system/etc/permissions/privapp-permissions-lawnchair.xml \
     vendor/candy/prebuilt/common/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml:system/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml
+
+# Rules for QCOM targets
+include $(TOPDIR)vendor/candy/build/core/qcom_target.mk
