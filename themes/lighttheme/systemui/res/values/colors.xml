@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Keyboard shortcuts colors -->
+    <color name="ksh_keyword_color">#000</color>
+
+    <!-- QS edit page background color -->
+    <color name="qs_edit_item_decoration_bg">@*android:color/black</color>
+</resources>

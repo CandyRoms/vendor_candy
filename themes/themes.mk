@@ -23,6 +23,7 @@ PRODUCT_PACKAGES += \
 # Black Theme
 PRODUCT_PACKAGES += \
     GBoardBlack \
+    GoogleIntelligenceSenseBlack \
     SettingsBlack \
     SettingsIntelligenceBlack \
     SystemBlack \
@@ -32,7 +33,11 @@ PRODUCT_PACKAGES += \
 # Light Theme
 PRODUCT_PACKAGES += \
     GBoardLight \
-    GoogleIntelligenceSenseLight
+    GoogleIntelligenceSenseLight \
+    SettingsLight \
+    SettingsIntelligenceLight \
+    SystemLight \
+    SystemUiLight
 
 # User Themes
 PRODUCT_PACKAGES += \
