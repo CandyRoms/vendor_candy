@@ -8,7 +8,7 @@ PRODUCT_PACKAGES += \
     QStilesHexagon \
     QStilesHexicon \
     QStilesCircleTrim \
-    QStilesDualToneCircle 
+    QStilesDualToneCircle
 
 # Dark Theme
 PRODUCT_PACKAGES += \
@@ -51,6 +51,10 @@ PRODUCT_PACKAGES += \
 
 # Switch styler
 PRODUCT_PACKAGES += \
+    Contained \
     MD2Switch \
+    Narrow \
     OnePlusSwitch \
+    Retro \
+    Stockish \
     StockSwitch
