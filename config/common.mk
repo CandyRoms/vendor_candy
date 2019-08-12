@@ -122,11 +122,6 @@ PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/etc/permissions/com.android.providers.weather.xml:system/etc/permissions/com.android.providers.weather.xml \
     vendor/candy/prebuilt/common/etc/default-permissions/com.android.providers.weather.xml:system/etc/default-permissions/com.android.providers.weather.xml
 
-# Prebuilt packages
-PRODUCT_PACKAGES += \
-    nexuslauncher \
-    pixelbridge
-
 # Include explicitly to work around GMS issues
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-full \
