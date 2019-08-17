@@ -174,6 +174,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     media.sf.omx-plugin=libffmpeg_omx.so \
     media.sf.extractor-plugin=libffmpeg_extractor.so
 
+# whitelist packages for location providers not in system
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.services.whitelist.packagelist=com.google.android.gms
+
 # Storage manager
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.storage_manager.enabled=true
