@@ -138,7 +138,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Calculator \
     bootanimation.zip \
-    CandyWrappers \
     LatinIME \
     BluetoothExt
 
