@@ -90,7 +90,8 @@ PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit \
     vendor/candy/prebuilt/common/bin/sysinit:system/bin/sysinit
 
-# Don't include art debug targets
+
+# Do not include art debug targets
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
 
 # LatinIME gesture typing
@@ -106,7 +107,9 @@ endif
 
 # Permissions
 PRODUCT_COPY_FILES += \
-    vendor/candy/config/permissions/candy-privapp-permissions.xml:system/etc/permissions/candy-privapp-permissions.xml
+    vendor/candy/config/permissions/candy-privapp-permissions.xml:system/etc/permissions/candy-privapp-permissions.xml \
+    vendor/candy/prebuilt/common/etc/permissions/privapp-permissions-candy.xml:system/etc/permissions/privapp-permissions-candy.xml \
+    vendor/candy/prebuilt/common/etc/permissions/privapp-permissions-elgoog.xml:system/etc/permissions/privapp-permissions-elgoog.xml
 
 # Weather client
 #PRODUCT_COPY_FILES += \
