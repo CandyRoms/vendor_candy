@@ -216,6 +216,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     BUILD_DISPLAY_ID=$(BUILD_ID) \
     candy.ota.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE) \
     ro.candy.version=$(CANDY_VERSION) \
+    ro.candy.build.date=$(DATE) \
     ro.modversion=$(CANDY_VERSION) \
     ro.candy.buildtype=$(CANDY_BUILD_TYPE)
 
