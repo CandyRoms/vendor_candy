@@ -112,6 +112,11 @@ PRODUCT_PACKAGES += \
     WeatherClient \
     Lawnchair
 
+ifeq ($(CANDY_BUILDTYPE), OFFICIAL)
+    PRODUCT_PACKAGES += \
+        Updater
+endif
+
 # Lawnchair
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/etc/permissions/privapp-permissions-lawnchair.xml:system/etc/permissions/privapp-permissions-lawnchair.xml \
