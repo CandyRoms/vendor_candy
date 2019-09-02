@@ -242,4 +242,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     candy-fonts
 
+# Long screenshot
+PRODUCT_PACKAGES += \
+    Longshot
+
 $(call inherit-product-if-exists, vendor/extra/product.mk)
