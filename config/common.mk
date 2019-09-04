@@ -113,10 +113,9 @@ PRODUCT_PACKAGES += \
     WeatherClient \
     Lawnchair
 
-ifeq ($(CANDY_BUILDTYPE), OFFICIAL)
-    PRODUCT_PACKAGES += \
-        Updater
-endif
+# Candy Updater
+PRODUCT_PACKAGES += \
+    Updater
 
 # Lawnchair
 PRODUCT_COPY_FILES += \
