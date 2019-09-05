@@ -1,6 +1,8 @@
 $(call add_json_map, Candy)
 
-# see build/core/soong_config.mk for the add_json_* functions you can use here
+_json_contents := $(_json_contents)    "Candy":{$(newline)
+
+# See build/core/soong_config.mk for the add_json_* functions you can use here.
 $(call add_json_str_omitempty, Additional_gralloc_10_usage_bits, $(TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS))
 $(call add_json_bool, Has_legacy_camera_hal1,               $(filter true,$(TARGET_HAS_LEGACY_CAMERA_HAL1)))
 $(call add_json_bool, Needs_text_relocations,               $(filter true,$(TARGET_NEEDS_PLATFORM_TEXT_RELOCTIONS)))
@@ -30,6 +32,6 @@ $(call add_json_bool, Uses_qcom_um_4_9_family, $(filter true,$(TARGET_USES_QCOM_
 $(call add_json_bool, Uses_qcom_um_4_14_family, $(filter true,$(TARGET_USES_QCOM_UM_4_14_FAMILY)))
 
 # This causes the build system to strip out the last comma in our nested struct, to keep the JSON valid.
-_contents := $(_contents)__SV_END
+_json_contents := $(_json_contents)__SV_END
 
-$(call end_json_map)
+_json_contents := $(_json_contents)    },$(newline)
