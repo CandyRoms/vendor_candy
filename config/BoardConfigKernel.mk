@@ -84,12 +84,9 @@ endif
 KERNEL_TOOLCHAIN_PATH_gcc := $(KERNEL_TOOLCHAIN_$(KERNEL_ARCH))/$(KERNEL_TOOLCHAIN_PREFIX_$(KERNEL_ARCH))
 
 ifneq ($(USE_CCACHE),)
-    # Detect if the system already has ccache installed to use instead of the prebuilt
-    ccache := $(shell PATH=$(shell cat $(OUT_DIR)/.path_interposer_origpath):$$PATH which ccache)
-    ifeq ($(ccache),)
-        ccache := $(BUILD_TOP)/prebuilts/misc/$(HOST_PREBUILT_TAG)/ccache/ccache
-        # Check that the executable is here.
-        ccache := $(strip $(wildcard $(ccache)))
+    ifneq ($(CCACHE_EXEC),)
+        # Android 10+ deprecates use of a build ccache. Only system installed ones are now allowed
+        CCACHE_BIN := $(CCACHE_EXEC)
     endif
 endif
 
