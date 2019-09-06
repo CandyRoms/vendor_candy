@@ -65,8 +65,26 @@ endif
 
 KERNEL_ADDITIONAL_CONFIG_OUT := $(KERNEL_OUT)/.additional_config
 
-.PHONY: force_additional_config
-$(KERNEL_ADDITIONAL_CONFIG_OUT): force_additional_config
+# Internal implementation of make-kernel-target
+# $(1): output path (The value passed to O=)
+# $(2): target to build (eg. defconfig, modules, dtbo.img)
+define internal-make-kernel-target
+$(PATH_OVERRIDE) $(KERNEL_MAKE_CMD) $(KERNEL_MAKE_FLAGS) -C $(KERNEL_SRC) O=$(1) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) $(2)
+endef
+
+# Make a kernel target
+# $(1): The kernel target to build (eg. defconfig, modules, modules_install)
+define make-kernel-target
+$(call internal-make-kernel-target,$(KERNEL_OUT),$(1))
+endef
+
+# Make a DTBO target
+# $(1): The DTBO target to build (eg. dtbo.img, defconfig)
+define make-dtbo-target
+$(call internal-make-kernel-target,$(PRODUCT_OUT)/dtbo,$(1))
+endef
+
+$(KERNEL_ADDITIONAL_CONFIG_OUT):
 	$(hide) cmp -s $(KERNEL_ADDITIONAL_CONFIG_SRC) $@ || cp $(KERNEL_ADDITIONAL_CONFIG_SRC) $@;
 
 $(KERNEL_CONFIG): $(KERNEL_DEFCONFIG_SRC) $(KERNEL_ADDITIONAL_CONFIG_OUT)
@@ -84,8 +102,7 @@ $(KERNEL_CONFIG): $(KERNEL_DEFCONFIG_SRC) $(KERNEL_ADDITIONAL_CONFIG_OUT)
 			$(KERNEL_SRC)/scripts/kconfig/merge_config.sh -m -O $(KERNEL_OUT) $(KERNEL_OUT)/.config $(KERNEL_SRC)/arch/$(KERNEL_ARCH)/configs/$(KERNEL_ADDITIONAL_CONFIG); \
 			$(PATH_OVERRIDE) $(MAKE_PREBUILT) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) KCONFIG_ALLCONFIG=$(KERNEL_OUT)/.config alldefconfig; fi
 
-.PHONY: TARGET_KERNEL_BINARIES
-TARGET_KERNEL_BINARIES: $(KERNEL_CONFIG)
+$(TARGET_PREBUILT_INT_KERNEL): $(KERNEL_CONFIG)
 	@echo "Building Kernel"
 	$(hide) rm -rf $(KERNEL_MODULES_OUT)
 	$(hide) mkdir -p $(KERNEL_MODULES_OUT)
@@ -118,9 +135,7 @@ INSTALLED_KERNEL_MODULES: depmod-host
 			sed -e 's/\(.*modules.*\):/\/\1:/g' -e 's/ \([^ ]*modules[^ ]*\)/ \/\1/g' $(KERNEL_DEPMOD_STAGING_DIR)/lib/modules/0.0/modules.dep > $(KERNEL_MODULES_OUT)/modules.dep; \
 		fi
 
-$(TARGET_KERNEL_MODULES): TARGET_KERNEL_BINARIES
-
-$(TARGET_PREBUILT_INT_KERNEL): $(TARGET_KERNEL_MODULES)
+$(TARGET_KERNEL_MODULES): $(TARGET_PREBUILT_INT_KERNEL)
 
 .PHONY: kerneltags
 kerneltags: $(KERNEL_CONFIG)
@@ -185,7 +200,7 @@ ALL_PREBUILT += $(INSTALLED_DTBOIMAGE_TARGET)
 endif
 
 .PHONY: kernel
-kernel: $(INSTALLED_KERNEL_TARGET)
+kernel: $(INSTALLED_KERNEL_TARGET) $(TARGET_KERNEL_MODULES)
 
 .PHONY: dtbo
 dtbo: $(INSTALLED_DTBOIMAGE_TARGET)
