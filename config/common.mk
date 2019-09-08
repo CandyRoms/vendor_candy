@@ -113,6 +113,23 @@ PRODUCT_PACKAGES += \
     WeatherClient \
     Lawnchair
 
+# CustomDoze for all devices
+PRODUCT_PACKAGES += \
+    CustomDoze
+
+# Cutout control overlays
+PRODUCT_PACKAGES += \
+    HideCutout \
+    StatusBarStock
+
+# Fonts packages
+PRODUCT_PACKAGES += \
+    candy-fonts
+
+# Long screenshot
+PRODUCT_PACKAGES += \
+    Longshot
+
 # Candy Updater
 PRODUCT_PACKAGES += \
     Updater
@@ -186,21 +203,15 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
     ro.storage_manager.enabled=true
 
-# easy way to extend to add more packages
--include vendor/extra/product.mk
-
-PRODUCT_PACKAGE_OVERLAYS += vendor/candy/overlay/common
-
 # Versioning System
 # candy first version.
 PRODUCT_VERSION_MAJOR = 9
 PRODUCT_VERSION_MINOR = 0
 PRODUCT_VERSION_MAINTENANCE = 0
-CANDY_POSTFIX := -$(shell date +"%Y%m%d-%H%M")
-DATE := $(shell date +%Y%m%d)
+CANDY_DATE := $(shell date +"%Y%m%d-%H%M")
 
 ifdef CANDY_BUILD_EXTRA
-    CANDY_POSTFIX += -$(CANDY_BUILD_EXTRA)
+    CANDY_POSTFIX += $(CANDY_BUILD_EXTRA)
 endif
 
 # Set the default version to unofficial
@@ -209,27 +220,19 @@ ifndef CANDY_BUILD_TYPE
 endif
 
 # Set all versions
-CANDY_VERSION := Candy-$(CANDY_BUILD)-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-$(CANDY_BUILD_TYPE)$(CANDY_POSTFIX)
-CANDY_MOD_VERSION := Candy-$(CANDY_BUILD)-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)-$(CANDY_BUILD_TYPE)$(CANDY_POSTFIX)
 CANDY_BUILD_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)
+CANDY_VERSION := Candy-$(CANDY_BUILD)-$(CANDY_BUILD_VERSION)-$(CANDY_BUILD_TYPE)-$(CANDY_DATE)
+CANDY_MOD_VERSION := Candy-$(CANDY_BUILD)-$(CANDY_BUILD_VERSION)-$(CANDY_BUILD_TYPE)-$(CANDY_DATE)
 
-PRODUCT_VERSION:= $(TARGET_PRODUCT)
+PRODUCT_VERSION := $(TARGET_PRODUCT)
 PRODUCT_VERSION := $(subst candy_,,$(PRODUCT_VERSION))
 
-ROM_FINGERPRINT := Candy/$(PLATFORM_VERSION)/$(PRODUCT_VERSION)/$(CANDY_POSTFIX)
+ROM_FINGERPRINT := Candy/$(PLATFORM_VERSION)/$(PRODUCT_VERSION)/$(shell date -u +%H%M)
 
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.candy.build.version=$(CANDY_BUILD_VERSION) \
-    ro.candy.build.date=$(DATE) \
-    ro.candy.buildtype=$(CANDY_BUILDTYPE) \
-    ro.candy.fingerprint=$(ROM_FINGERPRINT) \
-    ro.candy.ota.version=$(CANDY_OTA_VERSION) \
-    ro.candy.version=$(CANDY_VERSION) \
-    ro.candy.device=$(CANDY_BUILD) \
-    ro.modversion=$(CANDY_VERSION)
+# easy way to extend to add more packages
+-include vendor/extra/product.mk
 
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES   += \
-    BUILD_DISPLAY_ID=$(BUILD_ID)
+PRODUCT_PACKAGE_OVERLAYS += vendor/candy/overlay/common
 
 # Google sounds
 include vendor/candy/google/GoogleAudio.mk
@@ -241,21 +244,7 @@ PRODUCT_COPY_FILES += \
 # Accents and themes
 include vendor/candy/themes/themes.mk
 
-# CustomDoze for all devices
-PRODUCT_PACKAGES += \
-    CustomDoze
-
-# Cutout control overlays
-PRODUCT_PACKAGES += \
-    HideCutout \
-    StatusBarStock
-
-# Fonts packages
-PRODUCT_PACKAGES += \
-    candy-fonts
-
-# Long screenshot
-PRODUCT_PACKAGES += \
-    Longshot
+# Candy Updater and versioning
+#include vendor/candy/build/core/main_version.mk
 
 $(call inherit-product-if-exists, vendor/extra/product.mk)
