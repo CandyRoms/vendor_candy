@@ -15,6 +15,9 @@ type Product_variables struct {
     Needs_text_relocations struct {
         Cppflags []string
     }
+    Target_init_vendor_lib struct {
+        Whole_static_libs []string
+    }
     Supports_hw_fde struct {
         Cflags []string
         Header_libs []string
@@ -28,9 +31,6 @@ type Product_variables struct {
 	}
     Device_support_wait_for_qsee struct {
         Cflags []string
-    }
-    Target_init_vendor_lib struct {
-        Whole_static_libs []string
     }
     Target_process_sdk_version_override struct {
         Cppflags []string
@@ -47,10 +47,6 @@ type Product_variables struct {
     Uses_qcom_bsp_legacy struct {
         Cflags []string
         Cppflags []string
-    }
-    Uses_qti_camera_device struct {
-        Cppflags []string
-        Shared_libs []string
     }
     Uses_qcom_um_family struct {
         Cflags []string
@@ -92,10 +88,9 @@ type ProductVariables struct {
     Uses_generic_camera_parameter_library  *bool `json:",omitempty"`
     Uses_nvidia_enhancements  *bool `json:",omitempty"`
     Uses_qcom_bsp_legacy  *bool `json:",omitempty"`
-    Uses_qti_camera_device  *bool `json:",omitempty"`
-    Uses_qcom_um_family  *bool `json:",omitempty"`
-    Uses_qcom_um_3_18_family  *bool `json:",omitempty"`
-    Uses_qcom_um_4_4_family  *bool `json:",omitempty"`
-    Uses_qcom_um_4_9_family  *bool `json:",omitempty"`
-    Uses_qcom_um_4_14_family  *bool `json:",omitempty"`
+	Uses_qcom_um_family  *bool `json:",omitempty"`
+	Uses_qcom_um_3_18_family  *bool `json:",omitempty"`
+	Uses_qcom_um_4_4_family  *bool `json:",omitempty"`
+	Uses_qcom_um_4_9_family  *bool `json:",omitempty"`
+	Uses_qcom_um_4_14_family  *bool `json:",omitempty"`
 }
