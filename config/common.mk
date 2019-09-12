@@ -95,12 +95,16 @@ PRODUCT_COPY_FILES += \
 # Don't include art debug targets
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
 
-# Required packages
-PRODUCT_PACKAGES += \
-    CellBroadcastReceiver \
-    Development \
-    SpareParts \
-    LockClock
+# LatinIME gesture typing
+ifeq ($(TARGET_ARCH),arm64)
+PRODUCT_COPY_FILES += \
+    vendor/candy/prebuilt/common/lib64/libjni_latinime.so:system/lib64/libjni_latinime.so \
+    vendor/candy/prebuilt/common/lib64/libjni_latinimegoogle.so:system/lib64/libjni_latinimegoogle.so
+else
+PRODUCT_COPY_FILES += \
+    vendor/candy/prebuilt/common/lib/libjni_latinime.so:system/lib/libjni_latinime.so \
+    vendor/candy/prebuilt/common/lib/libjni_latinimegoogle.so:system/lib/libjni_latinimegoogle.so
+endif
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -111,50 +115,14 @@ PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/etc/permissions/com.android.providers.weather.xml:system/etc/permissions/com.android.providers.weather.xml \
     vendor/candy/prebuilt/common/etc/default-permissions/com.android.providers.weather.xml:system/etc/default-permissions/com.android.providers.weather.xml
 
-# Include explicitly to work around GMS issues
-PRODUCT_PACKAGES += \
-    libprotobuf-cpp-full \
-    librsjni
-
 # Recommend using the non debug dexpreopter
 USE_DEX2OAT_DEBUG := false
-
-# AudioFX
-PRODUCT_PACKAGES += \
-    AudioFX
-
-# Extra Optional packages
-PRODUCT_PACKAGES += \
-    Calculator \
-    LatinIME \
-    BluetoothExt
 
 ## Don't compile SystemUITests
 EXCLUDE_SYSTEMUI_TESTS := true
 
-# Extra tools
-PRODUCT_PACKAGES += \
-    openvpn \
-    e2fsck \
-    mke2fs \
-    tune2fs \
-    fsck.exfat \
-    mkfs.exfat \
-    ntfsfix \
-    ntfs-3g
-
 PRODUCT_PACKAGES += \
     charger_res_images
-
-# Stagefright FFMPEG plugin
-PRODUCT_PACKAGES += \
-    libffmpeg_extractor \
-    libffmpeg_omx \
-    media_codecs_ffmpeg.xml
-
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
-    media.sf.omx-plugin=libffmpeg_omx.so \
-    media.sf.extractor-plugin=libffmpeg_extractor.so
 
 # whitelist packages for location providers not in system
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
@@ -169,6 +137,9 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
 
 # GSans font
 include vendor/candy/config/fonts.mk
+
+# Packages
+include vendor/candy/config/packages.mk
 
 PRODUCT_PACKAGE_OVERLAYS += vendor/candy/overlay/common
 
