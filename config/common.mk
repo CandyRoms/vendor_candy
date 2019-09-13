@@ -167,6 +167,9 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
 # easy way to extend to add more packages
 -include vendor/extra/product.mk
 
+# GSans font
+include vendor/candy/config/fonts.mk
+
 PRODUCT_PACKAGE_OVERLAYS += vendor/candy/overlay/common
 
 # Google sounds
