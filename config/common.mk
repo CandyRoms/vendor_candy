@@ -57,8 +57,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
     vendor/candy/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/candy/prebuilt/common/bin/50-candy.sh:system/addon.d/50-candy.sh \
-    vendor/candy/prebuilt/common/bin/clean_cache.sh:system/bin/clean_cache.sh
+    vendor/candy/prebuilt/common/bin/50-candy.sh:system/addon.d/50-candy.sh
 
 # Backup services whitelist
 PRODUCT_COPY_FILES += \
