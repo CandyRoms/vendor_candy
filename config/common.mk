@@ -83,7 +83,6 @@ PRODUCT_COPY_FILES += \
 
 # Don't export PS1 in /system/etc/mkshrc.
 PRODUCT_COPY_FILES += \
-    vendor/candy/prebuilt/common/etc/mkshrc:system/etc/mkshrc \
     vendor/candy/prebuilt/common/etc/sysctl.conf:system/etc/sysctl.conf
 
 # Candy-specific startup services
@@ -92,6 +91,9 @@ PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit \
     vendor/candy/prebuilt/common/bin/sysinit:system/bin/sysinit \
     vendor/candy/prebuilt/bin/clean_cache.sh:system/bin/clean_cache.sh
+
+# Don't include art debug targets
+PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
 
 # Required packages
 PRODUCT_PACKAGES += \
