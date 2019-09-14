@@ -172,9 +172,25 @@ def add_to_manifest(repos, fallback_branch=None):
 
     for repo in repos:
         repo_name = repo['repository']
-        repo_target = repo['target_path']
-        if is_in_manifest(repo_target):
-            print('already exists: %s' % repo_target)
+        if 'target_path' in repo:
+            repo_path = repo['target_path']
+        else: # If path isn't set, its the same as name
+            repo_path = repo_name.split('/')[-1]
+
+        if 'branch' in repo:
+            repo_branch=repo['branch']
+        else:
+            repo_branch=custom_default_revision
+
+        if 'remote' in repo:
+            repo_remote=repo['remote']
+        elif "/" not in repo_name:
+            repo_remote=org_manifest
+        elif "/" in repo_name:
+            repo_remote="github"
+
+        if is_in_manifest(repo_path):
+            print('%s already exists in the manifest' % repo_path)
             continue
 
         if "/" not in repo_name:
