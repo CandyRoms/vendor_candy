@@ -12,6 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Build fingerprint
+ifneq ($(BUILD_FINGERPRINT),)
+ADDITIONAL_BUILD_PROPERTIES += \
+    ro.build.fingerprint=$(BUILD_FINGERPRINT)
+endif
+
 # This file is -included from vendor/candy/build/core/main.mk
 
 # Versioning System
