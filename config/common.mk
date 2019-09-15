@@ -57,15 +57,20 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
     vendor/candy/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/candy/prebuilt/common/bin/50-candy.sh:system/addon.d/50-candy.sh
+    vendor/candy/prebuilt/common/bin/50-candy.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-candy.sh \
+    vendor/candy/prebuilt/common/bin/blacklist:$(TARGET_COPY_OUT_SYSTEM)/addon.d/blacklist
 
 # Backup services whitelist
 PRODUCT_COPY_FILES += \
-    vendor/candy/config/permissions/backup.xml:system/etc/sysconfig/backup.xml
+    vendor/candy/config/permissions/backup.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/backup.xml \
+    vendor/candy/prebuilt/common/bin/backuptool_ab.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.sh \
+    vendor/candy/prebuilt/common/bin/backuptool_ab.functions:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.functions \
+    vendor/candy/prebuilt/common/bin/backuptool_postinstall.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_postinstall.sh
 
 # system mount
 PRODUCT_COPY_FILES += \
-    vendor/candy/prebuilt/common/bin/system-mount.sh:install/bin/system-mount.sh
+    vendor/candy/prebuilt/common/bin/system-mount.sh:install/bin/system-mount.sh \
+    vendor/candy/config/permissions/backup.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/backup.xml
 
 # Signature compatibility validation
 PRODUCT_COPY_FILES += \
@@ -78,22 +83,26 @@ PRODUCT_COPY_FILES += \
 
 # SELinux filesystem labels
 PRODUCT_COPY_FILES += \
-    vendor/candy/prebuilt/common/etc/init.d/50selinuxrelabel:system/etc/init.d/50selinuxrelabel
+    vendor/candy/prebuilt/common/etc/init.d/50selinuxrelabel:$(TARGET_COPY_OUT_SYSTEM)/etc/init.d/50selinuxrelabel
+
+# Copy all Lineage-specific init rc files
+$(foreach f,$(wildcard vendor/lineage/prebuilt/common/etc/init/*.rc),\
+	$(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_SYSTEM)/etc/init/$(notdir $f)))
 
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
+    frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.software.sip.voip.xml
 
 # Don't export PS1 in /system/etc/mkshrc.
 PRODUCT_COPY_FILES += \
-    vendor/candy/prebuilt/common/etc/sysctl.conf:system/etc/sysctl.conf
+    vendor/candy/prebuilt/common/etc/sysctl.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/sysctl.conf \
+    frameworks/base/data/keyboards/Vendor_045e_Product_028e.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_045e_Product_0719.kl
 
 # Candy-specific startup services
 PRODUCT_COPY_FILES += \
-    vendor/candy/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
-    vendor/candy/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit \
-    vendor/candy/prebuilt/common/bin/sysinit:system/bin/sysinit
-
+    vendor/candy/prebuilt/common/etc/init.d/00banner:$(TARGET_COPY_OUT_SYSTEM)/etc/init.d/00banner \
+    vendor/candy/prebuilt/common/etc/init.d/90userinit:$(TARGET_COPY_OUT_SYSTEM)/etc/init.d/90userinit \
+    vendor/candy/prebuilt/common/bin/sysinit:$(TARGET_COPY_OUT_SYSTEM)/bin/sysinit
 
 # Do not include art debug targets
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
@@ -101,24 +110,24 @@ PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
 # LatinIME gesture typing
 ifeq ($(TARGET_ARCH),arm64)
 PRODUCT_COPY_FILES += \
-    vendor/candy/prebuilt/common/lib64/libjni_latinime.so:system/lib64/libjni_latinime.so \
-    vendor/candy/prebuilt/common/lib64/libjni_latinimegoogle.so:system/lib64/libjni_latinimegoogle.so
+    vendor/candy/prebuilt/common/lib64/libjni_latinime.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libjni_latinime.so \
+    vendor/candy/prebuilt/common/lib64/libjni_latinimegoogle.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libjni_latinimegoogle.so
 else
 PRODUCT_COPY_FILES += \
-    vendor/candy/prebuilt/common/lib/libjni_latinime.so:system/lib/libjni_latinime.so \
-    vendor/candy/prebuilt/common/lib/libjni_latinimegoogle.so:system/lib/libjni_latinimegoogle.so
+    vendor/candy/prebuilt/common/lib/libjni_latinime.so:$(TARGET_COPY_OUT_SYSTEM)/lib/libjni_latinime.so \
+    vendor/candy/prebuilt/common/lib/libjni_latinimegoogle.so:$(TARGET_COPY_OUT_SYSTEM)/lib/libjni_latinimegoogle.so
 endif
 
 # Permissions
 PRODUCT_COPY_FILES += \
-    vendor/candy/config/permissions/candy-privapp-permissions.xml:system/etc/permissions/candy-privapp-permissions.xml \
-    vendor/candy/prebuilt/common/etc/permissions/privapp-permissions-candy.xml:system/etc/permissions/privapp-permissions-candy.xml \
-    vendor/candy/prebuilt/common/etc/permissions/privapp-permissions-elgoog.xml:system/etc/permissions/privapp-permissions-elgoog.xml
+    vendor/candy/config/permissions/candy-privapp-permissions.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/candy-privapp-permissions.xml \
+    vendor/candy/prebuilt/common/etc/permissions/privapp-permissions-candy.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-candy.xml \
+    vendor/candy/prebuilt/common/etc/permissions/privapp-permissions-elgoog.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-elgoog.xml
 
 # Weather client
 #PRODUCT_COPY_FILES += \
-#    vendor/candy/prebuilt/common/etc/permissions/com.android.providers.weather.xml:system/etc/permissions/com.android.providers.weather.xml \
-#    vendor/candy/prebuilt/common/etc/default-permissions/com.android.providers.weather.xml:system/etc/default-permissions/com.android.providers.weather.xml
+#    vendor/candy/prebuilt/common/etc/permissions/com.android.providers.weather.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/com.android.providers.weather.xml \
+#    vendor/candy/prebuilt/common/etc/default-permissions/com.android.providers.weather.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/default-permissions/com.android.providers.weather.xml
 
 # Recommend using the non debug dexpreopter
 USE_DEX2OAT_DEBUG := false
