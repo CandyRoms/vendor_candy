@@ -3,23 +3,6 @@ type Product_variables struct {
     Additional_gralloc_10_usage_bits struct {
         Cppflags []string
     }
-    Should_skip_waiting_for_qsee struct {
-        Cflags []string
-    }
-    Device_support_hwfde struct {
-        Cflags []string
-        Header_libs []string
-        Shared_libs []string
-    }
-    Device_support_hwfde_perf struct {
-        Cflags []string
-    }
-    Device_support_legacy_hwfde struct {
-        Cflags []string
-    }
-    Device_support_wait_for_qsee struct {
-        Cflags []string
-    }
     Bootloader_message_offset struct {
         Cflags []string
     }
@@ -32,12 +15,18 @@ type Product_variables struct {
     Needs_text_relocations struct {
         Cppflags []string
     }
-    Supports_hw_fde struct {
+    Supports_hw_fde  struct {
         Cflags []string
         Header_libs []string
         Shared_libs []string
     }
     Supports_hw_fde_perf struct {
+        Cflags []string
+    }
+	Supports_legacy_hw_fde struct {
+		Cflags []string
+	}
+    Device_support_wait_for_qsee struct {
         Cflags []string
     }
     Target_init_vendor_lib struct {
@@ -88,18 +77,15 @@ type Product_variables struct {
 type ProductVariables struct {
     Additional_gralloc_10_usage_bits  *string `json:",omitempty"`
     Bootloader_message_offset  *int `json:",omitempty"`
-    Device_support_hwfde  *bool `json:",omitempty"`
-    Device_support_hwfde_perf  *bool `json:",omitempty"`
-    Device_support_legacy_hwfde  *bool `json:",omitempty"`
     Device_support_wait_for_qsee  *bool `json:",omitempty"`
     Has_legacy_camera_hal1  *bool `json:",omitempty"`
     Uses_media_extensions   *bool `json:",omitempty"`
     Needs_text_relocations  *bool `json:",omitempty"`
     Target_specific_headers_include_dir  *string `json:",omitempty"`
-    Should_skip_waiting_for_qsee  *bool `json:",omitempty"`
     Specific_camera_parameter_library  *string `json:",omitempty"`
     Supports_hw_fde  *bool `json:",omitempty"`
     Supports_hw_fde_perf  *bool `json:",omitempty"`
+	Supports_legacy_hw_fde  *bool `json:",omitempty"`
     Target_process_sdk_version_override *string `json:",omitempty"`
     Target_init_vendor_lib  *string `json:",omitempty"`
     Target_shim_libs  *string `json:",omitempty"`
