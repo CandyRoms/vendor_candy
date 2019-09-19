@@ -41,7 +41,7 @@ except ImportError:
     urllib.request = urllib2
 
 DEBUG = False
-default_manifest = ".repo/manifest.xml"
+default_manifest = ".repo/manifests/candy.xml"
 
 custom_local_manifest = ".repo/local_manifests/candy_manifest.xml"
 custom_default_revision = "c10"
