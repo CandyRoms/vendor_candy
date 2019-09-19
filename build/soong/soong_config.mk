@@ -9,6 +9,7 @@ $(call add_json_bool, Has_legacy_camera_hal1,               $(filter true,$(TARG
 $(call add_json_bool, Needs_text_relocations,               $(filter true,$(TARGET_NEEDS_PLATFORM_TEXT_RELOCTIONS)))
 $(call add_json_bool, Uses_media_extensions,                $(TARGET_USES_MEDIA_EXTENSIONS))
 $(call add_json_str_omitempty, Target_specific_headers_include_dir, $(TARGET_SPECIFIC_HEADER_PATH))
+$(call add_json_bool, Supports_extended_compress_format, $(filter true,$(AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT)))
 $(call add_json_bool, Supports_hw_fde, $(filter true,$(TARGET_HW_DISK_ENCRYPTION)))
 $(call add_json_bool, Supports_hw_fde_perf, $(filter true,$(TARGET_HW_DISK_ENCRYPTION_PERF)))
 $(call add_json_bool, Should_wait_for_qsee, $(filter true,$(TARGET_KEYMASTER_WAIT_FOR_QSEE)))
