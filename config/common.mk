@@ -53,17 +53,6 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
     dalvik.vm.debug.alloc=0
 
-# LatinIME gesture typing
-ifeq ($(TARGET_ARCH),arm64)
-PRODUCT_COPY_FILES += \
-    vendor/candy/prebuilt/common/lib64/libjni_latinime.so:system/lib64/libjni_latinime.so \
-    vendor/candy/prebuilt/common/lib64/libjni_latinimegoogle.so:system/lib64/libjni_latinimegoogle.so
-else
-PRODUCT_COPY_FILES += \
-    vendor/candy/prebuilt/common/lib/libjni_latinime.so:system/lib/libjni_latinime.so \
-    vendor/candy/prebuilt/common/lib/libjni_latinimegoogle.so:system/lib/libjni_latinimegoogle.so
-endif
-
 # Backup tool
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
@@ -109,35 +98,7 @@ PRODUCT_PACKAGES += \
     CellBroadcastReceiver \
     Development \
     SpareParts \
-    LockClock \
-    WeatherClient \
-    Lawnchair
-
-# CustomDoze for all devices
-PRODUCT_PACKAGES += \
-    CustomDoze
-
-# Cutout control overlays
-PRODUCT_PACKAGES += \
-    HideCutout \
-    StatusBarStock
-
-# Fonts packages
-PRODUCT_PACKAGES += \
-    candy-fonts
-
-# Long screenshot
-PRODUCT_PACKAGES += \
-    Longshot
-
-# Candy Updater
-PRODUCT_PACKAGES += \
-    Updater
-
-# Lawnchair
-PRODUCT_COPY_FILES += \
-    vendor/candy/prebuilt/common/etc/permissions/privapp-permissions-lawnchair.xml:system/etc/permissions/privapp-permissions-lawnchair.xml \
-    vendor/candy/prebuilt/common/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml:system/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml
+    LockClock
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -163,10 +124,8 @@ PRODUCT_PACKAGES += \
 # Extra Optional packages
 PRODUCT_PACKAGES += \
     Calculator \
-    bootanimation.zip \
     LatinIME \
-    BluetoothExt\
-    OmniStyle
+    BluetoothExt
 
 ## Don't compile SystemUITests
 EXCLUDE_SYSTEMUI_TESTS := true
@@ -205,7 +164,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
 
 # Versioning System
 # candy first version.
-PRODUCT_VERSION_MAJOR = 9
+PRODUCT_VERSION_MAJOR = 10
 PRODUCT_VERSION_MINOR = 0
 PRODUCT_VERSION_MAINTENANCE = 0
 CANDY_DATE := $(shell date +"%Y%m%d-%H%M")
@@ -220,7 +179,7 @@ ifndef CANDY_BUILD_TYPE
 endif
 
 # Set all versions
-CANDY_BUILD_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)
+CANDY_BUILD_VERSION := $(PRODUCT_VERSION_MAJOR)
 CANDY_VERSION := Candy-$(CANDY_BUILD)-$(CANDY_BUILD_VERSION)-$(CANDY_BUILD_TYPE)-$(CANDY_DATE)
 CANDY_MOD_VERSION := Candy-$(CANDY_BUILD)-$(CANDY_BUILD_VERSION)-$(CANDY_BUILD_TYPE)-$(CANDY_DATE)
 
@@ -241,10 +200,5 @@ include vendor/candy/google/GoogleAudio.mk
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/etc/sysconfig/pixel_2017_exclusive.xml:system/etc/sysconfig/pixel_2017_exclusive.xml
 
-# Accents and themes
-include vendor/candy/themes/themes.mk
-
-# Candy Updater and versioning
-#include vendor/candy/build/core/main_version.mk
 
 $(call inherit-product-if-exists, vendor/extra/product.mk)
