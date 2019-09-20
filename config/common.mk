@@ -110,9 +110,9 @@ PRODUCT_COPY_FILES += \
     vendor/candy/config/permissions/candy-privapp-permissions.xml:system/etc/permissions/candy-privapp-permissions.xml
 
 # Weather client
-PRODUCT_COPY_FILES += \
-    vendor/candy/prebuilt/common/etc/permissions/com.android.providers.weather.xml:system/etc/permissions/com.android.providers.weather.xml \
-    vendor/candy/prebuilt/common/etc/default-permissions/com.android.providers.weather.xml:system/etc/default-permissions/com.android.providers.weather.xml
+#PRODUCT_COPY_FILES += \
+#    vendor/candy/prebuilt/common/etc/permissions/com.android.providers.weather.xml:system/etc/permissions/com.android.providers.weather.xml \
+#    vendor/candy/prebuilt/common/etc/default-permissions/com.android.providers.weather.xml:system/etc/default-permissions/com.android.providers.weather.xml
 
 # Recommend using the non debug dexpreopter
 USE_DEX2OAT_DEBUG := false
