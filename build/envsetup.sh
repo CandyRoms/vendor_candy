@@ -209,6 +209,18 @@ function candy_push()
     then
         proj="$ANDROID_BUILD_TOP/$(echo "$1" | sed "s#$ANDROID_BUILD_TOP/##g")"
         path_opt="--git-dir=$(printf "%q/.git" "${proj}")"
+    else
+        proj="$(pwd -P)"
+    fi
+    proj="$(echo "$proj" | sed "s#$ANDROID_BUILD_TOP/##g")"
+    proj="$(echo "$proj" | sed 's#/$##')"
+    proj="${proj//\//_}"
+
+#    if (echo "$proj" | egrep -q 'external|system|build|bionic|art|libcore|prebuilt|dalvik') ; then
+#        proj="android_$proj"
+#    fi
+
+    git $path_opt push "ssh://${ssh_name}/CandyRoms/$proj" "HEAD:refs/for/$branch"
 }
 
 function fixup_common_out_dir() {
@@ -225,17 +237,9 @@ function fixup_common_out_dir() {
             ln -s ${common_target_out} ${common_out_dir}
         fi
     else
-        proj="$(pwd -P)"
+        [ -L ${common_out_dir} ] && rm ${common_out_dir}
+        mkdir -p ${common_out_dir}
     fi
-    proj="$(echo "$proj" | sed "s#$ANDROID_BUILD_TOP/##g")"
-    proj="$(echo "$proj" | sed 's#/$##')"
-    proj="${proj//\//_}"
-
-#    if (echo "$proj" | egrep -q 'external|system|build|bionic|art|libcore|prebuilt|dalvik') ; then
-#        proj="android_$proj"
-#    fi
-
-    git $path_opt push "ssh://${ssh_name}/CandyRoms/$proj" "HEAD:refs/for/$branch"
 }
 
 
