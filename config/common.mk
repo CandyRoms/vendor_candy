@@ -88,8 +88,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
     vendor/candy/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit \
-    vendor/candy/prebuilt/common/bin/sysinit:system/bin/sysinit \
-    vendor/candy/prebuilt/bin/clean_cache.sh:system/bin/clean_cache.sh
+    vendor/candy/prebuilt/common/bin/sysinit:system/bin/sysinit
 
 # Don't include art debug targets
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
