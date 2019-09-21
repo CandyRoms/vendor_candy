@@ -20,17 +20,20 @@ ifneq ($(TARGET_NO_KERNEL),true)
 ifeq ($(FULL_KERNEL_BUILD),true)
 
 ifeq ($(NEED_KERNEL_MODULE_ROOT),true)
-KERNEL_MODULES_OUT := $(TARGET_ROOT_OUT)
-KERNEL_DEPMOD_STAGING_DIR := $(KERNEL_BUILD_OUT_PREFIX)$(call intermediates-dir-for,PACKAGING,depmod_recovery)
-KERNEL_MODULE_MOUNTPOINT :=
+    KERNEL_MODULES_INSTALL := root
+    KERNEL_MODULES_OUT := $(TARGET_ROOT_OUT)/lib/modules
+    KERNEL_DEPMOD_STAGING_DIR := $(call intermediates-dir-for,PACKAGING,depmod_recovery)
+    KERNEL_MODULE_MOUNTPOINT :=
 else ifeq ($(NEED_KERNEL_MODULE_SYSTEM),true)
-KERNEL_MODULES_OUT := $(TARGET_OUT)
-KERNEL_DEPMOD_STAGING_DIR := $(KERNEL_BUILD_OUT_PREFIX)$(call intermediates-dir-for,PACKAGING,depmod_system)
-KERNEL_MODULE_MOUNTPOINT := system
+    KERNEL_MODULES_INSTALL := $(TARGET_COPY_OUT_SYSTEM)
+    KERNEL_MODULES_OUT := $(TARGET_OUT)/lib/modules
+    KERNEL_DEPMOD_STAGING_DIR := $(call intermediates-dir-for,PACKAGING,depmod_system)
+    KERNEL_MODULE_MOUNTPOINT := system
 else
-KERNEL_MODULES_OUT := $(TARGET_OUT_VENDOR)
-KERNEL_DEPMOD_STAGING_DIR := $(KERNEL_BUILD_OUT_PREFIX)$(call intermediates-dir-for,PACKAGING,depmod_vendor)
-KERNEL_MODULE_MOUNTPOINT := vendor
+    KERNEL_MODULES_INSTALL := $(TARGET_COPY_OUT_VENDOR)
+    KERNEL_MODULES_OUT := $(TARGET_OUT_VENDOR)/lib/modules
+    KERNEL_DEPMOD_STAGING_DIR := $(call intermediates-dir-for,PACKAGING,depmod_vendor)
+    KERNEL_MODULE_MOUNTPOINT := vendor
 endif
 
 PATH_OVERRIDE := PATH=$(shell cat $(OUT_DIR)/.path_interposer_origpath):$$PATH
@@ -82,7 +85,8 @@ $(KERNEL_CONFIG): $(KERNEL_DEFCONFIG_SRC) $(KERNEL_ADDITIONAL_CONFIG_OUT)
 			$(KERNEL_SRC)/scripts/kconfig/merge_config.sh -m -O $(KERNEL_OUT) $(KERNEL_OUT)/.config $(KERNEL_SRC)/arch/$(KERNEL_ARCH)/configs/$(KERNEL_ADDITIONAL_CONFIG); \
 			$(PATH_OVERRIDE) $(MAKE_PREBUILT) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) KCONFIG_ALLCONFIG=$(KERNEL_OUT)/.config alldefconfig; fi
 
-$(TARGET_PREBUILT_INT_KERNEL): $(KERNEL_CONFIG)
+.PHONY: TARGET_KERNEL_BINARIES
+TARGET_KERNEL_BINARIES: $(KERNEL_CONFIG)
 	@echo "Building Kernel"
 	$(hide) rm -rf $(KERNEL_MODULES_OUT)
 	$(hide) mkdir -p $(KERNEL_MODULES_OUT)
@@ -92,12 +96,14 @@ $(TARGET_PREBUILT_INT_KERNEL): $(KERNEL_CONFIG)
 			echo "Building DTBs"; \
 			$(PATH_OVERRIDE) $(MAKE_PREBUILT) $(KERNEL_MAKE_FLAGS) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) dtbs; \
 		fi
-	$(hide) if grep -q '^CONFIG_MODULES=y' $(KERNEL_CONFIG); then \
+	$(hide) if grep -q '^CONFIG_MODULES=y' $(KERNEL_CONFIG) && grep -q '=m$$' $(KERNEL_CONFIG); then \
 			echo "Building Kernel Modules"; \
 			$(PATH_OVERRIDE) $(MAKE_PREBUILT) $(KERNEL_MAKE_FLAGS) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) modules; \
 		fi
 
-			$(call make-kernel-target,modules) || exit "$$?"; \
+.PHONY: INSTALLED_KERNEL_MODULES
+INSTALLED_KERNEL_MODULES: depmod-host
+	$(hide) if grep -q '^CONFIG_MODULES=y' $(KERNEL_CONFIG) && grep -q '=m$$' $(KERNEL_CONFIG); then \
 			echo "Installing Kernel Modules"; \
 			$(PATH_OVERRIDE) $(MAKE_PREBUILT) $(KERNEL_MAKE_FLAGS) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) INSTALL_MOD_PATH=../../$(KERNEL_MODULES_INSTALL) modules_install && \
 			mofile=$$(find $(KERNEL_MODULES_OUT) -type f -name modules.order) && \
@@ -112,6 +118,10 @@ $(TARGET_PREBUILT_INT_KERNEL): $(KERNEL_CONFIG)
 			$(DEPMOD) -b $(KERNEL_DEPMOD_STAGING_DIR) 0.0 && \
 			sed -e 's/\(.*modules.*\):/\/\1:/g' -e 's/ \([^ ]*modules[^ ]*\)/ \/\1/g' $(KERNEL_DEPMOD_STAGING_DIR)/lib/modules/0.0/modules.dep > $(KERNEL_MODULES_OUT)/modules.dep; \
 		fi
+
+$(TARGET_KERNEL_MODULES): TARGET_KERNEL_BINARIES
+
+$(TARGET_PREBUILT_INT_KERNEL): $(TARGET_KERNEL_MODULES)
 
 .PHONY: kerneltags
 kerneltags: $(KERNEL_CONFIG)
