@@ -63,6 +63,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/candy/config/permissions/backup.xml:system/etc/sysconfig/backup.xml
 
+# system mount
+PRODUCT_COPY_FILES += \
+    vendor/candy/prebuilt/common/bin/system-mount.sh:install/bin/system-mount.sh
+
 # Signature compatibility validation
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/bin/otasigcheck.sh:install/bin/otasigcheck.sh
