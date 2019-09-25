@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2017-2019 The LineageOS Project
+<!-- Copyright (C) 2019 The LineageOS Project
+     Copyright (C) 2019 Paranoid Android
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -13,8 +14,8 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-
 <permissions>
+
     <privapp-permissions package="com.android.camera2">
         <permission name="android.permission.BIND_WALLPAPER"/>
         <permission name="android.permission.PREVENT_POWER_KEY"/>
@@ -23,12 +24,6 @@
     <!-- Additional permissions on top of privapp-permissions-platform.xml -->
     <privapp-permissions package="com.android.dialer">
         <permission name="android.permission.CAPTURE_AUDIO_OUTPUT"/>
-    </privapp-permissions>
-
-    <privapp-permissions package="com.android.fmradio">
-        <permission name="android.permission.ACCESS_FM_RADIO"/>
-        <permission name="android.permission.MODIFY_AUDIO_ROUTING"/>
-        <permission name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
     </privapp-permissions>
 
     <!-- Additional permissions on top of privapp-permissions-platform.xml -->
@@ -45,23 +40,9 @@
     <!-- Additional permissions on top of privapp-permissions-platform.xml -->
     <privapp-permissions package="com.android.systemui">
         <permission name="android.permission.MODIFY_DAY_NIGHT_MODE"/>
-    </privapp-permissions>
-
-    <privapp-permissions package="org.lineageos.recorder">
-        <permission name="android.permission.CAPTURE_SECURE_VIDEO_OUTPUT"/>
-        <permission name="android.permission.CAPTURE_VIDEO_OUTPUT"/>
-    </privapp-permissions>
-
-    <privapp-permissions package="org.lineageos.snap">
-        <permission name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
-        <permission name="android.permission.PREVENT_POWER_KEY"/>
-        <permission name="android.permission.WRITE_MEDIA_STORAGE"/>
-    </privapp-permissions>
-
-    <privapp-permissions package="org.candy.updater">
-        <permission name="android.permission.ACCESS_CACHE_FILESYSTEM"/>
         <permission name="android.permission.REBOOT"/>
         <permission name="android.permission.RECOVERY"/>
+        <permission name="android.permission.SHUTDOWN"/>
     </privapp-permissions>
 
     <privapp-permissions package="com.qualcomm.qcrilmsgtunnel">
