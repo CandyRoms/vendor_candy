@@ -130,6 +130,10 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
     ro.storage_manager.enabled=true
 
+# Candy bootanimation
+PRODUCT_COPY_FILES += \
+    vendor/candy/prebuilt/common/bootanimation/bootanimation.zip:system/media/bootanimation.zip
+
 # easy way to extend to add more packages
 -include vendor/extra/product.mk
 
