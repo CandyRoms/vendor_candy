@@ -13,6 +13,10 @@ on post-fs-data
     # will not be touched by GmsCore.
     mkdir /data/candy_updates 0770 system cache
 
+    # Clear existing log and start the service
+    rm /cache/boot_log.txt
+    start logger
+
 on boot
     # I/O scheduler
     chown system system /sys/block/mmcblk0/queue/scheduler
@@ -61,6 +65,16 @@ on boot
     # Persistent properties (only created if persist exists)
     mkdir /persist/properties 0770 system system
 
+service logger /system/bin/logcat -b all -D -f /cache/boot_log.txt
+    class main
+    user root
+    group root system
+    disabled
+    oneshot
+
+on property:sys.boot_completed=1
+    # Stop the logger service
+    stop logger
 
 # adb over network
 on property:service.adb.tcp.port=5555
