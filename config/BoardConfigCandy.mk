@@ -10,4 +10,3 @@ include vendor/candy/config/BoardConfigQcom.mk
 endif
 
 include vendor/candy/config/BoardConfigSoong.mk
-
