@@ -15,7 +15,7 @@ type Product_variables struct {
     Needs_text_relocations struct {
         Cppflags []string
     }
-    Supports_hw_fde  struct {
+    Supports_hw_fde struct {
         Cflags []string
         Header_libs []string
         Shared_libs []string
