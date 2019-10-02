@@ -1,5 +1,6 @@
 # Required packages
 PRODUCT_PACKAGES += \
+    bootanimation.zip \
     Gallery2 \
     LatinIME \
     Launcher3 \
