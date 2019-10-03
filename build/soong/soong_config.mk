@@ -11,7 +11,6 @@ $(call add_json_bool, Uses_media_extensions,                $(TARGET_USES_MEDIA_
 $(call add_json_str_omitempty, Target_specific_headers_include_dir, $(TARGET_SPECIFIC_HEADER_PATH))
 $(call add_json_bool, Supports_hw_fde, $(filter true,$(TARGET_HW_DISK_ENCRYPTION)))
 $(call add_json_bool, Supports_hw_fde_perf, $(filter true,$(TARGET_HW_DISK_ENCRYPTION_PERF)))
-$(call add_json_bool, Supports_legacy_hw_fde, $(filter true,$(TARGET_LEGACY_HW_DISK_ENCRYPTION)))
 $(call add_json_bool, Should_wait_for_qsee, $(filter true,$(TARGET_KEYMASTER_WAIT_FOR_QSEE)))
 $(call add_json_val_default, Bootloader_message_offset, $(BOOTLOADER_MESSAGE_OFFSET), 0)
 $(call add_json_str_omitempty, Target_init_vendor_lib, $(TARGET_INIT_VENDOR_LIB))
@@ -36,3 +35,4 @@ $(call add_json_bool, Build_pixelgapps_gcam, $(filter true,$(TARGET_BUILD_PIXELG
 _json_contents := $(_json_contents)__SV_END
 
 _json_contents := $(_json_contents)    },$(newline)
+
