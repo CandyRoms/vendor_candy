@@ -1,4 +1,4 @@
-# Required packages
+	# Required packages
 PRODUCT_PACKAGES += \
     bootanimation.zip \
     Gallery2 \
@@ -24,24 +24,4 @@ PRODUCT_PACKAGES += \
     libprotobuf-cpp-full \
     librsjni
 
-    AmberTheme \
-    BlueTheme \
-    CyanTheme \
-    DeepOrangeTheme \
-    DeepPurpleTheme \
-    GreenTheme \
-    IndigoTheme \
-    LightBlueTheme \
-    LightGreenTheme \
-    LimeTheme \
-    OrangeTheme \
-    PinkTheme \
-    PixelBaseTheme \
-    PixelTheme \
-    PurpleTheme \
-    RedTheme \
-    StockBaseTheme \
-    StockFixedBaseTheme \
-    StockTheme \
-    YellowTheme
-
+-include vendor/candy/config/overlay.mk
