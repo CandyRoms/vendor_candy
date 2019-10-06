@@ -41,6 +41,10 @@ type Product_variables struct {
     Uses_generic_camera_parameter_library struct {
         Srcs []string
     }
+	Uses_qti_camera_device struct {
+		Cppflags []string
+		Shared_libs []string
+	}
     Uses_nvidia_enhancements struct {
         Cppflags []string
     }
@@ -89,6 +93,7 @@ type ProductVariables struct {
     Uses_generic_camera_parameter_library  *bool `json:",omitempty"`
     Uses_nvidia_enhancements  *bool `json:",omitempty"`
     Uses_qcom_bsp_legacy  *bool `json:",omitempty"`
+	Uses_qti_camera_device  *bool `json:",omitempty"`
 	Uses_qcom_um_family  *bool `json:",omitempty"`
 	Uses_qcom_um_3_18_family  *bool `json:",omitempty"`
 	Uses_qcom_um_4_4_family  *bool `json:",omitempty"`

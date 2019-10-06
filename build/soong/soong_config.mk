@@ -32,3 +32,4 @@ $(call add_json_bool, Uses_qcom_um_4_14_family, $(filter true,$(TARGET_USES_QCOM
 _json_contents := $(_json_contents)__SV_END
 
 _json_contents := $(_json_contents)    },$(newline)
+
