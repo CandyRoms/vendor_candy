@@ -243,10 +243,6 @@ ifeq ($(TARGET_KERNEL_CLANG_COMPILE),true)
     endif
 endif
 
-ifeq ($(BOARD_INCLUDE_DTB_IN_BOOTIMG),true)
-BOARD_PREBUILT_DTBIMAGE_DIR ?= $(PRODUCT_OUT)/dtbs/arch/$(KERNEL_ARCH)/boot/dts/**
-endif
-
 # Set use the full path to the make command
 KERNEL_MAKE_CMD := $(BUILD_TOP)/prebuilts/build-tools/$(HOST_OS)-x86/bin/make
 
