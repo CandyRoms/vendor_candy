@@ -32,6 +32,10 @@
         <permission name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
     </privapp-permissions>
 
+    <privapp-permissions package="com.android.gallery3d">
+        <permission name="android.permission.MODIFY_AUDIO_ROUTING"/>
+    </privapp-permissions>
+
     <privapp-permissions package="com.android.launcher3">
         <permission name="android.permission.MANAGE_ACTIVITY_STACKS"/>
         <permission name="android.permission.STATUS_BAR"/>
