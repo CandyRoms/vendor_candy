@@ -7,7 +7,8 @@ PRODUCT_PACKAGES += \
     LiveWallpapers \
     LiveWallpapersPicker \
     messaging \
-    ThemePicker
+    ThemePicker \
+    Updater
 
 # Filesystems tools
 PRODUCT_PACKAGES += \
