@@ -1,4 +1,4 @@
-	# Required packages
+# Required packages
 PRODUCT_PACKAGES += \
     bootanimation.zip \
     Gallery2 \
@@ -23,5 +23,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-full \
     librsjni
+
+# Device Personalization Services
+PRODUCT_PACKAGES += MatchmakerPrebuilt
 
 -include vendor/candy/config/overlay.mk
