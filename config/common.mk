@@ -149,9 +149,4 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/candy/overlay/common
 # Google sounds
 include vendor/candy/google/GoogleAudio.mk
 
-# Unlimited photo storage in Google Photos
-PRODUCT_COPY_FILES += \
-    vendor/candy/prebuilt/etc/sysconfig/pixel_2017_exclusive.xml:system/etc/sysconfig/pixel_2017_exclusive.xml
-
-
 $(call inherit-product-if-exists, vendor/extra/product.mk)
