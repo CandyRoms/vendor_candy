@@ -32,6 +32,7 @@ PRODUCT_PACKAGES += \
     FontArbutusSourceOverlay \
     FontArvoLatoOverlay \
     FontRubikRubikOverlay \
+    FontGoogleSansOverlay \
 
 -include vendor/candy/config/overlay.mk
 
