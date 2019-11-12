@@ -1,4 +1,4 @@
-# Required packages
+	# Required packages
 PRODUCT_PACKAGES += \
     bootanimation.zip \
     Gallery2 \
@@ -23,3 +23,5 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-full \
     librsjni
+
+-include vendor/candy/config/overlay.mk
