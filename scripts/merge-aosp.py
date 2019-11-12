@@ -18,7 +18,7 @@
 """
 Merge script for CandyRoms
 
- The source directory; this is automatically two folder up because the script
+ The source directory; this is automatically three folders up because the script
  is located in vendor/candy/scripts. Other ROMs will need to change this. The logic is
  as follows:
 
@@ -26,6 +26,17 @@ Merge script for CandyRoms
     This script may be symlinked by a manifest so we need to account for that
  2. Get the folder containing the script with dirname
  3. Move into the folder that is three folders above that one and print it
+
+Sample usage:
+
+* Open a terminal in vendor/candy/scripts, and run using this syntax:
+    'python merge-aosp.py 10.0.0_r14'
+
+* The script will remove local source and force sync so make sure any local changes are saved!
+
+* The end result is a list of repos that need merge conflicts resolved
+
+Have fun!
 
 """
 
@@ -37,8 +48,8 @@ import xml.etree.ElementTree as Et
 BASE_URL = "https://android.googlesource.com/platform/"
 BLACKLIST = glob.glob("hardware/qcom/*")
 WORKING_DIR = "{0}/../../..".format(os.path.dirname(os.path.realpath(__file__)))
-MANIFEST_NAME = "include.xml"
-REPOS_TO_MERGE = ["manifest"]
+MANIFEST_NAME = "candy.xml"
+REPOS_TO_MERGE = ["candy"]
 BRANCH_STR = "android-{}".format(sys.argv[1])
 REPOS_RESULTS = {}
 
