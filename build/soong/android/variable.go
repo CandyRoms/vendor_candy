@@ -83,7 +83,7 @@ type Product_variables struct {
         Header_libs []string
         Shared_libs []string
     }
-	Needs_netd_direct_connect_rule struct {
+    Needs_netd_direct_connect_rule struct {
 		Cflags []string
 	}
 	Build_pixelgapps struct {
