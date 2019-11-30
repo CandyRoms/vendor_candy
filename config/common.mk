@@ -67,11 +67,6 @@ PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/bin/backuptool_ab.functions:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.functions \
     vendor/candy/prebuilt/common/bin/backuptool_postinstall.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_postinstall.sh
 
-# system mount
-PRODUCT_COPY_FILES += \
-    vendor/candy/prebuilt/common/bin/system-mount.sh:install/bin/system-mount.sh \
-    vendor/candy/config/permissions/backup.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/backup.xml
-
 # Signature compatibility validation
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/bin/otasigcheck.sh:install/bin/otasigcheck.sh
