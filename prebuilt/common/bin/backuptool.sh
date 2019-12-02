@@ -17,7 +17,8 @@ preserve_addon_d() {
   if [ -d $S/addon.d/ ]; then
     mkdir -p /tmp/addon.d/
     cp -a $S/addon.d/* /tmp/addon.d/
-
+    chmod 755 /tmp/addon.d/*.sh
+  fi
     # Discard any scripts that aren't at least our version level
     for f in /postinstall/tmp/addon.d/*sh; do
       SCRIPT_VERSION=$(grep "^# ADDOND_VERSION=" $f | cut -d= -f2)
@@ -30,7 +31,6 @@ preserve_addon_d() {
     done
 
     chmod 755 /tmp/addon.d/*.sh
-  fi
 }
 
 # Restore $S/addon.d from /tmp/addon.d
@@ -45,11 +45,13 @@ restore_addon_d() {
 # Proceed only if /system is the expected major and minor version
 check_prereq() {
 # If there is no build.prop file the partition is probably empty.
-if [ ! -r $S/build.prop ]; then
+  if [ ! -r $S/build.prop ]; then
     return 0
-fi
-
-
+  fi
+  if [ ! grep -q "^ro.candy.backuptool.version=$V.*" $S/etc/prop.default $S/build.prop ]; then
+    echo "Not backing up files from incompatible version: $V"
+    return 0
+  fi
 return 1
 }
 

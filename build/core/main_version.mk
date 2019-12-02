@@ -45,5 +45,6 @@ ADDITIONAL_BUILD_PROPERTIES += \
     ro.candy.build.date=$(CANDY_DATE) \
     ro.candy.buildtype=$(CANDY_BUILD_TYPE) \
     ro.candy.fingerprint=$(ROM_FINGERPRINT) \
+    ro.candy.backuptool.version=$(PRODUCT_VERSION_MAJOR) \
     ro.candy.version=$(CANDY_VERSION) \
     ro.modversion=$(CANDY_VERSION)
