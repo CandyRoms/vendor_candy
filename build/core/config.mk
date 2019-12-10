@@ -17,17 +17,32 @@ ifneq ($(TARGET_BUILD_VARIANT),user)
 SELINUX_IGNORE_NEVERALLOWS := true
 endif
 
+# Default to AOSP RIL
+$(call project-set-path-variant,ril,TARGET_RIL_VARIANT,hardware/ril)
+
+#PRODUCT_SOONG_NAMESPACES += \
+#    $(call project-path-for,ril)/librilutils
+
 BUILD_RRO_SYSTEM_PACKAGE := $(TOP)/vendor/candy/build/core/system_rro.mk
 
-# Weather
-PRODUCT_COPY_FILES += \
-    vendor/candy/prebuilt/etc/permissions/com.android.providers.weather.xml:system/etc/permissions/com.android.providers.weather.xml \
-    vendor/candy/prebuilt/etc/default-permissions/com.android.providers.weather.xml:system/etc/default-permissions/com.android.providers.weather.xml
+# Include board/platform macros
+include vendor/candy/build/core/utils.mk
 
-# Lawnchair
-PRODUCT_COPY_FILES += \
-    vendor/candy/prebuilt/common/etc/permissions/privapp-permissions-lawnchair.xml:system/etc/permissions/privapp-permissions-lawnchair.xml \
-    vendor/candy/prebuilt/common/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml:system/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml
+# Include vendor platform definitions
+include vendor/candy/build/core/vendor/*.mk
 
 # Rules for QCOM targets
 include $(TOPDIR)vendor/candy/build/core/qcom_target.mk
+
+# Filter out duplicates
+define uniq
+$(if $1,$(firstword $1) $(call uniq,$(filter-out $(firstword $1),$1)))
+endef
+
+#define uniq__dx
+#  $(eval seen :=)
+#  $(foreach _,$1,$(if $(filter $_,${seen}),,$(eval seen += $_)))
+#  ${seen}
+#endef
+
+#PRODUCT_BOOT_JARS := $(call uniq__dx,$(subst $(space), ,$(strip $(PRODUCT_BOOT_JARS))))
