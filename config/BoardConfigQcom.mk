@@ -30,6 +30,12 @@ ifneq ($(filter msm7x27a msm7x30 msm8660 msm8960,$(TARGET_BOARD_PLATFORM)),)
     endif
 endif
 
+ifneq ($(TARGET_USES_PREBUILT_CAMERA_SERVICE), true)
+PRODUCT_SOONG_NAMESPACES += \
+    frameworks/av/camera/cameraserver \
+    frameworks/av/services/camera/libcameraservice
+endif
+
 # Enable media extensions
 TARGET_USES_MEDIA_EXTENSIONS := true
 
