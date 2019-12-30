@@ -94,3 +94,20 @@ endif
 
 PRODUCT_SOONG_NAMESPACES += \
     hardware/qcom-caf/$(QCOM_HARDWARE_VARIANT)
+
+ifneq ($(TARGET_USE_AOSP_SURFACEFLINGER), true)
+    # Required for frameworks/native
+    ifeq ($(QCOM_HARDWARE_VARIANT),msm8996)
+        TARGET_USES_QCOM_UM_FAMILY := true
+        TARGET_USES_QCOM_UM_3_18_FAMILY := true
+    else ifeq ($(QCOM_HARDWARE_VARIANT),msm8998)
+        TARGET_USES_QCOM_UM_FAMILY := true
+        TARGET_USES_QCOM_UM_4_4_FAMILY := true
+    else ifeq ($(QCOM_HARDWARE_VARIANT),sdm845)
+        TARGET_USES_QCOM_UM_FAMILY := true
+        TARGET_USES_QCOM_UM_4_9_FAMILY := true
+    else ifeq ($(QCOM_HARDWARE_VARIANT),sm8150)
+        TARGET_USES_QCOM_UM_FAMILY := true
+        TARGET_USES_QCOM_UM_4_14_FAMILY := true
+    endif
+endif

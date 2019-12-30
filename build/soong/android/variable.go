@@ -63,6 +63,26 @@ type Product_variables struct {
         Cflags []string
         Cppflags []string
     }
+    Uses_qcom_um_family struct {
+        Cflags []string
+        Shared_libs []string
+    }
+    Uses_qcom_um_3_18_family struct {
+        Header_libs []string
+        Shared_libs []string
+    }
+    Uses_qcom_um_4_4_family struct {
+        Header_libs []string
+        Shared_libs []string
+    }
+    Uses_qcom_um_4_9_family struct {
+        Header_libs []string
+        Shared_libs []string
+    }
+    Uses_qcom_um_4_14_family struct {
+        Header_libs []string
+        Shared_libs []string
+    }
 	Needs_netd_direct_connect_rule struct {
 		Cflags []string
 	}
