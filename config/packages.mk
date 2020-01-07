@@ -37,6 +37,6 @@ PRODUCT_PACKAGES += \
 -include vendor/candy/config/overlay.mk
 
 # Include PixelGApps in build
-ifneq ($(TARGET_BUILD_PIXELGAPPS), )
+ifeq ($(TARGET_BUILD_PIXELGAPPS),true)
 $(call inherit-product-if-exists, vendor/pixelgapps/pixel-gapps.mk)
 endif
