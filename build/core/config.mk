@@ -17,12 +17,6 @@ ifneq ($(TARGET_BUILD_VARIANT),user)
 SELINUX_IGNORE_NEVERALLOWS := true
 endif
 
-# Default to AOSP RIL
-$(call project-set-path-variant,ril,TARGET_RIL_VARIANT,hardware/ril)
-
-#PRODUCT_SOONG_NAMESPACES += \
-#    $(call project-path-for,ril)/librilutils
-
 BUILD_RRO_SYSTEM_PACKAGE := $(TOP)/vendor/candy/build/core/system_rro.mk
 
 # Include board/platform macros
