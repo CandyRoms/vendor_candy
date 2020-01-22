@@ -85,8 +85,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/etc/init.d/50selinuxrelabel:$(TARGET_COPY_OUT_SYSTEM)/etc/init.d/50selinuxrelabel
 
-# Copy all Lineage-specific init rc files
-$(foreach f,$(wildcard vendor/lineage/prebuilt/common/etc/init/*.rc),\
+# Copy all Candy-specific init rc files
+$(foreach f,$(wildcard vendor/candy/prebuilt/common/etc/init/*.rc),\
 	$(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_SYSTEM)/etc/init/$(notdir $f)))
 
 # Enable SIP+VoIP on all targets
