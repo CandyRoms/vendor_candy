@@ -105,16 +105,6 @@ PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
 PRODUCT_COPY_FILES += \
     vendor/candy/config/permissions/candy-power-whitelist.xml:system/etc/sysconfig/candy-power-whitelist.xml
 
-# LatinIME gesture typing
-ifeq ($(TARGET_ARCH),arm64)
-PRODUCT_COPY_FILES += \
-    vendor/candy/prebuilt/common/lib64/libjni_latinime.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libjni_latinime.so \
-    vendor/candy/prebuilt/common/lib64/libjni_latinimegoogle.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libjni_latinimegoogle.so
-else
-PRODUCT_COPY_FILES += \
-    vendor/candy/prebuilt/common/lib/libjni_latinime.so:$(TARGET_COPY_OUT_SYSTEM)/lib/libjni_latinime.so \
-    vendor/candy/prebuilt/common/lib/libjni_latinimegoogle.so:$(TARGET_COPY_OUT_SYSTEM)/lib/libjni_latinimegoogle.so
-endif
 
 # Weather client
 #PRODUCT_COPY_FILES += \
