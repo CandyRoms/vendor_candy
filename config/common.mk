@@ -76,9 +76,9 @@ PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/etc/init.local.rc:root/init.local.rc \
     vendor/candy/prebuilt/common/etc/init.candy.rc:root/init.candy.rc
 
-# SELinux filesystem labels
-PRODUCT_COPY_FILES += \
-    vendor/candy/prebuilt/common/etc/init.d/50selinuxrelabel:$(TARGET_COPY_OUT_SYSTEM)/etc/init.d/50selinuxrelabel
+# Candy fonts
+PRODUCT_PACKAGES += \
+    candy-fonts
 
 # Copy all Candy-specific init rc files
 $(foreach f,$(wildcard vendor/candy/prebuilt/common/etc/init/*.rc),\
