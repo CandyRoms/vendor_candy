@@ -37,6 +37,3 @@ PRODUCT_PACKAGES += \
 # Cutout control overlay
 PRODUCT_PACKAGES += \
     NoCutoutOverlay
-
--include vendor/candy/config/overlay.mk
-
