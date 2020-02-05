@@ -58,8 +58,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
     vendor/candy/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/candy/prebuilt/common/bin/50-candy.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-candy.sh \
-    vendor/candy/prebuilt/common/bin/blacklist:$(TARGET_COPY_OUT_SYSTEM)/addon.d/blacklist
+    vendor/candy/prebuilt/common/bin/50-candy.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-candy.sh
 
 # Backup stuff
 PRODUCT_COPY_FILES += \
