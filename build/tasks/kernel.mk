@@ -284,6 +284,8 @@ $(BOARD_PREBUILT_DTBOIMAGE):
 	$(call make-dtbo-target,dtbo.img)
 endif # TARGET_NEEDS_DTBOIMAGE
 
+endif # FULL_KERNEL_BUILD
+
 ## Install it
 
 ifeq ($(NEEDS_KERNEL_COPY),true)
@@ -295,14 +297,8 @@ $(file) : $(KERNEL_BIN) | $(ACP)
 ALL_PREBUILT += $(INSTALLED_KERNEL_TARGET)
 endif
 
-ifeq ($(TARGET_NEEDS_DTBOIMAGE),true)
-file := $(INSTALLED_DTBOIMAGE_TARGET)
-ALL_PREBUILT += $(file)
-$(file) : $(TARGET_PREBUILT_DTBO) | $(ACP)
-	$(transform-prebuilt-to-target)
-
+INSTALLED_DTBOIMAGE_TARGET := $(PRODUCT_OUT)/dtbo.img
 ALL_PREBUILT += $(INSTALLED_DTBOIMAGE_TARGET)
-endif
 
 .PHONY: kernel
 kernel: $(INSTALLED_KERNEL_TARGET)
