@@ -6,6 +6,9 @@ type Product_variables struct {
     Bootloader_message_offset struct {
         Cflags []string
     }
+	Device_support_wait_for_qsee struct {
+		Cflags []string
+	}
     Has_legacy_camera_hal1 struct {
         Cflags []string
         Overrides []string
@@ -75,7 +78,6 @@ type ProductVariables struct {
     Additional_gralloc_10_usage_bits  *string `json:",omitempty"`
 	Apply_msm8974_1440p_egl_workaround  *bool `json:",omitempty"`
     Bootloader_message_offset  *int `json:",omitempty"`
-    Device_support_wait_for_qsee  *bool `json:",omitempty"`
     Has_legacy_camera_hal1  *bool `json:",omitempty"`
     Uses_media_extensions   *bool `json:",omitempty"`
     Needs_text_relocations  *bool `json:",omitempty"`

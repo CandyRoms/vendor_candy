@@ -60,9 +60,8 @@ PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/bin/50-candy.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-candy.sh \
     vendor/candy/prebuilt/common/bin/blacklist:$(TARGET_COPY_OUT_SYSTEM)/addon.d/blacklist
 
-# Backup services whitelist
+# Backup stuff
 PRODUCT_COPY_FILES += \
-    vendor/candy/config/permissions/backup.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/backup.xml \
     vendor/candy/prebuilt/common/bin/backuptool_ab.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.sh \
     vendor/candy/prebuilt/common/bin/backuptool_ab.functions:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.functions \
     vendor/candy/prebuilt/common/bin/backuptool_postinstall.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_postinstall.sh
@@ -70,11 +69,6 @@ PRODUCT_COPY_FILES += \
 # Signature compatibility validation
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/bin/otasigcheck.sh:install/bin/otasigcheck.sh
-
-# Candy-specific init file
-PRODUCT_COPY_FILES += \
-    vendor/candy/prebuilt/common/etc/init.local.rc:root/init.local.rc \
-    vendor/candy/prebuilt/common/etc/init.candy.rc:root/init.candy.rc
 
 # Candy fonts
 PRODUCT_PACKAGES += \
@@ -88,36 +82,34 @@ $(foreach f,$(wildcard vendor/candy/prebuilt/common/etc/init/*.rc),\
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.software.sip.voip.xml
 
-# Don't export PS1 in /system/etc/mkshrc.
+# Common prebuilt permissions
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/etc/sysctl.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/sysctl.conf \
-    frameworks/base/data/keyboards/Vendor_045e_Product_028e.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Vendor_045e_Product_0719.kl \
-    frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/handheld_core_hardware.xml \
-    vendor/candy/config/permissions/privapp-permissions-candy-system.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-candy.xml \
-    vendor/candy/config/permissions/privapp-permissions-candy-product.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-candy.xml \
-    vendor/candy/config/permissions/privapp-permissions-google.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-google.xml \
-    vendor/candy/config/permissions/privapp-permissions-google-product.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-google.xml
+    vendor/candy/prebuilt/common/etc/permissions/privapp-permissions-candy-system.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-candy.xml \
+    vendor/candy/prebuilt/common/etc/permissions/privapp-permissions-candy-product.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-candy.xml \
+    vendor/candy/prebuilt/common/etc/permissions/privapp-permissions-google.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-google.xml \
+    vendor/candy/prebuilt/common/etc/permissions/privapp-permissions-lawnchair.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-lawnchair.xml \
+    vendor/candy/prebuilt/common/etc/permissions/com.android.providers.weather.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/com.android.providers.weather.xml
 
 # Do not include art debug targets
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
 
-# Power whitelist
+# Sysconfigs
 PRODUCT_COPY_FILES += \
-    vendor/candy/config/permissions/candy-power-whitelist.xml:system/etc/sysconfig/candy-power-whitelist.xml
-
-# Weather client
-#PRODUCT_COPY_FILES += \
-#    vendor/candy/prebuilt/common/etc/permissions/com.android.providers.weather.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/com.android.providers.weather.xml \
-#    vendor/candy/prebuilt/common/etc/default-permissions/com.android.providers.weather.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/default-permissions/com.android.providers.weather.xml
+    vendor/candy/prebuilt/common/etc/sysconfig/candy-power-whitelist.xml:system/etc/sysconfig/candy-power-whitelist.xml \
+    vendor/candy/prebuilt/common/etc/sysconfig/dialer_experience.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/dialer_experience.xml \
+    vendor/candy/prebuilt/common/etc/sysconfig/backup.xml:system/etc/sysconfig/backup.xml
 
 # Recommend using the non debug dexpreopter
 USE_DEX2OAT_DEBUG := false
+
 # Disable vendor restrictions
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
-## Don't compile SystemUITests
+# Don't compile SystemUITests
 EXCLUDE_SYSTEMUI_TESTS := true
 
+# Charger images
 PRODUCT_PACKAGES += \
     charger_res_images
 
@@ -128,9 +120,6 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
 # Storage manager
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
     ro.storage_manager.enabled=true
-
-# easy way to extend to add more packages
--include vendor/extra/product.mk
 
 # GSans font
 include vendor/candy/config/fonts.mk
@@ -143,4 +132,5 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/candy/overlay/common
 # Google sounds
 include vendor/candy/google/GoogleAudio.mk
 
+# easy way to extend to add more packages
 $(call inherit-product-if-exists, vendor/extra/product.mk)
