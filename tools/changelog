@@ -16,22 +16,19 @@ touch $changelog
 # Print something to build output
 echo ${bldppl}"Generating changelog..."${txtrst}
 
-echo '~~~~~~~~~~~~~~~~~~ ' >> $changelog;
-echo 'CANDYROMS CHANGE LOG ' >> $changelog;
-echo '~~~~~~~~~~~~~~~~~~ ' >> $changelog;
+echo '🍬🍫🍬🍭🍬 CANDYROMS CHANGE LOG 🍬🍭🍬🍫🍬' >> $changelog;
+
 echo '' >> $changelog;
 
 for i in $(seq 7);
 do
-export After_Date=`date --date="$i days ago" +%m-%d-%Y`
+export After_Date=`date --date="$i days ago" +%d-%b-%Y`
 k=$(expr $i - 1)
-	export Until_Date=`date --date="$k days ago" +%m-%d-%Y`
+	export Until_Date=`date --date="$k days ago" +%d-%b-%Y`
 
 	# Line with after --- until was too long for a small ListView
-    echo '===========================' >> $changelog;
-	echo  "       "$Until_Date         >> $changelog;
-    echo '===========================' >> $changelog;
-	echo >> $changelog;
+	echo '🍬🍫🍭 '$Until_Date' 🍭🍫🍬'         >> $changelog;
+
 
 	# Cycle through every repo to find commits between 2 dates
 	repo forall -pc 'git log --oneline --after=$After_Date --until=$Until_Date' >> $changelog
