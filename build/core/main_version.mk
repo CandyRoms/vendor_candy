@@ -17,7 +17,7 @@
 # Versioning System
 # candy first version.
 PRODUCT_VERSION_MAJOR = 10
-PRODUCT_VERSION_MINOR = Beta
+PRODUCT_VERSION_MINOR = Stable
 PRODUCT_VERSION_MAINTENANCE = 1.0
 CANDY_DATE := $(shell date +"%Y%m%d-%H%M")
 
