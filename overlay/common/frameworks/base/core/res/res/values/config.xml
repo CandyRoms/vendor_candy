@@ -42,9 +42,6 @@
         <item>com.google.android.gms</item>
     </string-array>
 
-    <string name="config_mms_user_agent">"Android-Mms/2.0"</string>
-    <string name="config_mms_user_agent_profile_url">http://www.google.com/oha/rdf/ua-profile-kila.xml</string>
-
     <!-- Disable stock OTA components if installed -->
     <string-array name="config_disabledComponents" translatable="false">
         <item>com.google.android.gsf/com.google.android.gsf.update.SystemUpdateActivity</item>
