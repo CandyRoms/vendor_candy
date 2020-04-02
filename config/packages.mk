@@ -3,9 +3,9 @@ PRODUCT_PACKAGES += \
     bootanimation.zip \
     Gallery2 \
     LatinIME \
-    Launcher3 \
     LiveWallpapers \
     LiveWallpapersPicker \
+    Lawnchair \
     messaging \
     ThemePicker \
     Updater
