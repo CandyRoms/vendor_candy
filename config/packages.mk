@@ -63,3 +63,6 @@ PRODUCT_PACKAGES += \
 # Include Google Sounds for all
 PRODUCT_PACKAGES += \
    SoundPickerPrebuilt
+
+# Include Candy theme files
+include vendor/candy/themes/backgrounds/themes.mk
