@@ -2,40 +2,38 @@
 
 # Exports
 
-#. $ANDROID_BUILD_TOP/vendor/candy/tools/colors
+. vendor/candy/tools/colors
 
-export changelog=changelog.txt
+export Changelog=Changelog.txt
 
-if [ -f $changelog ];
+if [ -f $Changelog ];
 then
-	rm -f $changelog
+	rm -f $Changelog
 fi
 
-touch $changelog
+touch $Changelog
 
 # Print something to build output
-echo ${bldppl}"Generating changelog..."${txtrst}
+echo ${bldppl}"Generating Changelog..."${txtrst}
 
-echo '🍬🍫🍬🍭🍬 CANDYROMS CHANGE LOG 🍬🍭🍬🍫🍬' >> $changelog;
+echo '🍫🍬🍭    CandyRoms Change Log    🍭🍬🍫' >> $Changelog;
+echo >> $Changelog;
 
-echo '' >> $changelog;
-
-for i in $(seq 7);
+for i in $(seq 14);
 do
 export After_Date=`date --date="$i days ago" +%d-%b-%Y`
 k=$(expr $i - 1)
 	export Until_Date=`date --date="$k days ago" +%d-%b-%Y`
 
 	# Line with after --- until was too long for a small ListView
-	echo '🍬🍫🍭 '$Until_Date' 🍭🍫🍬'         >> $changelog;
+	echo '🍬 '$Until_Date' 🍬' >> $Changelog;
+    CURRENT_PATH="$(realpath `pwd`)"
 
-
-	# Cycle through every repo to find commits between 2 dates
-	repo forall -pc 'git log --oneline --after=$After_Date --until=$Until_Date' >> $changelog
-	echo >> $changelog;
+    repo forall -c "GIT_LOG=\`git log --oneline --after=$After_Date --until=$Until_Date --abbrev-commit --abbrev=7 --pretty=tformat:\"%h  %s"\` ; if [ ! -z \"\$GIT_LOG\" ]; then printf  '\n* '; realpath \`pwd\` | sed 's|^$CURRENT_PATH/||' ; echo \"\$GIT_LOG\"; fi" >> $Changelog
+	echo >> $Changelog;
 done
 
 sed -i 's/project/   */g' $changelog
 
-cp $changelog $OUT/system/etc/
-rm $changelog
+cp $Changelog $OUT/system/etc/
+rm $Changelog
