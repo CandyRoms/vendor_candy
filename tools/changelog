@@ -16,7 +16,7 @@ touch $Changelog
 # Print something to build output
 echo ${bldppl}"Generating Changelog..."${txtrst}
 
-echo '🍫🍬🍭    CHANGE LOG    🍭🍬🍫' >> $Changelog;
+echo "===== CANDYROMS CHANGE LOG =====" >> $Changelog;
 echo >> $Changelog;
 
 for i in $(seq 14);
@@ -27,8 +27,8 @@ k=$(expr $i - 1)
 
 	# Line with after --- until was too long for a small ListView
 	echo '🍬 '$Until_Date' 🍬' >> $Changelog;
-    CURRENT_PATH="$(realpath `pwd`)";
-    repo forall -c "GIT_LOG=\`git log --oneline --after=$After_Date --until=$Until_Date --abbrev-commit --abbrev=7 --pretty=tformat:\"%h  %s"\` ; if [ ! -z \"\$GIT_LOG\" ]; then printf  '\n* '; realpath \`pwd\` | sed 's|^$CURRENT_PATH/||' ; echo \"\$GIT_LOG\"; fi" >> $Changelog
+    CURRENT_PATH="$(realpath `pwd`)"
+    repo forall -c "GIT_LOG=\`git log --oneline --after=$After_Date --until=$Until_Date --abbrev-commit --abbrev=7 --pretty=format:\"%h %s [%an]\"\` ; if [ ! -z \"\$GIT_LOG\" ]; then printf '\n* '; realpath \`pwd\` | sed 's|^$CURRENT_PATH/||' ; echo \"\$GIT_LOG\"; fi" >> $Changelog
 	echo >> $Changelog;
 done
 
