@@ -34,6 +34,9 @@ type Product_variables struct {
     Supports_hw_fde_perf struct {
         Cflags []string
     }
+	Recovery_skip_ev_rel_input struct {
+		Cflags []string
+	}
 	Should_wait_for_qsee struct {
 		Cflags []string
 	}
@@ -106,6 +109,7 @@ type ProductVariables struct {
     Needs_text_relocations  *bool `json:",omitempty"`
     Target_specific_headers_include_dir  *string `json:",omitempty"`
     Specific_camera_parameter_library  *string `json:",omitempty"`
+	Recovery_skip_ev_rel_input  *bool `json:",omitempty"`
 	Supports_extended_compress_format  *bool `json:",omitempty"`
     Supports_hw_fde  *bool `json:",omitempty"`
     Supports_hw_fde_perf  *bool `json:",omitempty"`
