@@ -14,7 +14,8 @@ EXPORT_TO_SOONG := \
     TARGET_KERNEL_CONFIG \
     TARGET_KERNEL_SOURCE \
     MAKE_PREBUILT \
-    ORIG_PATH
+    ORIG_PATH \
+    TARGET_KERNEL_HEADERS
 
 # Setup SOONG_CONFIG_* vars to export the vars listed above.
 # Documentation here:

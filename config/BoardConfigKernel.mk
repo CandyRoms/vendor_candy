@@ -56,6 +56,8 @@ KERNEL_HEADERS_INSTALL_DIR := $(KERNEL_OUT)/usr
 KERNEL_HEADERS_INSTALL_DEPS := $(KERNEL_OUT)/.headers_install_deps
 
 GCC_PREBUILTS := $(BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86
+TARGET_KERNEL_HEADERS ?= $(TARGET_KERNEL_SOURCE)
+
 # arm64 toolchain
 KERNEL_TOOLCHAIN_arm64 := $(GCC_PREBUILTS)/aarch64/aarch64-linux-android-4.9/bin
 KERNEL_TOOLCHAIN_PREFIX_arm64 := aarch64-linux-android-
