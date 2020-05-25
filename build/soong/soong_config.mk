@@ -12,6 +12,7 @@ $(call add_json_bool, Has_legacy_camera_hal1,               $(filter true,$(TARG
 $(call add_json_bool, Needs_text_relocations,               $(filter true,$(TARGET_NEEDS_PLATFORM_TEXT_RELOCTIONS)))
 $(call add_json_bool, Uses_media_extensions,                $(TARGET_USES_MEDIA_EXTENSIONS))
 $(call add_json_str_omitempty, Target_specific_headers_include_dir, $(TARGET_SPECIFIC_HEADER_PATH))
+$(call add_json_str_omitempty, Qcom_um_soong_namespace, $(if $(filter $(UM_PLATFORMS),$(TARGET_BOARD_PLATFORM)),$(QCOM_SOONG_NAMESPACE),))
 $(call add_json_bool, Recovery_skip_ev_rel_input, $(filter true,$(TARGET_RECOVERY_SKIP_EV_REL_INPUT)))
 $(call add_json_bool, Supports_extended_compress_format, $(filter true,$(AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT)))
 $(call add_json_bool, Supports_hw_fde, $(filter true,$(TARGET_HW_DISK_ENCRYPTION)))
