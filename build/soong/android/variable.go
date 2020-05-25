@@ -95,6 +95,10 @@ type Product_variables struct {
 	Build_pixelgapps struct {
 		Cflags []string
 	}
+	Target_surfaceflinger_fod_lib struct {
+		Cflags []string
+		Whole_static_libs []string
+	}
 	Build_pixelgapps_gcam struct {
 		Cflags []string
 	}
@@ -122,6 +126,7 @@ type ProductVariables struct {
     Uses_qcom_bsp_legacy  *bool `json:",omitempty"`
 	Uses_metadata_as_fde_key  *bool `json:",omitempty"`
 	Target_ignores_ftp_pptp_conntrack_failure  *bool `json:",omitempty"`
+	Target_surfaceflinger_fod_lib  *string `json:",omitempty"`
 	Uses_qti_camera_device  *bool `json:",omitempty"`
 	Needs_netd_direct_connect_rule  *bool `json:",omitempty"`
     Build_pixelgapps  *bool `json:",omitempty"`
