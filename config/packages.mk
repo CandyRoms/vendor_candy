@@ -1,3 +1,4 @@
 # Required packages
 PRODUCT_PACKAGES += \
-    ThemePicker
+    ThemePicker \
+    TouchGestures
