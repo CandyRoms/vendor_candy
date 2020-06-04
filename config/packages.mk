@@ -5,8 +5,8 @@ PRODUCT_PACKAGES += \
     Gallery2 \
     LatinIME \
     LivePicker \
+    Launcher3 \
     LiveWallpapersPicker \
-    Lawnchair \
     messaging \
     Updater
 
