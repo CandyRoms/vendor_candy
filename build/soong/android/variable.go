@@ -86,6 +86,9 @@ type Product_variables struct {
     Needs_netd_direct_connect_rule struct {
 		Cflags []string
 	}
+	Target_ignores_ftp_pptp_conntrack_failure struct {
+		Cppflags []string
+	}
 	Build_pixelgapps struct {
 		Cflags []string
 	}
@@ -114,6 +117,7 @@ type ProductVariables struct {
     Uses_nvidia_enhancements  *bool `json:",omitempty"`
     Uses_qcom_bsp_legacy  *bool `json:",omitempty"`
 	Uses_metadata_as_fde_key  *bool `json:",omitempty"`
+	Target_ignores_ftp_pptp_conntrack_failure  *bool `json:",omitempty"`
 	Uses_qti_camera_device  *bool `json:",omitempty"`
 	Needs_netd_direct_connect_rule  *bool `json:",omitempty"`
     Build_pixelgapps  *bool `json:",omitempty"`
