@@ -53,6 +53,10 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 endif
 endif
 
+# Some permissions
+PRODUCT_COPY_FILES += \
+    vendor/candy/config/permissions/privapp-permissions-lineagehw.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-lineagehw.xml
+
 # candy-specific init rc file
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/etc/init/init.candy-system_ext.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.candy-system_ext.rc
