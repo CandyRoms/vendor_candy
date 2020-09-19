@@ -64,6 +64,12 @@ ifneq ($(USE_DEVICE_SPECIFIC_DATA_IPA_CFG_MGR),true)
     PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/data-ipa-cfg-mgr
 endif
 
+ifeq ($(TARGET_USE_QTI_BT_STACK),true)
+PRODUCT_SOONG_NAMESPACES += \
+    vendor/qcom/opensource/commonsys/packages/apps/Bluetooth \
+    vendor/qcom/opensource/commonsys/system/bt/conf
+endif #TARGET_USE_QTI_BT_STACK
+
 SOONG_CONFIG_NAMESPACES += DATASERVICES
 SOONG_CONFIG_DATASERVICES += USES_PRE_UPLINK_FEATURES_NETMGRD
 SOONG_CONFIG_DATASERVICES_USES_PRE_UPLINK_FEATURES_NETMGRD := $(TARGET_USES_PRE_UPLINK_FEATURES_NETMGRD)
