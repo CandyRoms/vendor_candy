@@ -163,17 +163,25 @@ def add_to_manifest(repos, fallback_branch=None):
 
     for repo in repos:
         repo_name = repo['repository']
-        repo_path = repo['target_path']
-	if 'branch' in repo:
-	    repo_branch=repo['branch']
-	else:
-	    repo_branch=custom_default_revision
-	if 'remote' in repo:
-	    repo_remote=repo['remote']
-	elif "/" not in repo_name:
-	    repo_remote=org_manifest
-	elif "/" in repo_name:
-	    repo_remote="github"
+
+        if 'target_path' in repo:
+            repo_path = repo['target_path']
+        else: # If path isn't set, its the same as name
+            repo_path = repo_name.split('/')[-1]
+
+        if 'branch' in repo:
+            repo_branch = repo['branch']
+        elif fallback_branch:
+            repo_branch = fallback_branch
+        else:
+            repo_branch = custom_default_revision
+
+        if 'remote' in repo:
+            repo_remote=repo['remote']
+        elif "/" not in repo_name:
+            repo_remote=org_manifest
+        elif "/" in repo_name:
+            repo_remote="github"
 
         if is_in_manifest(repo_path):
             print('already exists: %s' % repo_path)
@@ -234,8 +242,9 @@ def fetch_dependencies(repo_path, fallback_branch=None):
     for dependency in dependencies:
         if not is_in_manifest(dependency['target_path']):
             if not dependency.get('branch'):
-                dependency['branch'] = (get_revision() or
-                                        custom_default_revision)
+                dependency['branch'] = (
+                    fallback_branch or get_revision() or custom_default_revision
+                )
 
             fetch_list.append(dependency)
             syncable_repos.append(dependency['target_path'])
