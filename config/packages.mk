@@ -1,6 +1,7 @@
 # Required packages
 PRODUCT_PACKAGES += \
     bootanimation.zip \
+    CandyWrappers \
     Gallery2 \
     LatinIME \
     LiveWallpapers \
