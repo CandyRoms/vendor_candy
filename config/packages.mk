@@ -8,7 +8,6 @@ PRODUCT_PACKAGES += \
     LiveWallpapersPicker \
     Lawnchair \
     messaging \
-    ThemePicker \
     Updater
 
 # Tools-Candy
@@ -66,3 +65,10 @@ PRODUCT_PACKAGES += \
 
 # Include Candy theme files
 include vendor/candy/themes/backgrounds/themes.mk
+
+# Pixel Wallpapers
+PRODUCT_PACKAGES += \
+   PixelThemesStub2019 \
+   NexusWallpapersStubPrebuilt2019 \
+   PixelLiveWallpaperPrebuilt \
+   WallpaperPickerGoogleRelease
