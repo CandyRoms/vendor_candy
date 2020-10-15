@@ -4,7 +4,7 @@ PRODUCT_PACKAGES += \
     CandyWrappers \
     Gallery2 \
     LatinIME \
-    LiveWallpapers \
+    LivePicker \
     LiveWallpapersPicker \
     Lawnchair \
     messaging \
