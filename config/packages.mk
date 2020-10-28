@@ -45,9 +45,6 @@ PRODUCT_PACKAGES += \
     libprotobuf-cpp-full \
     librsjni
 
-# Device Personalization Services
-PRODUCT_PACKAGES += MatchmakerPrebuilt
-
 # Fonts
 PRODUCT_PACKAGES += \
     FontArbutusSourceOverlay \
@@ -69,6 +66,4 @@ include vendor/candy/themes/backgrounds/themes.mk
 # Pixel Wallpapers
 PRODUCT_PACKAGES += \
    PixelThemesStub2019 \
-   NexusWallpapersStubPrebuilt2019 \
-   PixelLiveWallpaperPrebuilt \
-   WallpaperPickerGoogleRelease
+   PixelLiveWallpaperPrebuiltStatic

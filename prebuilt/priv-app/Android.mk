@@ -16,30 +16,16 @@
 LOCAL_PATH := $(call my-dir)
 # if some modules are built directly from this directory (not subdirectories),
 # their rules should be written here.
-include $(call all-makefiles-under,$(LOCAL_PATH
+include $(call all-makefiles-under,$(LOCAL_PATH))
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := PixelLiveWallpaperPrebuiltStatic
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_PATH := $(PRODUCT_OUT)/$(TARGET_COPY_OUT_PRODUCT)/priv-app
-LOCAL_SRC_FILES := PixelLiveWallpaperPrebuiltStatic/PixelLiveWallpaperPrebuiltStatic.apk
+LOCAL_MODULE := Lawnchair
+LOCAL_SRC_FILES := $(LOCAL_MODULE).apk
 LOCAL_CERTIFICATE := PRESIGNED
-LOCAL_MODULE_CLASS := APPS
-LOCAL_PRODUCT_MODULE := true
 LOCAL_PRIVILEGED_MODULE := true
-LOCAL_MODULE_SUFFIX := $(COMMON_ANDROID_PACKAGE_SUFFIX)
-include $(BUILD_PREBUILT)
-
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := WallpaperPickerGoogleRelease
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_PATH := $(PRODUCT_OUT)/$(TARGET_COPY_OUT_PRODUCT)/priv-app
-LOCAL_SRC_FILES := WallpaperPickerGoogleRelease.apk/WallpaperPickerGoogleRelease.apk
-LOCAL_CERTIFICATE := PRESIGNED
+LOCAL_OVERRIDES_PACKAGES := Launcher3 Launcher3Go Launcher3QuickStep Launcher3QuickStepGo Quickstep
 LOCAL_MODULE_CLASS := APPS
-LOCAL_PRODUCT_MODULE := true
-LOCAL_PRIVILEGED_MODULE := true
-LOCAL_OVERRIDES_PACKAGES := WallpaperPicker
-LOCAL_MODULE_SUFFIX := $(COMMON_ANDROID_PACKAGE_SUFFIX)
+LOCAL_MODULE_SUFFIX := .apk
+LOCAL_DEX_PREOPT := false
+LOCAL_REPLACE_PREBUILT_APK_INSTALLED := $(LOCAL_PATH)/$(LOCAL_SRC_FILES)
 include $(BUILD_PREBUILT)
