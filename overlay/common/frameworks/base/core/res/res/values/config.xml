@@ -125,6 +125,9 @@
 
     <string name="config_defaultAutofillService" translatable="false">com.google.android.gms/.autofill.service.AutofillService</string>
 
+    <!-- Misc -->
+    <string name="config_wallpaperCropperPackage">com.google.android.apps.wallpaper</string>
+
     <!-- The package name for the default wellbeing app.
          This package must be trusted, as it has the permissions to control other applications
          on the device.

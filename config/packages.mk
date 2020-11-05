@@ -20,6 +20,7 @@ PRODUCT_PACKAGES += \
     CandyWrappers \
     Gallery2 \
     LatinIME \
+    WallpaperPickerGoogleRelease \
     messaging \
     Updater
 
