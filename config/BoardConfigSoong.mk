@@ -1,7 +1,6 @@
 PATH_OVERRIDE_SOONG := $(shell echo $(TOOLS_PATH_OVERRIDE))
 
 # Add variables that we wish to make available to soong here.
-ORIG_PATH := $(shell cat $(OUT_DIR)/.path_interposer_origpath)
 EXPORT_TO_SOONG := \
     KERNEL_ARCH \
     KERNEL_CC \
@@ -12,10 +11,7 @@ EXPORT_TO_SOONG := \
     KERNEL_MAKE_FLAGS \
     PATH_OVERRIDE_SOONG \
     TARGET_KERNEL_CONFIG \
-    TARGET_KERNEL_SOURCE \
-    MAKE_PREBUILT \
-    ORIG_PATH \
-    TARGET_KERNEL_HEADERS
+    TARGET_KERNEL_SOURCE
 
 # Setup SOONG_CONFIG_* vars to export the vars listed above.
 # Documentation here:
@@ -36,6 +32,7 @@ SOONG_CONFIG_NAMESPACES += candyGlobalVars
 SOONG_CONFIG_candyGlobalVars += \
     additional_gralloc_10_usage_bits \
     bootloader_message_offset \
+    disable_postrender_cleanup \
     has_legacy_camera_hal1 \
     ignores_ftp_pptp_conntrack_failure \
     needs_netd_direct_connect_rule \
@@ -66,6 +63,7 @@ SOONG_CONFIG_candyQcomVars += \
 endif
 
 # Soong bool variables
+SOONG_CONFIG_candyGlobalVars_disable_postrender_cleanup := $(TARGET_DISABLE_POSTRENDER_CLEANUP)
 SOONG_CONFIG_candyGlobalVars_has_legacy_camera_hal1 := $(TARGET_HAS_LEGACY_CAMERA_HAL1)
 SOONG_CONFIG_candyGlobalVars_ignores_ftp_pptp_conntrack_failure := $(TARGET_IGNORES_FTP_PPTP_CONNTRACK_FAILURE)
 SOONG_CONFIG_candyGlobalVars_needs_netd_direct_connect_rule := $(TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE)
