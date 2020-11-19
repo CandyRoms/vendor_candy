@@ -9,3 +9,8 @@ PRODUCT_PACKAGES += \
 # SMS
 PRODUCT_PACKAGES += \
 	messaging
+
+# Wallet app for Power menu integration
+# https://source.android.com/devices/tech/connect/quick-access-wallet
+PRODUCT_PACKAGES += \
+    QuickAccessWallet
