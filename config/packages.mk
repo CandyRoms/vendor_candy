@@ -58,12 +58,14 @@ PRODUCT_PACKAGES += \
 
 # Include Google Sounds for all
 PRODUCT_PACKAGES += \
-   SoundPickerPrebuilt
+    SoundPickerPrebuilt
 
 # Include Candy theme files
 include vendor/candy/themes/backgrounds/themes.mk
 
 # Pixel Wallpapers
 PRODUCT_PACKAGES += \
-   PixelThemesStub2019 \
-   PixelLiveWallpaperPrebuiltStatic
+    PixelThemesStub2019 \
+    NexusWallpapersStubPrebuilt2019 \
+    PixelLiveWallpaperPrebuiltStatic \
+    WallpaperPickerGoogleRelease
