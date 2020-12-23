@@ -29,6 +29,7 @@ ARCHES=
 FULLY_DEODEXED=-1
 
 TMPDIR=$(mktemp -d)
+HOST="$(uname | tr '[:upper:]' '[:lower:]')"
 
 #
 # cleanup
@@ -100,6 +101,10 @@ function setup_vendor() {
     else
         VENDOR_STATE=0
         VENDOR_RADIO_STATE=0
+    fi
+
+    if [ -z "$PATCHELF" ]; then
+        export PATCHELF="$CANDY_ROOT"/prebuilts/tools-lineage/${HOST}-x86/bin/patchelf
     fi
 }
 
@@ -1226,10 +1231,6 @@ function oat2dex() {
 
     if [ -z "$CDEXCONVERTER" ]; then
         export CDEXCONVERTER="$CANDY_ROOT"/prebuilts/tools-candy/"${HOST,,}"-x86/bin/compact_dex_converter
-    fi
-
-    if [ -z "$PATCHELF" ]; then
-        export PATCHELF="$CANDY_ROOT"/prebuilts/tools-lineage/${HOST}-x86/bin/patchelf
     fi
 
     # Extract existing boot.oats to the temp folder
