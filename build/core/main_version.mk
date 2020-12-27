@@ -1,4 +1,4 @@
-# Copyright (C) 2019 CandyRoms
+# Copyright (C) 2020 CandyRoms
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,8 +22,8 @@ endif
 
 # Versioning System
 # candy first version.
-PRODUCT_VERSION_MAJOR = 10
-PRODUCT_VERSION_MINOR = Stable
+PRODUCT_VERSION_MAJOR = 11
+PRODUCT_VERSION_MINOR = Experimental
 CANDY_DATE := $(shell date +"%Y%m%d-%H%M")
 GAPPS_FLAG :=
 
