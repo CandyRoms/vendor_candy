@@ -27,7 +27,7 @@ candy_generator {
         "usr/audio/include/uapi",
         "usr/include",
         "usr/include/audio/include/uapi",
-        "usr/techpack/audio/include"
+        "usr/techpack/audio/include",
     ],
 
     // Sources for dependency tracking
