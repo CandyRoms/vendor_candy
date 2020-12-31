@@ -117,9 +117,6 @@ USE_DEX2OAT_DEBUG := false
 # Disable vendor restrictions
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
-# Don't compile SystemUITests
-EXCLUDE_SYSTEMUI_TESTS := true
-
 # Charger images
 PRODUCT_PACKAGES += \
     charger_res_images
