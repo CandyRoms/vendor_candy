@@ -64,7 +64,6 @@ SOONG_CONFIG_candyQcomVars += \
 endif
 
 # Soong bool variables
-<<<<<<< HEAD
 SOONG_CONFIG_candyGlobalVars_disable_postrender_cleanup := $(TARGET_DISABLE_POSTRENDER_CLEANUP)
 SOONG_CONFIG_candyGlobalVars_has_legacy_camera_hal1 := $(TARGET_HAS_LEGACY_CAMERA_HAL1)
 SOONG_CONFIG_candyGlobalVars_has_memfd_backport := $(TARGET_HAS_MEMFD_BACKPORT)
