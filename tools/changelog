@@ -36,8 +36,8 @@ sed -i 's/project/   */g' $Changelog
 sed -i 's/[/]$//' $Changelog
 
 # CANDY_TODO
-#cp $Changelog $PRODUCT_OUT/system/etc/
-#cp $Changelog $PRODUCT_OUT
+cp $Changelog > "$(PRODUCT_OUT)/$(CANDY_TARGET_PACKAGE)"-Changelog.txt
+cp $Changelog > "$(PRODUCT_OUT)"Changelog.txt
 
 # Remove tmp file
 rm $Changelog
