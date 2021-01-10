@@ -32,11 +32,3 @@ include $(TOPDIR)vendor/candy/build/core/qcom_target.mk
 define uniq
 $(if $1,$(firstword $1) $(call uniq,$(filter-out $(firstword $1),$1)))
 endef
-
-#define uniq__dx
-#  $(eval seen :=)
-#  $(foreach _,$1,$(if $(filter $_,${seen}),,$(eval seen += $_)))
-#  ${seen}
-#endef
-
-#PRODUCT_BOOT_JARS := $(call uniq__dx,$(subst $(space), ,$(strip $(PRODUCT_BOOT_JARS))))
