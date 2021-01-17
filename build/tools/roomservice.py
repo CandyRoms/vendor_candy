@@ -30,7 +30,7 @@ import urllib.parse
 import urllib.request
 
 DEBUG = False
-default_manifest = ".repo/manifests/candy.xml"
+default_manifest = ".repo/manifest.xml"
 custom_local_manifest = ".repo/local_manifests/candy_manifest.xml"
 custom_default_revision = "c11"
 custom_dependencies = "candy.dependencies"
