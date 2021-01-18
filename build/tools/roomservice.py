@@ -1,7 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Copyright (C) 2012-2013, The CyanogenMod Project
 # Copyright (C) 2012-2015, SlimRoms Project
-# Copyright (C) 2017-2019, CandyRoms
+# Copyright (C) 2017-2021, CandyRoms
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,28 +21,17 @@ import base64
 import json
 import netrc
 import os
-import re
 import sys
-
-try:
-  # For python3
-  import urllib.error
-  import urllib.parse
-  import urllib.request
-except ImportError:
-  # For python2
-  import imp
-  import urllib2
-  import urlparse
-  urllib = imp.new_module('urllib')
-  urllib.error = urllib2
-  urllib.parse = urlparse
-  urllib.request = urllib2
 
 from xml.etree import ElementTree
 
+import urllib.error
+import urllib.parse
+import urllib.request
+
+
 DEBUG = False
-default_manifest = ".repo/manifest.xml"
+default_manifest = ".repo/manifests/snippets/candy.xml"
 custom_local_manifest = ".repo/local_manifests/candy_manifest.xml"
 custom_default_revision = "c11"
 custom_dependencies = "candy.dependencies"
@@ -123,20 +112,6 @@ def get_remote(manifest=None, remote_name=None):
 
 def get_revision(manifest=None, p="build"):
     return custom_default_revision
-    m = manifest or load_manifest(default_manifest)
-    project = None
-    for proj in m.findall('project'):
-        if proj.get('path').strip('/') == p:
-            project = proj
-            break
-    revision = project.get('revision')
-    if revision:
-        return revision.replace('refs/heads/', '').replace('refs/tags/', '')
-    remote = get_remote(manifest=m, remote_name=project.get('remote'))
-    revision = remote.get('revision')
-    if not revision:
-        return custom_default_revision
-    return revision.replace('refs/heads/', '').replace('refs/tags/', '')
 
 
 def get_from_manifest(device_name):
@@ -177,14 +152,14 @@ def add_to_manifest(repos, fallback_branch=None):
             repo_branch = custom_default_revision
 
         if 'remote' in repo:
-            repo_remote=repo['remote']
+            repo_remote = repo['remote']
         elif "/" not in repo_name:
-            repo_remote=org_manifest
+            repo_remote = org_manifest
         elif "/" in repo_name:
-            repo_remote="github"
+            repo_remote = "github"
 
         if is_in_manifest(repo_path):
-            print('already exists: %s' % repo_path)
+            print('%s already exists' % repo_path)
             continue
 
         print('Adding dependency:\nRepository: %s\nBranch: %s\nRemote: %s\nPath: %s\n' % (repo_name, repo_branch,repo_remote, repo_path))
@@ -204,10 +179,11 @@ def add_to_manifest(repos, fallback_branch=None):
             project.set('revision', fallback_branch)
         else:
             print("Using default branch for %s" % repo_name)
-	if 'clone-depth' in repo:
-	    print("Setting clone-depth to %s for %s" % (repo['clone-depth'], repo_name))
-	    project.set('clone-depth', repo['clone-depth'])
-        lm.append(project)
+        if 'clone-depth' in repo:
+            print("Setting clone-depth to %s for %s" % (repo['clone-depth'], repo_name))
+            project.set('clone-depth', repo['clone-depth'])
+
+    lm.append(project)
 
     indent(lm)
     raw_xml = "\n".join(('<?xml version="1.0" encoding="UTF-8"?>',
@@ -321,7 +297,7 @@ def main():
         if repo_path:
             fetch_dependencies(repo_path)
         else:
-            print("Trying dependencies-only mode on a"
+            print("Trying dependencies-only mode on a "
                   "non-existing device tree?")
         sys.exit()
 
