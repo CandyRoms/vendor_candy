@@ -15,8 +15,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from __future__ import print_function
-
 import base64
 import json
 import netrc
@@ -29,9 +27,8 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-
 DEBUG = False
-default_manifest = ".repo/manifests/snippets/candy.xml"
+default_manifest = ".repo/manifest.xml"
 custom_local_manifest = ".repo/local_manifests/candy_manifest.xml"
 custom_default_revision = "c11"
 custom_dependencies = "candy.dependencies"
@@ -125,11 +122,9 @@ def get_from_manifest(device_name):
 
 
 def is_in_manifest(project_path):
-    for man in (custom_local_manifest, default_manifest):
-        man = load_manifest(man)
-        for local_path in man.findall("project"):
-            if local_path.get("path") == project_path:
-                return True
+    for local_path in load_manifest(custom_local_manifest).findall("project"):
+        if local_path.get("path") == project_path:
+            return True
     return False
 
 
@@ -137,6 +132,11 @@ def add_to_manifest(repos, fallback_branch=None):
     lm = load_manifest(custom_local_manifest)
 
     for repo in repos:
+
+        if 'repository' not in repo: # Remove repo if the name isn't set
+            print('Error adding %s', repo)
+            del repos[repo]
+            continue
         repo_name = repo['repository']
 
         if 'target_path' in repo:
@@ -152,9 +152,9 @@ def add_to_manifest(repos, fallback_branch=None):
             repo_branch = custom_default_revision
 
         if 'remote' in repo:
-            repo_remote = repo['remote']
+            repo_remote=repo['remote']
         elif "/" not in repo_name:
-            repo_remote = org_manifest
+            repo_remote=org_manifest
         elif "/" in repo_name:
             repo_remote = "github"
 
@@ -168,7 +168,7 @@ def add_to_manifest(repos, fallback_branch=None):
             "project",
             attrib={"path": repo_path,
                     "remote": repo_remote,
-                    "name": "%s" % repo_name}
+                    "name":  repo_name}
         )
 
         if repo_branch is not None:
@@ -183,7 +183,7 @@ def add_to_manifest(repos, fallback_branch=None):
             print("Setting clone-depth to %s for %s" % (repo['clone-depth'], repo_name))
             project.set('clone-depth', repo['clone-depth'])
 
-    lm.append(project)
+        lm.append(project)
 
     indent(lm)
     raw_xml = "\n".join(('<?xml version="1.0" encoding="UTF-8"?>',
@@ -210,7 +210,7 @@ def fetch_dependencies(repo_path, fallback_branch=None):
             dependencies = json.load(dep_f)
     else:
         dependencies = {}
-        print('%s has no additional dependencies.' % repo_path)
+        debug('Dependencies file not found, bailing out.')
 
     fetch_list = []
     syncable_repos = []

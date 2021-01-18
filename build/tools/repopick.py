@@ -257,7 +257,7 @@ if __name__ == '__main__':
                 if remote.get('name') == project.get('remote'):
                     revision = remote.get('revision')
             if revision is None:
-                revision = project.get('revision', default_revision)
+                revision = default_revision
 
         if not name in project_name_to_data:
             project_name_to_data[name] = {}
@@ -294,7 +294,7 @@ if __name__ == '__main__':
     if args.topic:
         for t in args.topic:
             # Store current topic to process for change_numbers
-            topic = fetch_query(args.gerrit, 'status:open+topic:{0}'.format(t))
+            topic = fetch_query(args.gerrit, query.format(t))
             # Append topic to reviews, for later reference
             reviews += topic
             # Cycle through the current topic to get the change numbers
@@ -401,8 +401,6 @@ if __name__ == '__main__':
         elif args.ignore_missing:
             print('WARNING: Skipping {0} since there is no project directory for: {1}\n'.format(item['id'], item['project']))
             continue
-        elif item['project'] == 'candy':
-            project_path = '.repo/manifests'
         else:
             sys.stderr.write('ERROR: For {0}, could not determine the project path for project {1}\n'.format(item['id'], item['project']))
             sys.exit(1)
@@ -461,6 +459,8 @@ if __name__ == '__main__':
                 cmd = ['git fetch candy', item['fetch'][method]['ref']]
             if args.quiet:
                 cmd.append('--quiet')
+            else:
+                print("executing: {}".format(" ".join(cmd)))
             result = subprocess.call([' '.join(cmd)], cwd=project_path, shell=True)
             FETCH_HEAD = '{0}/.git/FETCH_HEAD'.format(project_path)
             if result != 0 and os.stat(FETCH_HEAD).st_size != 0:
@@ -481,6 +481,8 @@ if __name__ == '__main__':
                 cmd = ['git fetch', item['fetch'][method]['url'], item['fetch'][method]['ref']]
             if args.quiet:
                 cmd.append('--quiet')
+            else:
+                print(cmd)
             result = subprocess.call([' '.join(cmd)], cwd=project_path, shell=True)
             if result != 0:
                 print('ERROR: git command failed')
@@ -495,12 +497,19 @@ if __name__ == '__main__':
                 cmd_out = None
             result = subprocess.call(cmd, cwd=project_path, shell=True, stdout=cmd_out, stderr=cmd_out)
             if result != 0:
-                if args.reset:
+                cmd = ['git diff-index --quiet HEAD --']
+                result = subprocess.call(cmd, cwd=project_path, shell=True, stdout=cmd_out, stderr=cmd_out)
+                if result == 0:
+                    print('WARNING: git command resulted with an empty commit, aborting cherry-pick')
+                    cmd = ['git cherry-pick --abort']
+                    subprocess.call(cmd, cwd=project_path, shell=True, stdout=cmd_out, stderr=cmd_out)
+                elif args.reset:
                     print('ERROR: git command failed, aborting cherry-pick')
                     cmd = ['git cherry-pick --abort']
                     subprocess.call(cmd, cwd=project_path, shell=True, stdout=cmd_out, stderr=cmd_out)
+                    sys.exit(result)
                 else:
                     print('ERROR: git command failed')
-                sys.exit(result)
+                    sys.exit(result)
         if not args.quiet:
             print('')
