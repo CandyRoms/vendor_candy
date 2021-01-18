@@ -1216,16 +1216,16 @@ function oat2dex() {
     local OAT=
 
     if [ -z "$BAKSMALIJAR" ] || [ -z "$SMALIJAR" ]; then
-        export BAKSMALIJAR="$AOSIP_ROOT"/prebuilts/tools-candy/common/smali/baksmali.jar
-        export SMALIJAR="$AOSIP_ROOT"/prebuilts/tools-candy/common/smali/smali.jar
+        export BAKSMALIJAR="$CANDY_ROOT"/prebuilts/tools-candy/common/smali/baksmali.jar
+        export SMALIJAR="$CANDY_ROOT"/prebuilts/tools-candy/common/smali/smali.jar
     fi
 
     if [ -z "$VDEXEXTRACTOR" ]; then
-        export VDEXEXTRACTOR="$AOSIP_ROOT"/prebuilts/tools-candy/"${HOST,,}"-x86/bin/vdexExtractor
+        export VDEXEXTRACTOR="$CANDY_ROOT"/prebuilts/tools-candy/"${HOST,,}"-x86/bin/vdexExtractor
     fi
 
     if [ -z "$CDEXCONVERTER" ]; then
-        export CDEXCONVERTER="$AOSIP_ROOT"/prebuilts/tools-candy/"${HOST,,}"-x86/bin/compact_dex_converter
+        export CDEXCONVERTER="$CANDY_ROOT"/prebuilts/tools-candy/"${HOST,,}"-x86/bin/compact_dex_converter
     fi
 
     # Extract existing boot.oats to the temp folder
