@@ -17,74 +17,6 @@ UM_4_19_FAMILY := $(KONA) $(LITO)
 UM_PLATFORMS := $(UM_3_18_FAMILY) $(UM_4_4_FAMILY) $(UM_4_9_FAMILY) $(UM_4_14_FAMILY) $(UM_4_19_FAMILY)
 QSSI_SUPPORTED_PLATFORMS := $(UM_4_9_FAMILY) $(UM_4_14_FAMILY) $(UM_4_19_FAMILY)
 
-# List of targets that use master side content protection
-MASTER_SIDE_CP_TARGET_LIST := msm8996 $(UM_4_4_FAMILY) $(UM_4_9_FAMILY) $(UM_4_14_FAMILY) $(UM_4_19_FAMILY)
-
-ifneq ($(FORCE_QCOM_DISPLAY_HAL_VARIANT),)
-    QCOM_HARDWARE_VARIANT := $(FORCE_QCOM_DISPLAY_HAL_VARIANT)
-else ifneq ($(filter $(B_FAMILY),$(TARGET_BOARD_PLATFORM)),)
-    MSM_VIDC_TARGET_LIST := $(B_FAMILY)
-    QCOM_HARDWARE_VARIANT := msm8974
-else ifneq ($(filter $(B64_FAMILY),$(TARGET_BOARD_PLATFORM)),)
-    MSM_VIDC_TARGET_LIST := $(B64_FAMILY)
-    QCOM_HARDWARE_VARIANT := msm8994
-else ifneq ($(filter $(BR_FAMILY),$(TARGET_BOARD_PLATFORM)),)
-    MSM_VIDC_TARGET_LIST := $(BR_FAMILY)
-    QCOM_HARDWARE_VARIANT := msm8916
-else ifneq ($(filter $(UM_3_18_FAMILY),$(TARGET_BOARD_PLATFORM)),)
-    MSM_VIDC_TARGET_LIST := $(UM_3_18_FAMILY)
-    QCOM_HARDWARE_VARIANT := msm8996
-else ifneq ($(filter $(UM_4_4_FAMILY),$(TARGET_BOARD_PLATFORM)),)
-    MSM_VIDC_TARGET_LIST := $(UM_4_4_FAMILY)
-    QCOM_HARDWARE_VARIANT := msm8998
-else ifneq ($(filter $(UM_4_9_FAMILY),$(TARGET_BOARD_PLATFORM)),)
-    MSM_VIDC_TARGET_LIST := $(UM_4_9_FAMILY)
-    QCOM_HARDWARE_VARIANT := sdm845
-else ifneq ($(filter $(UM_4_14_FAMILY),$(TARGET_BOARD_PLATFORM)),)
-    MSM_VIDC_TARGET_LIST := $(UM_4_14_FAMILY)
-    QCOM_HARDWARE_VARIANT := sm8150
-else ifneq ($(filter $(UM_4_19_FAMILY),$(TARGET_BOARD_PLATFORM)),)
-    MSM_VIDC_TARGET_LIST := $(UM_4_19_FAMILY)
-    QCOM_HARDWARE_VARIANT := sm8250
-else
-    MSM_VIDC_TARGET_LIST := $(TARGET_BOARD_PLATFORM)
-    QCOM_HARDWARE_VARIANT := $(TARGET_BOARD_PLATFORM)
-endif
-
-# Allow a device to manually override which HALs it wants to use
-ifneq ($(OVERRIDE_QCOM_HARDWARE_VARIANT),)
-QCOM_HARDWARE_VARIANT := $(OVERRIDE_QCOM_HARDWARE_VARIANT)
-endif
-
-# Allow a device to opt-out hardset of PRODUCT_SOONG_NAMESPACES
-QCOM_SOONG_NAMESPACE ?= hardware/qcom-caf/$(QCOM_HARDWARE_VARIANT)
-PRODUCT_SOONG_NAMESPACES += $(QCOM_SOONG_NAMESPACE)
-
-# Add display-commonsys-intf to PRODUCT_SOONG_NAMESPACES for QSSI supported platforms
-ifneq ($(filter $(QSSI_SUPPORTED_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
-    PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/commonsys-intf/display
-endif
-
-# Add data-ipa-cfg-mgr to PRODUCT_SOONG_NAMESPACES if needed
-ifneq ($(USE_DEVICE_SPECIFIC_DATA_IPA_CFG_MGR),true)
-    PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/data-ipa-cfg-mgr
-endif
-
-# Add dataservices to PRODUCT_SOONG_NAMESPACES if needed
-ifneq ($(USE_DEVICE_SPECIFIC_DATASERVICES),true)
-    PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/dataservices
-endif
-
-ifeq ($(TARGET_USE_QTI_BT_STACK),true)
-PRODUCT_SOONG_NAMESPACES += \
-    vendor/qcom/opensource/commonsys/packages/apps/Bluetooth \
-    vendor/qcom/opensource/commonsys/system/bt/conf
-endif #TARGET_USE_QTI_BT_STACK
-
-SOONG_CONFIG_NAMESPACES += DATASERVICES
-SOONG_CONFIG_DATASERVICES += USES_PRE_UPLINK_FEATURES_NETMGRD
-SOONG_CONFIG_DATASERVICES_USES_PRE_UPLINK_FEATURES_NETMGRD := $(TARGET_USES_PRE_UPLINK_FEATURES_NETMGRD)
-
 BOARD_USES_ADRENO := true
 
 # UM platforms no longer need this set on O+
@@ -101,12 +33,6 @@ ifneq ($(filter msm7x27a msm7x30 msm8660 msm8960,$(TARGET_BOARD_PLATFORM)),)
     ifeq ($(BOARD_USES_LEGACY_ALSA_AUDIO),true)
         USE_CUSTOM_AUDIO_POLICY := 1
     endif
-endif
-
-ifneq ($(TARGET_USES_PREBUILT_CAMERA_SERVICE), true)
-PRODUCT_SOONG_NAMESPACES += \
-    frameworks/av/camera/cameraserver \
-    frameworks/av/services/camera/libcameraservice
 endif
 
 # Enable media extensions
@@ -136,22 +62,65 @@ ifneq ($(filter $(UM_4_9_FAMILY) $(UM_4_14_FAMILY) $(UM_4_19_FAMILY),$(TARGET_BO
     TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS += | (1 << 27)
 endif
 
-PRODUCT_SOONG_NAMESPACES += \
-    hardware/qcom-caf/$(QCOM_HARDWARE_VARIANT)
+# List of targets that use master side content protection
+MASTER_SIDE_CP_TARGET_LIST := msm8996 $(UM_4_4_FAMILY) $(UM_4_9_FAMILY) $(UM_4_14_FAMILY) $(UM_4_19_FAMILY)
 
-ifneq ($(TARGET_USE_AOSP_SURFACEFLINGER), true)
-    # Required for frameworks/native
-    ifeq ($(QCOM_HARDWARE_VARIANT),msm8996)
-        TARGET_USES_QCOM_UM_FAMILY := true
-        TARGET_USES_QCOM_UM_3_18_FAMILY := true
-    else ifeq ($(QCOM_HARDWARE_VARIANT),msm8998)
-        TARGET_USES_QCOM_UM_FAMILY := true
-        TARGET_USES_QCOM_UM_4_4_FAMILY := true
-    else ifeq ($(QCOM_HARDWARE_VARIANT),sdm845)
-        TARGET_USES_QCOM_UM_FAMILY := true
-        TARGET_USES_QCOM_UM_4_9_FAMILY := true
-    else ifeq ($(QCOM_HARDWARE_VARIANT),sm8150)
-        TARGET_USES_QCOM_UM_FAMILY := true
-        TARGET_USES_QCOM_UM_4_14_FAMILY := true
-    endif
+ifneq ($(filter $(B_FAMILY),$(TARGET_BOARD_PLATFORM)),)
+    MSM_VIDC_TARGET_LIST := $(B_FAMILY)
+    QCOM_HARDWARE_VARIANT := msm8974
+else ifneq ($(filter $(B64_FAMILY),$(TARGET_BOARD_PLATFORM)),)
+    MSM_VIDC_TARGET_LIST := $(B64_FAMILY)
+    QCOM_HARDWARE_VARIANT := msm8994
+else ifneq ($(filter $(BR_FAMILY),$(TARGET_BOARD_PLATFORM)),)
+    MSM_VIDC_TARGET_LIST := $(BR_FAMILY)
+    QCOM_HARDWARE_VARIANT := msm8916
+else ifneq ($(filter $(UM_3_18_FAMILY),$(TARGET_BOARD_PLATFORM)),)
+    MSM_VIDC_TARGET_LIST := $(UM_3_18_FAMILY)
+    QCOM_HARDWARE_VARIANT := msm8996
+else ifneq ($(filter $(UM_4_4_FAMILY),$(TARGET_BOARD_PLATFORM)),)
+    MSM_VIDC_TARGET_LIST := $(UM_4_4_FAMILY)
+    QCOM_HARDWARE_VARIANT := msm8998
+else ifneq ($(filter $(UM_4_9_FAMILY),$(TARGET_BOARD_PLATFORM)),)
+    MSM_VIDC_TARGET_LIST := $(UM_4_9_FAMILY)
+    QCOM_HARDWARE_VARIANT := sdm845
+else ifneq ($(filter $(UM_4_14_FAMILY),$(TARGET_BOARD_PLATFORM)),)
+    MSM_VIDC_TARGET_LIST := $(UM_4_14_FAMILY)
+    QCOM_HARDWARE_VARIANT := sm8150
+else ifneq ($(filter $(UM_4_19_FAMILY),$(TARGET_BOARD_PLATFORM)),)
+    MSM_VIDC_TARGET_LIST := $(UM_4_19_FAMILY)
+    QCOM_HARDWARE_VARIANT := sm8250
+else
+    MSM_VIDC_TARGET_LIST := $(TARGET_BOARD_PLATFORM)
+    QCOM_HARDWARE_VARIANT := $(TARGET_BOARD_PLATFORM)
+endif
+
+# Allow a device to opt-out hardset of PRODUCT_SOONG_NAMESPACES
+QCOM_SOONG_NAMESPACE ?= hardware/qcom-caf/$(QCOM_HARDWARE_VARIANT)
+PRODUCT_SOONG_NAMESPACES += $(QCOM_SOONG_NAMESPACE)
+
+# Add display-commonsys-intf to PRODUCT_SOONG_NAMESPACES for QSSI supported platforms
+ifneq ($(filter $(QSSI_SUPPORTED_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
+    PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/commonsys-intf/display
+endif
+
+# Add data-ipa-cfg-mgr to PRODUCT_SOONG_NAMESPACES if needed
+ifneq ($(USE_DEVICE_SPECIFIC_DATA_IPA_CFG_MGR),true)
+    PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/data-ipa-cfg-mgr
+endif
+
+# Add dataservices to PRODUCT_SOONG_NAMESPACES if needed
+ifneq ($(USE_DEVICE_SPECIFIC_DATASERVICES),true)
+    PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/dataservices
+endif
+
+ifeq ($(TARGET_USE_QTI_BT_STACK),true)
+PRODUCT_SOONG_NAMESPACES += \
+    vendor/qcom/opensource/commonsys/packages/apps/Bluetooth \
+    vendor/qcom/opensource/commonsys/system/bt/conf
+endif #TARGET_USE_QTI_BT_STACK
+
+ifneq ($(TARGET_USES_PREBUILT_CAMERA_SERVICE), true)
+PRODUCT_SOONG_NAMESPACES += \
+    frameworks/av/camera/cameraserver \
+    frameworks/av/services/camera/libcameraservice
 endif
