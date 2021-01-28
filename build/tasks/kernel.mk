@@ -25,6 +25,10 @@
 #   TARGET_KERNEL_VARIANT_CONFIG       = Variant defconfig, optional
 #   TARGET_KERNEL_SELINUX_CONFIG       = SELinux defconfig, optional
 #   TARGET_KERNEL_ADDITIONAL_CONFIG    = Additional defconfig, optional
+#   TARGET_KERNEL_CROSS_COMPILE_PREFIX = Compiler prefix (e.g. arm-eabi-)
+#                                          defaults to arm-linux-androidkernel- for arm
+#                                                      aarch64-linux-androidkernel- for arm64
+#                                                      x86_64-linux-androidkernel- for x86
 #
 #   TARGET_KERNEL_CLANG_COMPILE        = Compile kernel with clang, defaults to false
 #
@@ -41,6 +45,13 @@
 #                                          For example, for ARM devices,
 #                                          use zImage-dtb instead of zImage.
 #
+#   KERNEL_TOOLCHAIN_PREFIX            = Overrides TARGET_KERNEL_CROSS_COMPILE_PREFIX,
+#                                          Set this var in shell to override
+#                                          toolchain specified in BoardConfig.mk
+#   KERNEL_TOOLCHAIN                   = Path to toolchain, if unset, assumes
+#                                          TARGET_KERNEL_CROSS_COMPILE_PREFIX
+#                                          is in PATH
+#
 #   BOARD_DTBO_CFG                     = Path to a mkdtboimg.py config file
 #
 #   BOARD_CUSTOM_DTBOIMG_MK            = Path to a custom dtboimage makefile
@@ -54,6 +65,8 @@
 #                                          defaults to arm-linux-gnu- for arm
 #                                                      aarch64-linux-gnu- for arm64
 #                                                      x86_64-linux-gnu- for x86
+#
+#   USE_CCACHE                         = Enable ccache (global Android flag)
 #
 #   NEED_KERNEL_MODULE_ROOT            = Optional, if true, install kernel
 #                                          modules in root instead of vendor
