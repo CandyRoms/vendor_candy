@@ -18,7 +18,7 @@
 """
 Merge script for CandyRoms
 
- The source directory; this is automatically three folders up because the script
+ The source directory; this is automatically two folders up because the script
  is located in vendor/candy/scripts. Other ROMs will need to change this. The logic is
  as follows:
 
@@ -26,6 +26,9 @@ Merge script for CandyRoms
     This script may be symlinked by a manifest so we need to account for that
  2. Get the folder containing the script with dirname
  3. Move into the folder that is three folders above that one and print it
+
+NOTE: This script requires gitpython, which you can install via pip on your specific OS,
+  Using 'pip install GitPython'.  Dependencies need verification.
 
 Sample usage:
 
@@ -40,6 +43,7 @@ Have fun!
 
 """
 
+import glob
 import os
 import shutil
 import subprocess
@@ -51,7 +55,7 @@ from git.exc import GitCommandError
 
 BASE_URL = "https://android.googlesource.com/platform/"
 WORKING_DIR = "{0}/../../..".format(os.path.dirname(os.path.realpath(__file__)))
-MANIFEST_NAME = "candy.xml"
+MANIFEST_NAME = "snippets/candy.xml"
 REPOS_TO_MERGE = ["candy"]
 BRANCH_STR = "android-{}".format(sys.argv[1])
 REPOS_RESULTS = {}
@@ -61,9 +65,9 @@ REPOS_RESULTS = {}
 def print_proper_usage():
     """ Prints the proper usage of the script. """
     print(
-        "Usage: python3 vendor/statix/scripts/merge-aosp.py <REVISION> [-<PROJECT1> -<PROJECT2>...]"
+        "Usage: python3 vendor/candy/scripts/merge-aosp.py <REVISION> [-<PROJECT1> -<PROJECT2>...]"
     )
-    print("Example usage: python3 vendor/statix/scripts/merge-aosp.py 10.0.0_r37")
+    print("Example usage: python3 vendor/candy/scripts/merge-aosp.py 10.0.0_r37")
     sys.exit()
 
 
