@@ -4309,15 +4309,13 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) \
 
 CANDY_TARGET_PACKAGE := $(PRODUCT_OUT)/$(CANDY_VERSION).zip
 
-MD5 := prebuilts/build-tools/path/$(HOST_OS)-x86/md5sum
-
 .PHONY: otapackage candy
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 
 candy: otapackage
 
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(CANDY_TARGET_PACKAGE)
-	$(hide) $(MD5) $(CANDY_TARGET_PACKAGE) > $(CANDY_TARGET_PACKAGE).md5sum
+	$(hide) $(MD5SUM) $(CANDY_TARGET_PACKAGE) > $(CANDY_TARGET_PACKAGE).md5sum
 	@echo "                                          "
 	@echo ""
 	@echo -e  ${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_BLU}"C"${CL_RED}"a"${CL_YLW}"n"${CL_GRN}"d"${CL_BLU}"y"${CL_RED}"10"${CL_YLW}"*"${CL_RST}
