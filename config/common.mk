@@ -132,7 +132,11 @@ include vendor/candy/config/fonts.mk
 # Packages
 include vendor/candy/config/packages.mk
 
-PRODUCT_PACKAGE_OVERLAYS += vendor/candy/overlay/common
+
+DEVICE_PACKAGE_OVERLAYS += vendor/candy/overlay/common
+
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
+    vendor/candy/overlay/common \
 
 # Google sounds
 include vendor/candy/google/GoogleAudio.mk
