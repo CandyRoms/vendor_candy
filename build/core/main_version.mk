@@ -23,7 +23,7 @@ endif
 # Versioning System
 # candy first version.
 PRODUCT_VERSION_MAJOR = 11
-PRODUCT_VERSION_MINOR = Alpha
+PRODUCT_VERSION_MINOR = beta
 CANDY_DATE := $(shell date +"%Y%m%d-%H%M")
 GAPPS_FLAG :=
 
