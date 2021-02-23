@@ -1,10 +1,15 @@
 #!/bin/sh
 
-# Exports
+DEVICE=$(echo $TARGET_PRODUCT | sed -e 's/candy_//g')
 
+# Load color refs
 . vendor/candy/tools/colors
 
+# Exports
 export Changelog=Changelog.txt
+
+# Testing
+#echo "OUT directory: "$CL_OUT
 
 if [ -f $Changelog ];
 then
@@ -35,9 +40,7 @@ done
 sed -i 's/project/   */g' $Changelog
 sed -i 's/[/]$//' $Changelog
 
-# CANDY_TODO
-cp $Changelog > "$(PRODUCT_OUT)/$(CANDY_TARGET_PACKAGE)"-Changelog.txt
-cp $Changelog > "$(PRODUCT_OUT)"Changelog.txt
+# Save the log for later use in CandyShop
 
-# Remove tmp file
-rm $Changelog
+cp $Changelog $OUT_DIR/target/product/$DEVICE/system/etc/
+mv $Changelog $OUT_DIR/target/product/$DEVICE/
