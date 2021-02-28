@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# Add some identification to the log
 DEVICE=$(echo $TARGET_PRODUCT | sed -e 's/candy_//g')
 
 # Load color refs
@@ -7,9 +8,6 @@ DEVICE=$(echo $TARGET_PRODUCT | sed -e 's/candy_//g')
 
 # Exports
 export Changelog=Changelog.txt
-
-# Testing
-#echo "OUT directory: "$CL_OUT
 
 if [ -f $Changelog ];
 then
@@ -19,9 +17,13 @@ fi
 touch $Changelog
 
 # Print something to build output
-echo ${bldppl}"Generating Changelog..."${txtrst}
+echo ${CL_GRN}"Cooking up the changelog..."${CL_RST}
 
-echo "===== CANDYROMS CHANGE LOG =====" >> $Changelog;
+echo "🍬🍬🍬🍬🍬🍬 CANDY 11 🍬🍬🍬🍬🍬🍬" >> $Changelog;
+echo "" >> $Changelog;
+echo " CandyRoms Changelog for $DEVICE" >> $Changelog;
+echo "" >> $Changelog;
+echo "🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬🍬" >> $Changelog;
 echo >> $Changelog;
 
 for i in $(seq 14);
