@@ -140,9 +140,6 @@
          it should be disabled in that locale's resources. -->
     <bool name="config_buttonTextAllCaps">false</bool>
 
-    <!-- Package name that should be granted Notification Assistant access -->
-    <string name="config_defaultAssistantAccessPackage" translatable="false">com.google.android.ext.services</string>
-
     <!-- Flag indicating whether round icons should be parsed from the application manifest. -->
     <bool name="config_useRoundIcon">true</bool>
 
@@ -170,6 +167,7 @@
     <string name="config_defaultDndAccessPackages" translatable="false">com.google.android.gms:com.google.android.GoogleCamera:com.google.intelligence.sense:com.google.android.settings.intelligence</string>
 
     <!-- Taken from pixel -->
+    <string name="config_defaultAssistantAccessPackage">com.google.android.ext.services</string>
     <string name="config_defaultTextClassifierPackage">com.google.android.as</string>
     <string-array name="config_disabledUntilUsedPreinstalledImes">
         <item>com.google.android.inputmethod.latin</item>
@@ -214,7 +212,7 @@
         <item>com.google.android.gms</item>
         <item>com.google.android.apps.gcs</item>
     </string-array>
-
+    <string name="config_timeZoneRulesDataPackage">com.google.android.timezone.data</string>
     <string name="config_dreamsDefaultComponent">com.google.android.deskclock/com.android.deskclock.Screensaver</string>
 
     <string name="config_defaultAppPredictionService">com.google.android.as/com.google.android.apps.miphone.aiai.app.AiAiPredictionService</string>
@@ -228,22 +226,10 @@
          2: gestures only for back, home and overview -->
     <integer name="config_navBarInteractionMode">2</integer>
 
-    <!-- The package of the time zone rules data application. Expected to be configured
-         by OEMs to reference their own priv-app APK package.
-         A package-targeted com.android.intent.action.timezone.TRIGGER_RULES_UPDATE_CHECK intent
-         will be sent to the updater app if the system server detects an update to the updater or
-         data app packages.
-         [This is only used if config_enableUpdateableTimeZoneRules and
-         config_timeZoneRulesUpdateTrackingEnabled are true.] -->
-    <string name="config_timeZoneRulesDataPackage" translatable="false">com.google.android.timezone.data</string>
-
     <!-- Flag indicating whether the assist disclosure can be disabled using
          ASSIST_DISCLOSURE_ENABLED. -->
     <bool name="config_allowDisablingAssistDisclosure">true</bool>
     
-    <string name="config_defaultListenerAccessPackages">com.google.android.apps.nexuslauncher:com.google.android.setupwizard:com.google.android.apps.pixelmigrate:com.google.android.as:com.google.android.projection.gearhead</string>
-    <string name="config_recentsComponentName">com.google.android.apps.nexuslauncher/com.android.quickstep.RecentsActivity</string>
-    <string name="config_secondaryHomeComponent">com.google.android.apps.nexuslauncher/com.android.launcher3.SecondaryDisplayLauncher</string>
 
     <!-- Whether or not to add a "people" notifications section -->
     <bool name="config_usePeopleFiltering">true</bool>
@@ -272,5 +258,4 @@
         <item>cx.ring</item>
         <item>org.briarproject.briar.android</item>
     </string-array>
-
 </resources>
