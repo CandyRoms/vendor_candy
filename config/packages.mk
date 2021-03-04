@@ -22,6 +22,7 @@ PRODUCT_PACKAGES += \
     LatinIME \
     WallpaperPickerGoogleRelease \
     messaging \
+    CandyThemesStub \
     Updater
 
 # Packages to add when GApps are omitted from the build
