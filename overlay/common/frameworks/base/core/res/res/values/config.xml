@@ -229,7 +229,11 @@
     <!-- Flag indicating whether the assist disclosure can be disabled using
          ASSIST_DISCLOSURE_ENABLED. -->
     <bool name="config_allowDisablingAssistDisclosure">true</bool>
-    
+
+    <!-- Pixel Launcher stuff -->
+    <string name="config_defaultListenerAccessPackages">com.google.android.apps.nexuslauncher:com.android.launcher3:com.google.android.setupwizard:com.google.android.apps.pixelmigrate:com.google.android.as:com.google.android.projection.gearhead</string>
+    <string name="config_recentsComponentName">com.android.launcher3/com.android.quickstep.RecentsActivity</string>
+    <string name="config_secondaryHomeComponent">com.google.android.apps.nexuslauncher/com.android.launcher3.SecondaryDisplayLauncher</string>
 
     <!-- Whether or not to add a "people" notifications section -->
     <bool name="config_usePeopleFiltering">true</bool>
