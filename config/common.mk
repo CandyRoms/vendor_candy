@@ -100,7 +100,9 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 # Common prebuilt permissions
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/etc/sysctl.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/sysctl.conf \
-    vendor/candy/prebuilt/common/etc/permissions/com.android.providers.weather.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/com.android.providers.weather.xml
+    vendor/candy/prebuilt/common/etc/permissions/com.android.providers.weather.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/com.android.providers.weather.xml \
+    vendor/candy/prebuilt/common/etc/permissions/privapp-permissions-candy-product.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-candy-product.xml \
+    vendor/candy/prebuilt/common/etc/permissions/privapp-permissions-candy-system_ext.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-candy-system_ext.xml
 
 # Do not include art debug targets
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
