@@ -54,7 +54,10 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES  += \
     dalvik.vm.debug.alloc=0
 
+# Backup tool
 PRODUCT_COPY_FILES += \
+    vendor/candy/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
+    vendor/candy/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
     vendor/candy/prebuilt/common/bin/50-candy.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-candy.sh
 
 # AB backup tool
@@ -63,11 +66,6 @@ PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/bin/backuptool_ab.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.sh \
     vendor/candy/prebuilt/common/bin/backuptool_ab.functions:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.functions \
     vendor/candy/prebuilt/common/bin/backuptool_postinstall.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_postinstall.sh
-else
-# A-only backup tool
-PRODUCT_COPY_FILES += \
-    vendor/candy/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
-    vendor/candy/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions
 endif
 
 # Candy fonts
