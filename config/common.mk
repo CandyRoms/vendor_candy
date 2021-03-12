@@ -72,6 +72,10 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 endif
 endif
 
+# Signature compatibility validation
+PRODUCT_COPY_FILES += \
+    vendor/candy/prebuilt/common/bin/otasigcheck.sh:install/bin/otasigcheck.sh
+
 # Candy fonts
 PRODUCT_PACKAGES += \
     candy-fonts
