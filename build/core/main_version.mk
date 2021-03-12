@@ -25,6 +25,7 @@ endif
 PRODUCT_VERSION_MAJOR = 11
 PRODUCT_VERSION_MINOR = .0
 CANDY_DATE := $(shell date +"%Y%m%d-%H%M")
+GAPPS_FLAG :=
 
 ifdef CANDY_BUILD_EXTRA
     CANDY_POSTFIX += $(CANDY_BUILD_EXTRA)
@@ -33,6 +34,10 @@ endif
 # Set the default version to unofficial
 ifndef CANDY_BUILD_TYPE
     CANDY_BUILD_TYPE := UNOFFICIAL
+endif
+
+ifeq ($(INCLUDE_GAPPS),true)
+    GAPPS_FLAG := _GAPPS
 endif
 
 # Set all versions
