@@ -70,6 +70,10 @@ PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions
 endif
 
+# Signature compatibility validation
+PRODUCT_COPY_FILES += \
+    vendor/candy/prebuilt/common/bin/otasigcheck.sh:install/bin/otasigcheck.sh
+
 # Candy fonts
 PRODUCT_PACKAGES += \
     candy-fonts
