@@ -72,6 +72,12 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 endif
 endif
 
+# Backup GApps if not inlined
+ifeq ($(INCLUDE_GAPPS),)
+PRODUCT_COPY_FILES += \
+    vendor/candy/prebuilt/addon.d/69-gapps.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/69-gapps.sh
+endif
+
 # Signature compatibility validation
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/bin/otasigcheck.sh:install/bin/otasigcheck.sh
@@ -140,6 +146,11 @@ PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
 
 # Google sounds
 include vendor/candy/google/GoogleAudio.mk
+
+# Gapps
+ifeq ($(INCLUDE_GAPPS),true)
+$(call inherit-product-if-exists, vendor/pixelgapps/pixel-gapps.mk)
+endif
 
 # easy way to extend to add more packages
 $(call inherit-product-if-exists, vendor/extra/product.mk)
