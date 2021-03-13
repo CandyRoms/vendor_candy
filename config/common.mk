@@ -82,6 +82,12 @@ PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/addon.d/69-gapps.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/69-gapps.sh
 endif
 
+# Backup GApps if not inlined
+ifeq ($(INCLUDE_GAPPS),)
+PRODUCT_COPY_FILES += \
+    vendor/candy/prebuilt/addon.d/69-gapps.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/69-gapps.sh
+endif
+
 # Signature compatibility validation
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/bin/otasigcheck.sh:install/bin/otasigcheck.sh
