@@ -92,6 +92,10 @@ endif
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/bin/otasigcheck.sh:install/bin/otasigcheck.sh
 
+# Signature compatibility validation
+PRODUCT_COPY_FILES += \
+    vendor/candy/prebuilt/common/bin/otasigcheck.sh:install/bin/otasigcheck.sh
+
 # Candy fonts
 PRODUCT_PACKAGES += \
     candy-fonts
