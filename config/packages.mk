@@ -87,4 +87,4 @@ PRODUCT_PACKAGES += \
    SoundPickerPrebuilt
 
 # Include Candy theme files
-include vendor/candy/themes/backgrounds/themes.mk
+#include vendor/candy/themes/backgrounds/themes.mk
