@@ -96,9 +96,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/candy/prebuilt/common/bin/otasigcheck.sh:install/bin/otasigcheck.sh
 
-# Candy fonts
-PRODUCT_PACKAGES += \
-    candy-fonts
 
 # Copy all Candy-specific init rc files
 $(foreach f,$(wildcard vendor/candy/prebuilt/common/etc/init/*.rc),\
