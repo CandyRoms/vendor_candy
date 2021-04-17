@@ -18,7 +18,6 @@ include_pixelgapps := $(INCLUDE_GAPPS)
 PRODUCT_PACKAGES += \
     bootanimation.zip \
     CandyWrappers \
-    Flipendo \
     Gallery2 \
     LatinIME \
     CandyThemesStub \
@@ -85,6 +84,3 @@ PRODUCT_PACKAGES += \
 
 # Include Candy theme files
 #include vendor/candy/themes/backgrounds/themes.mk
-
-# Inherit from sepolicy config
-$(call inherit-product, vendor/candy/config/sepolicy.mk)
