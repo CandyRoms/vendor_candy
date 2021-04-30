@@ -12,8 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_pixelgapps := $(INCLUDE_GAPPS)
-
 # Required packages
 PRODUCT_PACKAGES += \
     bootanimation.zip \
@@ -26,7 +24,7 @@ PRODUCT_PACKAGES += \
     Updater
 
 # Packages to add when GApps are omitted from the build
-ifneq ($(include_pixelgapps),true)
+ifneq ($(INCLUDE_GAPPS),true)
 PRODUCT_PACKAGES += \
     LivePicker \
     LiveWallpapersPicker
