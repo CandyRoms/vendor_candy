@@ -163,7 +163,7 @@ include vendor/candy/google/GoogleAudio.mk
 
 # Gapps
 ifeq ($(INCLUDE_GAPPS),true)
-$(call inherit-product-if-exists, vendor/pixelgapps/pixel-gapps.mk)
+$(call inherit-product-if-exists, vendor/gapps/config.mk)
 endif
 
 # easy way to extend to add more packages
