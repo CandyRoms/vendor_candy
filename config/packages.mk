@@ -20,6 +20,8 @@ PRODUCT_PACKAGES += \
     LatinIME \
     CandyThemesStub \
     messaging \
+    StitchImage \
+    StitchImageService \
     ThemePicker \
     Updater
 
