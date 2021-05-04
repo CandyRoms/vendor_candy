@@ -74,10 +74,6 @@ PRODUCT_PACKAGES += \
     FontRubikRubikOverlay \
     FontGoogleSansOverlay \
 
-# Cutout control overlay
-PRODUCT_PACKAGES += \
-    NoCutoutOverlay
-
 # Include Google Sounds for all
 PRODUCT_PACKAGES += \
    SoundPickerPrebuilt
