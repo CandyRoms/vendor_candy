@@ -32,6 +32,10 @@ PRODUCT_PACKAGES += \
     LiveWallpapersPicker
 endif
 
+# Config
+PRODUCT_PACKAGES += \
+    SimpleDeviceConfig
+
 # Tools-Candy
 PRODUCT_PACKAGES += \
     7z \
