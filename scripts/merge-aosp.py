@@ -44,6 +44,7 @@ Have fun!
 """
 
 import argparse
+import glob
 import os
 import shutil
 import subprocess
@@ -53,6 +54,7 @@ import git
 from git.exc import GitCommandError
 
 BASE_URL = "https://android.googlesource.com/platform/"
+BLOCKLIST = glob.glob("prebuilts/clang/host/linux-x86")
 WORKING_DIR = "{0}/../../..".format(os.path.dirname(os.path.realpath(__file__)))
 MANIFEST_NAME = "snippets/candy.xml"
 REPOS_TO_MERGE = ["candy"]
@@ -92,7 +94,8 @@ def read_custom_manifest(aosp_repos):
         for custom in root:
             custom_path = custom.get("path")
             if custom_path and custom_path in aosp_repos:
-                REPOS_TO_MERGE.append(custom_path)
+                if custom_path not in BLOCKLIST:
+                    REPOS_TO_MERGE.append(custom_path)
 
 
 def force_sync(repo_lst):
