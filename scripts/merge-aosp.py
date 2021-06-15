@@ -45,6 +45,7 @@ Have fun!
 
 import argparse
 import glob
+import multiprocessing
 import os
 import shutil
 import subprocess
@@ -106,7 +107,7 @@ def force_sync(repo_lst):
         if os.path.isdir("{}{}".format(WORKING_DIR, repo)):
             shutil.rmtree("{}{}".format(WORKING_DIR, repo))
 
-    cpu_count = str(os.cpu_count())
+    cpu_count = str(multiprocessing.cpu_count())
     args = [
         "repo",
         "sync",
