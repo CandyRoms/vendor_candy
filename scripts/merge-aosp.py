@@ -48,6 +48,7 @@ import glob
 import os
 import shutil
 import subprocess
+import sys
 import xml.etree.ElementTree as Et
 
 import git
