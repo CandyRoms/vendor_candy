@@ -1348,7 +1348,6 @@
   <apn carrier="Simple" mcc="310" mnc="260" apn="simple" proxy="216.155.165.50" port="8080" user="" password="" mmsc="http://smpl.mms.msg.eng.t-mobile.com/mms/wapenc" mmsproxy="216.155.165.50" mmsport="8080" type="default,supl,mms" />
   <apn carrier="Walmart Family Mobile" mcc="310" mnc="260" apn="web.omwtoday.com" mmsproxy="216.155.165.50" mmsport="8080" mmsc="http://wirelessfour.mmsmvno.com/mms/wapenc" type="default,supl,mms" />
   <apn carrier="Ting Data" mcc="310" mnc="260" apn="wholesale" type="default,admin,fota,mms,supl,hipri,internet,dun" protocol="IPV6" roaming_protocol="IPV6" />
-  <apn carrier="Ting Data" mcc="310" mnc="260" apn="wholesale" type="default,admin,fota,mms,supl,hipri,internet,dun" protocol="IPV6" roaming_protocol="IPV6" />
   <apn carrier="Ting MMS" mcc="310" mnc="260" apn="wholesale" mmsc="http://wholesale.mmsmvno.com/mms/wapenc" type="mms" protocol="IP" roaming_protocol="IP" />
   <apn carrier="US Mobile" mcc="310" mnc="260" apn="pwg" mmsc="http://pwg.mmsmvno.com/mms/wapenc" type="default,supl,mms" />
   <apn carrier="StraightTalk T-Mobile" mcc="310" mnc="260" apn="wap.tracfone" proxy="" port="8080" user="" password="" mmsc="http://mmsc.tracfone.com" type="default,supl,mms" />
@@ -1568,10 +1567,6 @@
   <apn carrier="Verizon" mcc="311" mnc="480" apn="VZWADMIN" type="fota" authtype="0" protocol="IPV4V6" roaming_protocol="IP" bearer_bitmask="1|2|3|9|10|11|13|14|15|18" profile_id="3" modem_cognitive="true" max_conns="20" max_conns_time="300" user_visible="false" />
   <apn carrier="Verizon" mcc="311" mnc="480" apn="IMS" type="ims,ia" authtype="0" protocol="IPV4V6" roaming_protocol="IPV6" bearer_bitmask="1|2|3|9|10|11|13|14|15|18" profile_id="2" modem_cognitive="true" max_conns="20" max_conns_time="300" user_visible="false" />
   <apn carrier="Verizon" mcc="311" mnc="480" apn="VZWAPP" type="cbs,mms" authtype="0" mmsc="http://mms.vtext.com/servlets/mms" protocol="IPV4V6" roaming_protocol="IP" bearer_bitmask="1|2|3|9|10|11|13|14|15|18" profile_id="4" modem_cognitive="true" max_conns="20" max_conns_time="300" user_visible="false" />
-  <apn carrier="Visible" carrier_id="2146" mcc="311" mnc="480" apn="VSBLIMS" authtype="0" type="ia,ims" protocol="IPV4V6" roaming_protocol="IPV6" bearer_bitmask="1|2|3|9|10|11|13|14|15|18" profile_id="2" modem_cognitive="true" max_conns="20" max_conns_time="300" mvno_type="gid" mvno_match_data="BAE1000000000000" user_visible="false" />
-  <apn carrier="Visible" carrier_id="2146" mcc="311" mnc="480" apn="VSBLADMIN" authtype="0" type="fota" protocol="IPV4V6" roaming_protocol="IP" bearer_bitmask="1|2|3|9|10|11|13|14|15|18" profile_id="3" modem_cognitive="true" max_conns="20" max_conns_time="300" mvno_type="gid" mvno_match_data="BAE1000000000000" user_visible="false" />
-  <apn carrier="Visible" carrier_id="2146" mcc="311" mnc="480" apn="VSBLINTERNET" authtype="0" type="default,supl,dun" protocol="IPV4V6" roaming_protocol="IP" bearer_bitmask="1|2|3|9|10|11|13|14|15|18" profile_id="0" modem_cognitive="true" max_conns="20" max_conns_time="300" mvno_type="gid" mvno_match_data="BAE1000000000000" />
-  <apn carrier="Visible" carrier_id="2146" mcc="311" mnc="480" apn="VSBLAPP" mmsc="http://mms.vtext.com/servlets/mms" authtype="0" type="cbs,mms" protocol="IPV4V6" roaming_protocol="IP" bearer_bitmask="1|2|3|9|10|11|13|14|15|18" profile_id="4" modem_cognitive="true" max_conns="20" max_conns_time="300" mvno_type="gid" mvno_match_data="BAE1000000000000" user_visible="false" />
   <apn carrier="StraightTalk Verizon" mcc="311" mnc="480" apn="TRACFONE.VZWENTP" type="default,dun,supl" protocol="IPV4V6" roaming_protocol="IPV4V6" />
   <apn carrier="XFINITY Mobile" mcc="311" mnc="480" apn="COMCAST.RSLR.VZWENTP" type="default,dun,supl" protocol="IPV4V6" roaming_protocol="IPV4V6" />
   <apn carrier="Verizon Internet" mcc="311" mnc="482" apn="VZWINTERNET" type="default,dun,mms" mmsc="http://mms.vtext.com/servlets/mms" protocol="IPV4V6" roaming_protocol="IPV4V6" />
@@ -2907,12 +2902,7 @@
   <apn carrier="SUN Mobile" mcc="454" mnc="00" apn="SUNMobile" mmsc="http://192.168.58.171:8002" mmsproxy="192.168.59.61" mmsport="8080" type="default,mms" authtype="3" mvno_match_data="01030000" mvno_type="gid" />
   <apn carrier="1O1O" mcc="454" mnc="00" apn="mobile" mmsc="http://192.168.58.171:8002" mmsproxy="192.168.59.51" mmsport="8080" type="default,mms,hipri" authtype="3" mvno_match_data="01010000" mvno_type="gid" />
   <apn carrier="1O1O Tethering" mcc="454" mnc="00" apn="lte.internet" type="dun" mvno_match_data="01010000" mvno_type="gid" />
-  <apn carrier="1O1O" mcc="454" mnc="00" apn="mobile" mmsc="http://192.168.58.171:8002" mmsproxy="192.168.59.51" mmsport="8080" authtype="3" type="default,mms,hipri" />
   <apn carrier="1O1O Tethering" mcc="454" mnc="00" apn="lte.internet" type="dun" />
-  <apn carrier="1O1O" mcc="454" mnc="00" apn="mobile" mmsc="http://192.168.58.171:8002" mmsproxy="192.168.59.51" mmsport="8080" type="default,mms,hipri" authtype="3" mvno_match_data="01010000" mvno_type="gid" />
-  <apn carrier="1O1O Tethering" mcc="454" mnc="00" apn="lte.internet" type="dun" mvno_match_data="01010000" mvno_type="gid" />
-  <apn carrier="SUN Mobile" mcc="454" mnc="00" apn="SUNMobile" mmsc="http://192.168.58.171:8002" mmsproxy="192.168.59.61" mmsport="8080" authtype="3" type="default,mms" />
-  <apn carrier="SUN Mobile" mcc="454" mnc="00" apn="SUNMobile" mmsc="http://192.168.58.171:8002" mmsproxy="192.168.59.61" mmsport="8080" type="default,mms" authtype="3" mvno_match_data="01030000" mvno_type="gid" />
   <apn carrier="New World internet" mcc="454" mnc="01" apn="internet" type="default" authtype="1" />
   <apn carrier="New World MMS" mcc="454" mnc="01" apn="MMS" mmsc="http://mmsc.nwmobility.com:8002" mmsproxy="192.168.111.1" mmsport="8080" type="mms" authtype="1" />
   <apn carrier="New World" mcc="454" mnc="01" apn="wap" user="wwm" password="wwm" proxy="192.168.111.1" port="8080" type="default" authtype="1" />
