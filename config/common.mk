@@ -206,6 +206,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     vendor/candy/build/target/product/security/candy
 
+# Themes
+$(call inherit-product, vendor/candy/config/themes.mk)
+
 # ThemeOverlays
 include packages/overlays/Themes/themes.mk
 
