@@ -169,4 +169,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     vendor/candy/build/target/product/security/candy
 
+# ThemeOverlays
+include packages/overlays/Themes/themes.mk
+
 include vendor/candy/config/version.mk
