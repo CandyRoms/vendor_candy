@@ -1,6 +1,7 @@
 # Required packages
 PRODUCT_PACKAGES += \
     ThemePicker \
+    ThemesStub \
     TouchGestures \
     RepainterServicePriv
 
