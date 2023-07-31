@@ -1,2 +1,2 @@
-# Include LineageOS versions
-include $(TOPDIR)vendor/lineage/build/core/main_version.mk
+# Include CandyRoms versions
+include $(TOPDIR)vendor/candy/build/core/main_version.mk
