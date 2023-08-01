@@ -53,7 +53,8 @@ SOONG_CONFIG_candyGlobalVars += \
     needs_oplus_tag \
     uses_oppo_camera \
     uses_oplus_camera \
-    uses_nothing_camera
+    uses_nothing_camera \
+    needs_camera_boottime \
 
 SOONG_CONFIG_NAMESPACES += candyNvidiaVars
 SOONG_CONFIG_candyNvidiaVars += \
@@ -85,6 +86,7 @@ SOONG_CONFIG_candyQcomVars_uses_pre_uplink_features_netmgrd := $(TARGET_USES_PRE
 SOONG_CONFIG_candyGlobalVars_uses_legacy_fd_fbdev := $(TARGET_USES_LEGACY_FD_FBDEV)
 SOONG_CONFIG_candyGlobalVars_uses_oplus_camera := $(TARGET_USES_OPLUS_CAMERA)
 SOONG_CONFIG_candyGlobalVars_uses_nothing_camera := $(TARGET_USES_NOTHING_CAMERA)
+SOONG_CONFIG_candyGlobalVars_needs_camera_boottime := $(TARGET_CAMERA_BOOTTIME_TIMESTAMP)
 
 # Set default values
 BOOTLOADER_MESSAGE_OFFSET ?= 0
