@@ -147,7 +147,7 @@ SOONG_CONFIG_candyGlobalVars_target_trust_usb_control_enable := $(TARGET_TRUST_U
 SOONG_CONFIG_candyGlobalVars_target_trust_usb_control_disable := $(TARGET_TRUST_USB_CONTROL_DISABLE)
 SOONG_CONFIG_candyGlobalVars_disable_bluetooth_le_read_buffer_size_v2 := $(TARGET_DISABLE_BLUETOOTH_LE_READ_BUFFER_SIZE_V2)
 SOONG_CONFIG_candyGlobalVars_disable_bluetooth_le_set_host_feature := $(TARGET_DISABLE_BLUETOOTH_LE_SET_HOST_FEATURE)
-ifneq filter $(QSSI_SUPPORTED_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
+ifneq ($(filter $(QSSI_SUPPORTED_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
 SOONG_CONFIG_candyQcomVars_qcom_display_headers_namespace := vendor/qcom/opensource/commonsys-intf/display
 else
 SOONG_CONFIG_candyQcomVars_qcom_display_headers_namespace := $(QCOM_SOONG_NAMESPACE)/display
